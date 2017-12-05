@@ -16,5 +16,26 @@
   </dependencies>
   <modules>
     <module>overAll</module>
+    <module>afanasiefProj</module>
+    <module>brusovProj</module>
+    <module>druchenkoProj</module>
+    <module>ibragimovaProj</module>
+    <module>kozakProj</module>
+    <module>kornienkoProj</module>
+    <module>kudenkoProj</module>
+    <module>kushnirProj</module>
+    <module>lubchenkoProj</module>
+    <module>morozProj</module>
+    <module>nobokaProj</module>
+    <module>nikishinaProj</module>
+    <module>paskoProj</module>
+    <module>polovoiProj</module>
+    <module>pristavkoProj</module>
+    <module>romanovProj</module>
+    <module>savenkoProj</module>
+    <module>smolinskaiaProj</module>
+    <module>stetsukProj</module>
+    <module>tofelProj</module>
+    <module>shapovalProj</module>
   </modules>
 </project>
