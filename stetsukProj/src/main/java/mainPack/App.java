@@ -1,10 +1,10 @@
 package mainPack;
 
 /**
- * Hello world!
+ * Hello world!2
  *
  */
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
