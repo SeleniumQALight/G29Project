@@ -1,7 +1,7 @@
 package mainPack;
 
 /**
- * Hello world!
+ * Лед тронулся!!!
  *
  */
 public class App 
