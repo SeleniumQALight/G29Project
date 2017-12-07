@@ -1,7 +1,7 @@
 package mainPack;
 
 /**
- * Лед тронулся!!!
+ * Privet mewok s kostyami
  *
  */
 public class App 
