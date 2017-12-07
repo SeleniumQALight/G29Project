@@ -2,7 +2,7 @@ package mainPack;
 
 /**
  * Hello world!
- *
+ *test
  */
 public class App 
 {
