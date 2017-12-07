@@ -30,8 +30,6 @@ public class AppTest
 
     /**
      * Rigourous Test :-)
-     * bugaga v
-     * vv
      */
     public void testApp()
     {
