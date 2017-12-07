@@ -1,7 +1,7 @@
 package mainPack;
 
 /**
- * Privet mewok s kostyami
+ * Privet mewok s kostyami. Eto Bender!!!!
  *
  */
 public class App 
