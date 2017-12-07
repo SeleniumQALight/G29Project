@@ -1,7 +1,7 @@
 package mainPack;
 
 /**
- * Hello world!
+ * Hello world! 23412341234141431231234123
  *test
  */
 public class App 
