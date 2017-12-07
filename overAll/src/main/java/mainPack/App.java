@@ -1,7 +1,7 @@
 package mainPack;
 
 /**
- * Hello world!12
+ * Hello world!
  *
  */
 public class App 
