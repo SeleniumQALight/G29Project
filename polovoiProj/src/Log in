@@ -1,0 +1,7 @@
+1. Move on this website "http://v3.test.itpmgroup.com/login"
+2. Put email "Student"
+3. Put password "909090"
+4. Click submit button
+
+Expected result:
+We logged on website as user Student
