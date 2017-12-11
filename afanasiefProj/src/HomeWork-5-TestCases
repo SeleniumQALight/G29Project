@@ -1,0 +1,88 @@
+Test case 1. Delete an entry in the list of services for machines
+
+Pre-conditions:
+1) Go to URL: http://v1.qalight.com.ua
+2) Log in (login-student,password-909090)
+
+Steps to reproduce:
+1) In left sidebar click the "Обслуживание" link
+2) Сlick the "Удалить" link
+
+Expected result:
+1) The page is opened with full list of servicing of automatic devices by employees
+2) The selected row is deleted successful
+
+Test case 2. Saving manually entered data on the edit page by clicking "Обновить" button
+
+Pre-conditions:
+1) Go to URL: http://v1.qalight.com.ua;
+2) Log in (login-student,password-909090)
+3) Make a record Фамилия:Иванов, Имя:Иван, Отчество:Иванович, Телефон: (495)1111-11-12
+
+Steps to reproduce:
+1) Click "Справочная система">"Сотрудники" links
+2) Click record made and follow to the edit page
+3) Edit Фамилия column, enter "Пузанов"and click"Обновить" button
+
+
+*Expected result:*
+# A list of employees is opened
+# User is redirected to the edit page and may edit all manually entering data
+# Edited data is saved
+
+Test case 3. Negative:checking the correctness "nvarchar(120)" in the input field "apparat_comment" (aсcording to requirement) when add apparat
+
+Pre-condition:
+1) Go to the web http://v3.qalight.com.ua/
+2) Log in (login-student,password-909090)
+
+Steps to reproduce:
+1) Click on drop-down list "Cловари"
+2) Click on "Аппарат"
+3) Click on button "Add"
+4) Enter an any integer on the field "Apparat number"
+5) Enter 121 characters on the field "Apparat comment"
+6) Click on button "Создать"
+
+Expected result:
+"Apparat" isn't added
+
+Test case 4. Positive:checking the correctness nvarchar(30) in the field "Worker phone" when add employee
+
+Pre-condition:
+1) Go to the web http://v3.qalight.com.ua/
+2) Log in (login-student,password-909090)
+
+*Steps to reproduce*
+1) Click on drop-down list "Словари"
+2) Click on "Сотрудники"
+3) Click on button "Add"
+4)  Enter one any character on the field "Worker surname" (mandatory input field)
+5) Enter one any character on the field "Worker name" (mandatory input field)
+6) Enter 30 characters on the field "Worker phone"
+7) Click on button "Создать"
+
+Expected result:
+1)Employee is added
+
+Test case 5. Main menu "Отчет" checking
+
+Pre-condition:
+1) Go to the web http://v3.qalight.com.ua/
+2) Log in (login-student,password-909090)
+
+Steps to reproduce:
+1) Open link http://v3.qalight.com.ua/
+2) Click on {color:red} "Отчет" {color} in the main menu
+
+Expected result:
+The menu "Отчет" includes such box-titles as:
+1) ID
+2) Service date
+3) List of changes
+4) Operations
+5) Co-worker
+
+
+
+
