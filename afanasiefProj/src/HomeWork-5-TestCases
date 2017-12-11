@@ -11,6 +11,7 @@ Steps to reproduce:
 Expected result:
 1) The page is opened with full list of servicing of automatic devices by employees
 2) The selected row is deleted successful
+_______________________________________________________________________________________________________________________
 
 Test case 2. Saving manually entered data on the edit page by clicking "Обновить" button
 
@@ -24,11 +25,11 @@ Steps to reproduce:
 2) Click record made and follow to the edit page
 3) Edit Фамилия column, enter "Пузанов"and click"Обновить" button
 
-
-*Expected result:*
-# A list of employees is opened
-# User is redirected to the edit page and may edit all manually entering data
-# Edited data is saved
+Expected result:
+1) A list of employees is opened
+2) User is redirected to the edit page and may edit all manually entering data
+3) Edited data is saved
+_______________________________________________________________________________________________________________________
 
 Test case 3. Negative:checking the correctness "nvarchar(120)" in the input field "apparat_comment" (aсcording to requirement) when add apparat
 
@@ -45,7 +46,8 @@ Steps to reproduce:
 6) Click on button "Создать"
 
 Expected result:
-"Apparat" isn't added
+1)"Apparat" isn't added
+__________________________________________________________________________________________________________________
 
 Test case 4. Positive:checking the correctness nvarchar(30) in the field "Worker phone" when add employee
 
@@ -53,7 +55,7 @@ Pre-condition:
 1) Go to the web http://v3.qalight.com.ua/
 2) Log in (login-student,password-909090)
 
-*Steps to reproduce*
+Steps to reproduce:
 1) Click on drop-down list "Словари"
 2) Click on "Сотрудники"
 3) Click on button "Add"
@@ -64,6 +66,7 @@ Pre-condition:
 
 Expected result:
 1)Employee is added
+_______________________________________________________________________________________________________________________
 
 Test case 5. Main menu "Отчет" checking
 
