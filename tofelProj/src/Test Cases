@@ -18,7 +18,7 @@ Steps to reproduce:
 "Авторизация"
 
 2.In field "Password" input "909090"
-3. Click on the buttom "Вход".
+3. Click on the buttom "Вход"..
 
 Expected result: go to page "Главная" - http://v3.test.itpmgroup.com/
 -----------------------------------------------------------------------
