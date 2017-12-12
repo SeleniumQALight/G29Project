@@ -14,13 +14,12 @@ Environment: http://v3.test.itpmgroup.com/dashboard, browser "Chrome"
 Pre step conditions:go to http://v3.test.itpmgroup.com/
 
 Steps to reproduce: 
-1.In outhorization window input "Student" in firld "Email" just under 
-"Авторизация"
-
+1.In outhorization window input "Student" in firld "Email" just under
+"РђРІС‚РѕСЂРёР·Р°С†РёСЏ"
 2.In field "Password" input "909090"
-3. Click on the buttom "Вход"..
+3. Click on the buttom "Р’С…РѕРґ"..
 
-Expected result: go to page "Главная" - http://v3.test.itpmgroup.com/
+Expected result: go to page "Р“Р»Р°РІРЅР°СЏ" - http://v3.test.itpmgroup.com/
 -----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Test case #2
@@ -31,13 +30,13 @@ Environment: http://v3.test.itpmgroup.com/dashboard, browser "Chrome"
 Pre step conditions:go to http://v3.test.itpmgroup.com/
 
 Steps to reproduce: 
-1.In outhorization window click on "Зарегистрироваться" 
+1.In outhorization window click on "Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ"
 
 Expected result: 
 message: 
-"404 Страница не найдена
-Запрашиваемая страница не была найдена. Вернитесь на главную 
-страницу"
+"404 РЎС‚СЂР°РЅРёС†Р° РЅРµ РЅР°Р№РґРµРЅР°
+     Р—Р°РїСЂР°С€РёРІР°РµРјР°СЏ СЃС‚СЂР°РЅРёС†Р° РЅРµ Р±С‹Р»Р° РЅР°Р№РґРµРЅР°. Р’РµСЂРЅРёС‚РµСЃСЊ РЅР° РіР»Р°РІРЅСѓСЋ
+     СЃС‚СЂР°РЅРёС†Сѓ"
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Test case #3
@@ -49,9 +48,9 @@ Pre step conditions:go to http://v3.test.itpmgroup.com/
 
 Steps to reproduce: 
 1.In outhorization window input "Student" in field "Email" just under 
-"Авторизация"
+"РђРІС‚РѕСЂРёР·Р°С†РёСЏ"
 
-2.Under field "Password" click on link "Напомнить пароль"
+2.Under field "Password" click on link "РќР°РїРѕРјРЅРёС‚СЊ РїР°СЂРѕР»СЊ"
 
 
 Expected result: no changes
@@ -65,10 +64,10 @@ Environment: http://v3.test.itpmgroup.com/dashboard, browser "Chrome"
 Pre step conditions:go to http://v3.test.itpmgroup.com/
 
 Steps to reproduce: 
-1.In outhorization window input click on "Учет запчастей"
+1.In outhorization window input click on "пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
 
 
-Expected result: go to page "Главная" - http://v3.test.itpmgroup.com/
+Expected result: go to page "РЈС‡РµС‚ Р·Р°РїС‡Р°СЃС‚РµР№" - http://v3.test.itpmgroup.com/
 
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
@@ -81,7 +80,7 @@ Environment: http://v3.test.itpmgroup.com/dashboard, browser "Chrome"
 Pre step conditions:go to http://v3.test.itpmgroup.com/
 
 Steps to reproduce: 
-1.In outhorization window click on "Напомнить пароль" 
+1.In outhorization window click on "РќР°РїРѕРјРЅРёС‚СЊ РїР°СЂРѕР»СЊ"
 
 Expected result: no changes
 
