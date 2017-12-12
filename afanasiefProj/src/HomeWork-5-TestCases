@@ -54,11 +54,9 @@ Pre-conditions:
 1) Go to URL: http://v1.qalight.com.ua
 2) Authorize on the site (login:  student; password: 909090)
 
-
 Steps to reproduce:
 1) Click "Сделки" link
 2) Click "Редактировать" button of any record
-
 
 Expected result:
 1) A list of deals is opened.
