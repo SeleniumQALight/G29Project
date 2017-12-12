@@ -31,41 +31,38 @@ Expected result:
 3) Edited data is saved
 _______________________________________________________________________________________________________________________
 
-Test case 3. Negative:checking the correctness "nvarchar(120)" in the input field "apparat_comment" (aсcording to requirement) when add apparat
+Test case 3. Enter the menu <Удалить>
 
-Pre-condition:
-1) Go to the web http://v3.qalight.com.ua/
-2) Log in (login-student,password-909090)
+Pre-conditions:
+1) Go to URL: http://v1.qalight.com.ua
+2) Authorize on the site (login:  student; password: 909090)
 
 Steps to reproduce:
-1) Click on drop-down list "Cловари"
-2) Click on "Аппарат"
-3) Click on button "Add"
-4) Enter an any integer on the field "Apparat number"
-5) Enter 121 characters on the field "Apparat comment"
-6) Click on button "Создать"
+1) Click the link <Справочники>
+2) Click the link <Типы автоматов>
+3) Сlick the link <Удалить>
 
 Expected result:
-1)"Apparat" isn't added
+1) A list with the names of the entries opens.
+2) Page of the list of types of machines opens
+3) Menu  <Удалить> opened
 __________________________________________________________________________________________________________________
 
-Test case 4. Positive:checking the correctness nvarchar(30) in the field "Worker phone" when add employee
+Test case 4. Checking for the presence "ИД покупателя" attribute
 
-Pre-condition:
-1) Go to the web http://v3.qalight.com.ua/
-2) Log in (login-student,password-909090)
+Pre-conditions:
+1) Go to URL: http://v1.qalight.com.ua
+2) Authorize on the site (login:  student; password: 909090)
+
 
 Steps to reproduce:
-1) Click on drop-down list "Словари"
-2) Click on "Сотрудники"
-3) Click on button "Add"
-4)  Enter one any character on the field "Worker surname" (mandatory input field)
-5) Enter one any character on the field "Worker name" (mandatory input field)
-6) Enter 30 characters on the field "Worker phone"
-7) Click on button "Создать"
+1) Click "Сделки" link
+2) Click "Редактировать" button of any record
+
 
 Expected result:
-1)Employee is added
+1) A list of deals is opened.
+2) The user is redirected to the edit page. "ИД покупателя" attribute is present.
 _______________________________________________________________________________________________________________________
 
 Test case 5. Main menu "Отчет" checking
