@@ -11,8 +11,12 @@ ER. We went to the main page of the system.
 
 2.TC - Section profile
 
-1. Select and press in write top connor on image and name with your profile.
-2. In new drop-down menu select and press button " Profile ".
+1. Go to address http://v3.test.itpmgroup.com/login
+2. In the field "Email" write " Student ".
+3. In the field "Password" write " 909090 ".
+4. Press button " Enter ".
+5. Select and press in write top connor on image and name with your profile.
+6. In new drop-down menu select and press button " Profile ".
 
 ER. We went to the profile menu.
 
@@ -20,7 +24,11 @@ ER. We went to the profile menu.
 
 3.TC - Dictionaries
 
-1. Select and press on button " Dictionaries " in left menu.
+1. Go to address http://v3.test.itpmgroup.com/login
+2. In the field "Email" write " Student ".
+3. In the field "Password" write " 909090 ".
+4. Press button " Enter ".
+5. Select and press on button " Dictionaries " in left menu.
 
 ER. We saw the new drop-down list with 6 parts of sections.
 
@@ -28,7 +36,11 @@ ER. We saw the new drop-down list with 6 parts of sections.
 
 4.TC - Setting
 
-1. Select and press on button " Setting " in left menu.
+1. Go to address http://v3.test.itpmgroup.com/login
+2. In the field "Email" write " Student ".
+3. In the field "Password" write " 909090 ".
+4. Press button " Enter ".
+5. Select and press on button " Setting " in left menu.
 
 ER. We went to the "Setting" menu with list of data.
 
@@ -36,7 +48,11 @@ ER. We went to the "Setting" menu with list of data.
 
 5.TC - Exit
 
-1. Select and press in write top connor on image and name with your profile.
-2. In new drop-down menu select and press button " Exit ".
+1. Go to address http://v3.test.itpmgroup.com/login
+2. In the field "Email" write " Student ".
+3. In the field "Password" write " 909090 ".
+4. Press button " Enter ".
+5. Select and press in write top connor on image and name with your profile.
+6. In new drop-down menu select and press button " Exit ".
 
 ER. We went to the login menu.
