@@ -23,7 +23,7 @@ public class ParentTest {
         mainPage = new MainPage(webDriver);
         authenticationPage = new AuthenticationPage(webDriver);
     }
-
+// jh
     @After
     public void tearDown() {
         webDriver.quit();
