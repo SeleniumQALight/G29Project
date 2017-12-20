@@ -1,7 +1,6 @@
 package loginTest;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
 import parentTest.ParentTest;
 
 
