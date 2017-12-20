@@ -1,35 +1,24 @@
 package loginTest;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.By;
+import parentTest.ParentTest;
 
-import java.io.File;
-import java.util.concurrent.TimeUnit;
 
-public class LoginTest {
-    WebDriver webDriver;
+public class LoginTest extends ParentTest{
 
-    @Before
 
-    public void setup(){
-        File fileFF = new File("./drivers/chromedriver");
-        System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
-        webDriver = new ChromeDriver();
-    }
 
     @Test
     public void validLogin(){
-        webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
         webDriver.get("http://v3.test.itpmgroup.com");
+        mainPage.enterName("student");
+        mainPage.enterPass("909090");
+        mainPage.cliclElement();
+        mainPage.isAvatarPresent();
+
     }
 
-    @After
 
-    public void tearDown(){
-        webDriver.quit();
-    }
 }
