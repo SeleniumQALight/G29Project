@@ -10,9 +10,6 @@ public class UserProfile {
         this.webDriver = webDriver;
     }
 
-    final String userEmail = "alex@bigmir.net";
-    final String userName = "StudentAlex";
-
     public boolean isNewUserNameInHeaderPresent() {
         try {
             return webDriver.findElement(By.xpath(".//p[text()='StudentAlex']")).isDisplayed();
@@ -22,23 +19,12 @@ public class UserProfile {
         }
     }
 
-    public boolean isNewUserNamePresent() {
-        try {
-            String newUserEmail = webDriver.findElement(By.id("userProfileEdit_user_email")).getText();
-            return (newUserEmail == userEmail);
-        } catch (Exception e) {
-            return false;
-        }
+    public String getNewUserName() {
+        return webDriver.findElement(By.id("userProfileEdit_user_name")).getAttribute("value");
     }
 
-    public boolean isNewUserEmailPresent() {
-        try {
-            String newUserName = webDriver.findElement(By.id("userProfileEdit_user_name")).getText();
-            return (userName == newUserName);
-
-        } catch (Exception e) {
-            return false;
-        }
+    public String getNewUserEmailPresent() {
+        return webDriver.findElement(By.id("userProfileEdit_user_email")).getAttribute("value");
     }
 
 

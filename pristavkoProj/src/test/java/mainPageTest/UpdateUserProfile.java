@@ -11,6 +11,8 @@ import parentTest.ParentTest;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.hamcrest.core.Is.is;
+
 public class UpdateUserProfile extends ParentTest {
 
     final String url = "http://v3.test.itpmgroup.com/login";
@@ -48,9 +50,8 @@ public class UpdateUserProfile extends ParentTest {
         webDriver.findElement(By.xpath(".//a[@href='/users/profile/13']")).click();
 
         Assert.assertTrue("User name in left side of the page is not updated", userProfile.isNewUserNameInHeaderPresent());
-        Assert.assertTrue("Email in user profile is not updated", userProfile.isNewUserNamePresent());
-        Assert.assertTrue("Name in user profile is not updated", userProfile.isNewUserEmailPresent());
-
+        Assert.assertThat("Email in user profile is not updated", userEmail, is(userProfile.getNewUserEmailPresent()));
+        Assert.assertThat("Name in user profile is not updated", userName, is(userProfile.getNewUserName()));
     }
 
 }
