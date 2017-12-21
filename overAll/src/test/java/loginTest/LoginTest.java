@@ -1,35 +1,29 @@
 package loginTest;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-import java.io.File;
+import org.openqa.selenium.By;
+import parentTest.ParenTest;
 import java.util.concurrent.TimeUnit;
 
-public class LoginTest {
-    WebDriver webDriver;
-
-    @Before
-    public void setUp(){
-        File fileFF = new File("./drivers/chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
-
-        webDriver = new ChromeDriver();
-    }
+public class LoginTest extends ParenTest{
 
     @Test
     public void validLogin(){
+//        webDriver.get("http://v3.test.itpmgroup.com");
+//        webDriver.findElement(By.name("_username"))
+//                .sendKeys("Student");
+        loginPage.openLoginPage();
+        loginPage.enterTextIntoInputLogin("Student");
 
-        webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        webDriver.get("http://v3.test.itpmgroup.com");
+        webDriver.findElement(By.id("password"))
+                .sendKeys("909090");
+        webDriver.findElement(By.xpath(".//button[@type='submit']"))
+                .click();
+
+        Assert.assertTrue("Avatar is not present",
+                mainPage.isAvatarPresent() );
+
     }
-    @After
-    public void tearDown(){
-        webDriver.quit();
-    }
+
 }
