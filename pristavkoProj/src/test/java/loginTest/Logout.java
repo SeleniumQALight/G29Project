@@ -30,7 +30,7 @@ public class Logout extends ParentTest {
         webDriver.findElement(By.xpath(".//span[@class='hidden-xs']")).click();
         webDriver.findElement(By.xpath(".//a[@href='/logout']")).click();
 
-        Assert.assertTrue("Main menu item is not present", authenticationPage.isMenuItemMainNotPresent());
+        Assert.assertTrue("Main menu item is not present", authenticationPage.isMenuItemMainPresent());
         Assert.assertTrue("Title in authentication page is not present", authenticationPage.isTitleAuthenticationPageIsPresent());
         Assert.assertTrue("Button login in authentication page is not present", authenticationPage.isButtonLoginInAuthenticationPageIsPresent());
     }

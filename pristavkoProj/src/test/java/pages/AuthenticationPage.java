@@ -10,7 +10,7 @@ public class AuthenticationPage {
         this.webDriver = webDriver;
     }
 
-    public boolean isMenuItemMainNotPresent() {
+    public boolean isMenuItemMainPresent() {
         try {
             return webDriver.findElement(By.xpath(".//a[@href='/dashboard']")).isDisplayed();
 
