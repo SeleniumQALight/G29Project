@@ -10,9 +10,9 @@ public class MainPage extends ParentPage{
     }
 
     public boolean isAvatarPresent(){
-        logger.info("Test");
-        logger.error("Error");
-        logger.debug("Debug");
+//        logger.info("Test");
+//        logger.error("Error");
+//        logger.debug("Debug");
         try{
            return  webDriver.findElement(By.xpath(".//img[@class='user-image']")).isDisplayed();
         }catch (Exception e){
