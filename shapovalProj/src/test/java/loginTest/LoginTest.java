@@ -1,35 +1,27 @@
 package loginTest;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.io.File;
+import org.openqa.selenium.By;
+import parentTest.ParentTest;
 import java.util.concurrent.TimeUnit;
 
-public class LoginTest {
-    WebDriver webDriver;
+public class LoginTest extends ParentTest{
 
-    // бифо выполняется перед каждой анотацией тест
-    @Before
-    public void setUP(){
-        File fileFF = new File("./drivers/chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
-        webDriver = new ChromeDriver();
-    }
 
     // можно запустить без мейн метода (заимпортить junit)
     @Test
     public void validLogin(){
-        webDriver.manage().window().maximize(); //открыли на весь экран браузер
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  // неявное ожидание 10 секунд на то что что б браузер развернулся
-        webDriver.get("http://v3.test.itpmgroup.com");
+        //webDriver.get("http://v3.test.itpmgroup.com"); //otkrivaem url
+        //webDriver.findElement(By.name("_username")).sendKeys("Student"); //nahodim pole login i vvodim v nego dannue
+        loginPage.openLoginPage();
+        loginPage.enterTextIntoImputLogin("Student");
+        webDriver.findElement(By.id("password")).sendKeys("909090");// toge samoe s parolem
+        webDriver.findElement(By.xpath(".//button[@type='submit']")).click(); //nahodim knopky submit i nagimaem
+
+        Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());  //proverka - esli da - to ni4ego ne budet- esli net to vuvedet soobwenie
 
     }
-    @After                   // закрытие браузера после прохода тестов
-    public void tearDown(){
-        webDriver.quit();
-    }
+
+
 }
