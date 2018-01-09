@@ -13,9 +13,9 @@ public class MainPage extends ParentPage {
 
 
     public boolean isAvatarPresent() {
-        logger.info("test");
-        logger.error("error");
-        logger.debug("debug");
+//        logger.info("test");
+//        logger.error("error");
+//        logger.debug("debug");
         try {
             return webDriver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']")).isDisplayed();
         } catch (Exception e) {
