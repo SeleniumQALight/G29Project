@@ -1,0 +1,97 @@
+TC 1: Authorization. Positive Scenario
+
+    1.1 Open Authorization Page by link http://v3.test.itpmgroup.com/login
+    1.2 Enter valid login "Student" into Email input
+    1.3 Enter valid password "909090" into Password input
+    1.4 Press Enter
+
+        Expected result:
+        1.5 User is redirected to the Home Page, url - http://v3.test.itpmgroup.com/
+        1.6 The sidebar for registered users is present on the page
+
+____________
+
+
+TC 2: User Profile Editing without saving changes. Positive scenario
+
+*** Preconditions:
+a) Open Authorization Page by link http://v3.test.itpmgroup.com/login
+b) Enter valid login "Student" into Email input
+c) Enter valid password "909090" into Password input
+d) Press Enter
+
+    2.1 Open Dropdown menu by clicking on Username in the right corner of header navigation bar
+    2.2 Click Profile button
+    2.3 Delete current email "alex@bigmir.net' from Email input
+    2.4 Paste new User email  "alex@gmail.com" into Email input
+    2.5 Enter space between "Student" and "Alex" in Username field
+    2.6 Click Main Page link on the sidebar
+    2.7 Open Dropdown menu by clicking on Username in the right corner of header navigation bar
+    2.8 Click Profile button
+
+        Expected result:
+        2.9 User Profile Page is opened - http://v3.test.itpmgroup.com/users/profile/13
+        2.10 Email field contains email "alex@bigmir.net"
+        2.11 Username field contains name "StudentAlex"
+
+____________
+
+TC 3: User Profile Editing with changes saving and Authorization with new credentials. Positive scenario
+
+*** Preconditions:
+a) Open Authorization Page by link http://v3.test.itpmgroup.com/login
+b) Enter valid login "Student" into Email input
+c) Enter valid password "909090" into Password input
+d) Press Enter
+
+    3.1 Open Dropdown menu by clicking on Username in the right corner of header navigation bar
+    3.2 Click Profile button
+    3.3 Delete current email "alex@bigmir.net" from Email input
+    3.4 Paste new User email  "alex@gmail.com" into Email input
+    3.5 Enter space between "Student" and "Alex" in Username field
+    3.6 Enter new login "alex@gmail.com" into Login field
+    3.7 Enter new password "101010" into Password field
+    3.8 Enter password confirmation "101010" into Password confirmation field
+    3.9 Click Save Button
+    3.10 Open Dropdown menu by clicking on Username in the right corner of header navigation bar
+    3.11 Click Exit button
+
+    3.12 Open Authorization Page by link http://v3.test.itpmgroup.com/login
+    3.13 Enter new valid login "alex@gmail.com" into Email input
+    3.14 Enter new valid password "101010" into Password input
+    3.15 Click Entrance button
+
+    3.16 Open Dropdown menu by clicking on Username in the right corner of header navigation bar
+    3.17 Click Profile button
+
+        Expected result:
+        3.18 User Profile Page is opened - http://v3.test.itpmgroup.com/users/profile/13
+        3.19 Email field contains email "alex@gmail.com"
+        3.20 Username field contains name "Student Alex"
+        3.21 Login field contains "alex@gmail.com" login
+        3.21 Password field is empty
+        3.22 Password Confirmation field is empty
+
+*** PostConditions:
+3.24 Enter previous credentials into corresponding fields:
+     3.24.1 Email - "alex@bigmir.net"
+     3.24.2 Username - "StudentAlex"
+     3.24.3 Login - "Student"
+     3.24.4 Password - "909090"
+     3.24.5 Password confirmation - "909090"
+3.25 Save changes - click Save button on Profile page
+
+// надо ли выполнить проверочную атворизацию с возвращенными прежними учетными данными?
+
+____________
+
+
+TC 4: Adding Spareparts list to the new Transaction
+
+*** Preconditions:
+a) Open Authorization Page by link http://v3.test.itpmgroup.com/login
+b) Enter valid login "Student" into Email input
+c) Enter valid password "909090" into Password input
+d) Press Enter
+
+    4.1
