@@ -9,11 +9,10 @@ target/generated-sources/
 target/generated-test-sources/
 target/test-classes
 target/site
-driver
 *.log
 *.iml
 *.ipr
 *.iws
-*.exe
+
 
 
