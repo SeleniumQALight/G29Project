@@ -1,0 +1,94 @@
+Precondition: cases for verify in Chrome brows
+TC_1
+tesssssstttthhvjhgv
+Summary:
+Checking operation of "registration form" with correct values
+
+Steps:
+1) Open page http://v3.test.itpmgroup.com/login
+2) Enter correct values in "Email" text field (Student)
+3) Enter correct values in "Password" text field (909090)
+4) Click on "Submit" button
+
+Expected result:
+Authorization must be successful. "Home" page should be open.
+
+TC_2
+
+Summary:
+Checking operation of "registration form" with incorrect values
+
+Steps:
+1) Open page http://v3.test.itpmgroup.com/login
+2) Enter incorrect values in "Email" text field (ex qwerty)
+3) Enter incorrect values in "Password" text field (ex asdfg)
+4) Click on "Submit" button
+
+
+Expected result:
+Authorization must fail. "Home" page should be open.
+
+TC_3
+
+Summary:
+Check the ability to add  new device in dictionary
+
+Steps:
+1) Open page http://v3.test.itpmgroup.com/login
+2) Enter correct values in "Email" text field (Student)
+3) Enter correct values in "Password" text field (909090)
+4) Click on "Submit" button
+5) In "side menu" click on "dictionary" dropdown
+6) In "dictionary" dropdown click on "Device"  item
+7) Click on "Add" button
+8) Enter correct values in "Apparat nubmer" text field (ex 000111 )
+9) Enter correct values in "Apparat comment" text field (ex TV remote. Nice device for lazy people)
+10) Click on "Create" button
+
+Actual result:
+Must be created a new device with number "000111" and comment "TV remote. Nice device for lazy people"
+
+
+TC_4
+
+Summary:
+Check the ability to add  new service
+
+Steps:
+1) Open page http://v3.test.itpmgroup.com/login
+2) Enter correct values in "Email" text field (Student)
+3) Enter correct values in "Password" text field (909090)
+4) Click on "Submit" button
+5) In "side menu" click on "service" dropdown
+6) Click on "Add" button
+7) Enter correct values in "Service changes" text field (ex test changes_1 )
+8) Enter correct values in "Service operations" text field (ex test_operations_1)
+9) Enter correct values in "Service date" date picker (ex 20.dec.2017 20:00)
+10) Enter correct values in "staff" text field (ex TV remote. Nice device for lazy people)
+11) Enter correct values in "associate" text field (ex Vinigradov Alexey Petrovi4)
+12) Click on "Create" button
+
+Actual result:
+Must be created a new service
+
+
+
+TC_5
+
+Summary:
+Check the ability to add  new installation
+
+Steps:
+1) Open page http://v3.test.itpmgroup.com/login
+2) Enter correct values in "Email" text field (Student)
+3) Enter correct values in "Password" text field (909090)
+4) Click on "Submit" button
+5) In "side menu" click on "installation" dropdown
+6) Click on "Add" button
+7) Enter correct values in "Installation date" date picker (ex 20.dec.2017 20:00 )
+8) Enter correct values in "Device" text field (ex TV remote. Nice device for lazy people)
+9) Enter correct values in "associate" text field (ex Vinigradov Alexey Petrovi4)
+10) Click on "Create" button
+
+Actual result:
+Must be created a new installation
