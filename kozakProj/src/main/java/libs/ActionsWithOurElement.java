@@ -15,6 +15,11 @@ public class ActionsWithOurElement {
         logger = Logger.getLogger(getClass());   // створює лог файл з іменем цього класу;
     }
 
+    /**
+     * Method enter text in to input
+     * @param input
+     * @param text
+     */
     public void enterTextInToInput(WebElement input, String text) {
         try {
             input.clear();
@@ -25,6 +30,10 @@ public class ActionsWithOurElement {
         }
     }
 
+    /**
+     * Method click on WebElement
+     * @param element
+     */
     public void clickOnElement(WebElement element) {
         try {
             element.click();
@@ -34,12 +43,17 @@ public class ActionsWithOurElement {
         }
     }
 
-    public boolean isElementPresent(WebElement element){
+    /**
+     * Method verify that WebElement is displayed and is enabled
+     * @param element
+     * @return
+     */
+    public boolean isElementPresent(WebElement element) {
         try {
-            boolean tempState = element.isDisplayed()&& element.isEnabled();
+            boolean tempState = element.isDisplayed() && element.isEnabled();
             logger.info("Is element Present? - " + tempState);
             return tempState;
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.info("Is element Present? - false");
             return false;
         }
