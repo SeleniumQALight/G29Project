@@ -15,10 +15,6 @@ public class ParentTest {
     protected MainPage mainPage;
     protected LoginPage loginPage;
 
-//        webDriver.manage().window().maximize();
-//        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);//пробуй каждые полсекунды сделать это на протяжении 10 секунд
-
-
     @Before
     public void setUp() {
         File fileFF = new File("./drivers/chromedriver.exe");

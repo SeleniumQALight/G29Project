@@ -8,7 +8,7 @@
         <artifactId>G29Project</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>druchenkoProj</groupId>
+    <groupId>stetsukProj</groupId>
     <artifactId>stetsukProj</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>stetsukProj</name>
