@@ -15,6 +15,11 @@ public class ActionsWithOurElements {
         logger = Logger.getLogger(getClass());
     }
 
+    /**
+     * Method puts text into input or textareas
+     * @param input
+     * @param text
+     */
     public void enterTextInToInput(WebElement input, String text){
         try{
             input.clear();
@@ -26,6 +31,10 @@ public class ActionsWithOurElements {
         }
     }
 
+    /**
+     * Method clicks on the element
+     * @param element
+     */
     public void clickOnElement(WebElement element){
         try{
             element.click();
@@ -35,6 +44,11 @@ public class ActionsWithOurElements {
         }
     }
 
+    /**
+     * Method cheks present and enable of element
+     * @param element
+     * @return
+     */
     public boolean isElementPresent(WebElement element){
         try{
             boolean tempState = element.isDisplayed()&&element.isEnabled();
@@ -46,6 +60,10 @@ public class ActionsWithOurElements {
         }
     }
 
+    /**
+     * Method calls error when element didn't found
+     * @param element
+     */
     private void logErrorStopAndStopTest(WebElement element){
         logger.error("Cannot work with element " + element);
         Assert.fail("Cannot work with element " + element);
