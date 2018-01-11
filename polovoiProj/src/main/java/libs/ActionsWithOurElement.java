@@ -7,23 +7,29 @@ import org.openqa.selenium.WebElement;
 
 public class ActionsWithOurElement {
     WebDriver webDriver;
-    Logger logger;
+    static Logger logger;
 
     public ActionsWithOurElement(WebDriver webDriver) {
         this.webDriver = webDriver;
-        logger=Logger.getLogger(getClass());
+        logger = Logger.getLogger("ActionsWithOurElement");
     }
 
-    public void enterTextToInput(WebElement input, String text){
+    /**
+     * Method Enter text in to input and textArea
+     * @param input
+     * @param text
+     */
+
+    public static void enterTextToInput(WebElement input, String text){
         try{
             input.clear();
             input.sendKeys(text);
-            logger.info(text + " was pasted in to input " + input);
+            logger.info(text + " was pasted in to input " +input );
         }catch (Exception e){
-            logErrorAndStopTest(input);
+            logErrorAndStopTest();
         }
     }
-    public boolean isElementPresent(WebElement element){
+    public static boolean isElementPresent(WebElement element){
         try{
             boolean tempState = element.isDisplayed()&&element.isEnabled();
             logger.info("Is Element present? -  " + tempState );
@@ -34,17 +40,17 @@ public class ActionsWithOurElement {
         }
     }
 
-    public void clickOnElement(WebElement element){
+    public static void clickOnElement(WebElement element){
         try{
             element.click();
-            logger.info("Element was clicked " + element);
+            logger.info("Element was clicked " );
         }catch (Exception e){
-            logErrorAndStopTest(element);
+            logErrorAndStopTest();
         }
     }
 
-    private void logErrorAndStopTest(WebElement element){
-        logger.error("Cant work with element " + element); //пишет в лог
-        Assert.fail("Cant work with element " + element); // пишет в консоль
+    private static void logErrorAndStopTest(){
+        logger.error("Cant work with element " ); //пишет в лог
+        Assert.fail("Cant work with element " ); // пишет в консоль
     }
 }
