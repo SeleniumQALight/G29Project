@@ -1,18 +1,9 @@
 package loginTest;
 
-import org.apache.http.util.Asserts;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import pages.MainPages;
 import parentTest.ParentTest;
-
-import java.io.File;
-import java.util.concurrent.TimeUnit;
 
 public class LoginTest extends ParentTest {
 
