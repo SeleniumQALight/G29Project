@@ -47,7 +47,10 @@ public class ActionsWithOurElements {
         }
     }
 
-
+    /**
+     * /Metod Enter text into input and text area
+     * @param element
+     */
     private void logErrorAndStopTest(WebElement element) {
         logger.error("Can't work with element " + element);
         Assert.fail("Can't work with element " + element);
