@@ -16,9 +16,7 @@ public class MainPage extends ParentPage {
 
     //опишем метод, который ищет аватарку, и что делать, если ее не нашел: вебдрайвер найди элемент аватарку
     public boolean isAvatarPresent () {
-//        logger.info ("Test");
-//        logger.error ("Error");
-//        logger.debug ("Debug");
+
         try{
             return webDriver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']")).isDisplayed();
         } catch (Exception e) {
