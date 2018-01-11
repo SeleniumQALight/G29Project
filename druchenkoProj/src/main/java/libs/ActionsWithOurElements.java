@@ -14,6 +14,12 @@ public class ActionsWithOurElements {
         logger = Logger.getLogger(getClass());
     }
 
+    /**
+     * Method Enter Text in to input and textArea
+     * @param input
+     * @param text
+     */
+
     public void enterTextIntoInput(WebElement input, String text){
         try{
             input.clear();
@@ -24,6 +30,11 @@ public class ActionsWithOurElements {
         }
     }
 
+    /**
+     * Method Click on Element
+     * @param element
+     */
+
     public void clickOnElement(WebElement element){
         try{
             element.click();;
@@ -33,6 +44,11 @@ public class ActionsWithOurElements {
         }
     }
 
+    /**
+     * Method Find Present Element
+     * @param element
+     * @return
+     */
     public boolean isElementPresent(WebElement element){
         try {
             boolean tempState = element.isDisplayed()&&element.isEnabled();
@@ -43,6 +59,11 @@ public class ActionsWithOurElements {
             return false;
         }
     }
+
+    /**
+     * Method Writes log and Stops test
+     * @param element
+     */
 
     private void logErrorAndStopTest(WebElement element){
         logger.error("Can not work with element" + element);
