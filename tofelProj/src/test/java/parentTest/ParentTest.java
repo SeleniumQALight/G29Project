@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.LoginPage;
 import pages.MainPage;
 
 import java.io.File;
@@ -11,6 +12,7 @@ import java.io.File;
 public class ParentTest {
     public WebDriver webDriver;
     protected MainPage mainPage;
+    protected LoginPage loginPage;
 
     @Before
     public void setUp() {
@@ -19,6 +21,8 @@ public class ParentTest {
         webDriver = new ChromeDriver();
 
         mainPage = new MainPage(webDriver);
+        loginPage = new LoginPage(webDriver);
+
     }
 
     @After
