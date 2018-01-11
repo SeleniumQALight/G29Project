@@ -15,6 +15,12 @@ public class ActionsWIthOurElements {
     }
 
     //создаем метод, который будет вводить текст в инпуты, а еще в textarea:
+
+    /**
+     * Method Enter text into input and textArea
+     * @param input
+     * @param text
+     */
     public void enterTextInToInput (WebElement input, String text) {  //- куда - инпут (тип - вебэлемент), что - текст (тип - стринга)
         try{
             input.clear();
@@ -26,6 +32,11 @@ public class ActionsWIthOurElements {
     }
 
     //создадим метод по работе с кнопками:
+
+    /**
+     *  Method click on the Elements: button, link, radiobutton, checkbox etc.
+     * @param element
+     */
     public void clickOnElement (WebElement element) {
         try{
             element.click();
@@ -35,11 +46,16 @@ public class ActionsWIthOurElements {
         }
     }
 
+    /**
+     * Method to check whether any element is present in DOM, present on the page and enabled or disabled
+     * @param element
+     * @return
+     */
     //пишем метод, который будет проверять наличчие элемента на странице. он уже будет не войд, потому что будет возвращать состояние тру/фолс:
     public boolean isElementPresent (WebElement element) {
         try{
             boolean tempState = element.isDisplayed()&&element.isEnabled(); //спрашиваем у аватара: ты есть - да, ты доступен - нет. значит
-            //темпстейт - фолс, возвращаем - фолс. если этого элемента вообще нет, тогда вывалится эксепшен
+            //темпстейт - фолс, возвращаем - фолс. если этого элемента вообще нет, тогда вывалится эксепшен и мы попадем в блок кэтч
             logger.info ("Is Element Present? - " + tempState);
             return tempState; //&& - двойное логическое "и" (оба условия должны выполнятся, при этом если
             //левая часть фолс, то правую можно не проверять, потому что  результат в любом случае уже фолс
@@ -50,9 +66,12 @@ public class ActionsWIthOurElements {
         }
     }
 
-    //делаем метод для обработки эксепшена, который потом будем вызывать в методе трай/кетч для ввода текста в инпут или метод клика
-    // по элементам (выше описан):
-    // в него передаем сам элемент (WebElement element), чтобы потом понять, с каким лементом не можем работать logger.error("Can not work with element " + element )
+    /**
+     * Method informs on exception of working with elements and records to log
+     * @param element
+     */
+    //делаем метод для обработки эксепшена, который потом будем вызывать в методе трай/кетч для ввода текста в инпут или метод клика по элементам (выше описаны):
+    // в него передаем сам элемент (WebElement element), чтобы потом понять, с каким элементом не можем работать logger.error("Can not work with element " + element )
     private void logErrorAndStopTest (WebElement element) {
         logger.error("Can not work with element " + element ); // пишет в консоль и в лог
         Assert.fail ("Can not work with element " + element ); //пишет в отчет и останавливает тест
