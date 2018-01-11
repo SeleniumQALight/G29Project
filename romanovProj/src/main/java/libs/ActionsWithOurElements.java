@@ -15,6 +15,11 @@ public class ActionsWithOurElements {
         logger = Logger.getLogger(getClass());
     }
 
+    /**
+     * Mathod Enter text in to input and textArea
+     * @param input
+     * @param text
+     */
     public void enterTextInToInput(WebElement input, String text) {
         try {
             input.clear();
