@@ -21,6 +21,7 @@ public class Login extends ParentTest{
 
     @Test
     public void vallidLogin() {
+
         loginPage.openLoginPage();
         loginPage.enterTextIntoInputLogin(login);
         loginPage.enterTextIntoInputPassword(password);

@@ -15,8 +15,8 @@ public class LoginPage extends ParentPage {
             webDriver.get("http://v3.test.itpmgroup.com");
             logger.info("Login page was opened");
         } catch (Exception e) {
-            logger.error("Can not open url");
-            Assert.fail("Can not open url");
+            logger.error("Can't open url");
+            Assert.fail("Can't open url");
         }
     }
 
@@ -35,8 +35,8 @@ public class LoginPage extends ParentPage {
             webDriver.findElement(By.name("_username")).sendKeys(login);
             logger.info(login + " was inputed into input ");
         } catch (Exception e) {
-            logger.error("Can not work with element ");
-            Assert.fail("Can not work with element");
+            logger.error("Can't work with element ");
+            Assert.fail("Can't work with element");
         }
     }
 
@@ -46,8 +46,8 @@ public class LoginPage extends ParentPage {
             webDriver.findElement(By.id("password")).sendKeys(password);
             logger.info(password + " was inputed into input ");
         } catch (Exception e) {
-            logger.error("Can not work with element ");
-            Assert.fail("Can not work with element");
+            logger.error("Can't work with element ");
+            Assert.fail("Can't work with element");
         }
     }
 
