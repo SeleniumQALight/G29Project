@@ -7,16 +7,15 @@ import org.openqa.selenium.WebElement;
 
 public class ActionsWithoutElements {
     WebDriver webDriver;
-    Logger logger;
+    static Logger logger;
 
     /**
      * Constructor declaration
      * @param webDriver
      */
-
     public ActionsWithoutElements(WebDriver webDriver) {
         this.webDriver = webDriver;
-        logger = Logger.getLogger(getClass());
+        logger = Logger.getLogger("ActionsWithoutElements");
     }
 
     /**
@@ -24,13 +23,13 @@ public class ActionsWithoutElements {
      * @param input
      * @param text
      */
-    public void enterTextInToInput(WebElement input, String text){
+    public static void enterTextInToInput(WebElement input, String text){
         try{
             input.clear();
-            input.sendKeys();
-            logger.info(text + " was inputed in to input " + input);
+            input.sendKeys(text);
+            logger.info(text + " was inputed in to input ");
         }catch (Exception e){
-            logErrorAndStopTest(input);
+            logErrorAndStopTest();
         }
     }
 
@@ -38,12 +37,12 @@ public class ActionsWithoutElements {
      * Method click on element and print log info
      * @param element
      */
-    public void clickOnElement(WebElement element){
+    public static void clickOnElement(WebElement element){
         try {
             element.click();
             logger.info("Element was clicked " + element);
         }catch (Exception e){
-            logErrorAndStopTest(element);
+            logErrorAndStopTest();
         }
     }
 
@@ -52,7 +51,7 @@ public class ActionsWithoutElements {
      * @param element
      * @return
      */
-    public boolean isElementPresent(WebElement element){
+    public static boolean isElementPresent(WebElement element){
         try {
             boolean tempState = element.isDisplayed()&&element.isEnabled();
             logger.info("Is element present ? " + tempState);
@@ -67,8 +66,8 @@ public class ActionsWithoutElements {
      * Method breake test and print log with element
      * @param element
      */
-    private void logErrorAndStopTest(WebElement element){
-        logger.error("Can not work with elements " + element);
-        Assert.fail("Can not work with elements " + element);
+    private static void logErrorAndStopTest(){
+        logger.error("Can not work with elements ");
+        Assert.fail("Can not work with elements ");
     }
 }
