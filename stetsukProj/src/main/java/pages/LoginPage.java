@@ -32,14 +32,6 @@ public class LoginPage extends ParentPage {
     }
 
     public void enterTextIntuInputLogin(String login) {
-//        try {
-//            inputLogin.clear();
-//            inputLogin.sendKeys(login);
-//            logger.info(login + " was inputed into input");
-//        } catch (Exception e) {
-//            logger.error("Cannn`t work with element");
-//            Assert.fail("Cannn`t work with element");
-//        }
         ActionsWithoutElements.enterTextInToInput(inputLogin, login);
     }
 
