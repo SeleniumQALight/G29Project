@@ -5,36 +5,39 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static libs.ActionsWithOurElements.*;
+
 public class ActionsWithOurElements {
     WebDriver webDriver;
-    Logger logger;
+    static Logger logger;
 
     public ActionsWithOurElements(WebDriver webDriver) {
         this.webDriver = webDriver;
-        logger = Logger.getLogger(getClass());
+        logger = Logger.getLogger("ActionsWithOurElements");
     }
 
-    public void enterTextItoImput(WebElement input, String text) {
+    public static void enterTextIntoImput(WebElement input, String text) {
         try {
             input.clear();
             input.sendKeys(text);
             logger.info(text + " was inputted into input " + input);
         } catch (Exception e) {
-            logErrorAndStopTest(input);
+            logErrorAndStopTest();
 
         }
+
     }
 
-    public void clickOnElement(WebElement element) {
+    public static void clickOnElement(WebElement element) {
         try {
             element.click();
             logger.info("Element was clicked on " + element);
         } catch (Exception e) {
-            logErrorAndStopTest(element);
+            logErrorAndStopTest();
         }
     }
 
-    public boolean isElementPresent(WebElement element) {
+    public static boolean isElementPresent(WebElement element) {
         try {
             boolean tempState = element.isDisplayed() && element.isEnabled();
             logger.info("Is Element Present ? - " + tempState);
@@ -48,9 +51,9 @@ public class ActionsWithOurElements {
     }
 
 
-    private void logErrorAndStopTest(WebElement element) {
-        logger.error("Can't work with element " + element);
-        Assert.fail("Can't work with element " + element);
+    private static void logErrorAndStopTest() {
+        logger.error("Can't work with element ");
+        Assert.fail("Can't work with element ");
 
     }
 
