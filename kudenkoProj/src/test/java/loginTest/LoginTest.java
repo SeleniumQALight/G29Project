@@ -16,10 +16,7 @@ public class LoginTest extends ParentTest{
         //webDriver.get("http://v3.test.itpmgroup.com");
         loginPage.enterName("student");
         loginPage.enterPass("909090");
-        loginPage.cliclElement();
+        loginPage.clickElement();
         mainPage.isAvatarPresent();
-
     }
-
-
 }

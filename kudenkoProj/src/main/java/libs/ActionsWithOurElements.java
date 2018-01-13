@@ -2,17 +2,23 @@ package libs;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ActionsWithOurElements {
 
-    WebDriver webDriver;
-    Logger logger;
+   WebDriver webDriver;
+   // static WebDriverWait wait;
+    static Logger logger =  Logger.getLogger("ActionsWithOurElements");
 
     public ActionsWithOurElements(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        logger = Logger.getLogger(getClass());
+       this.webDriver = webDriver;
+     //   wait = new WebDriverWait(webDriver, 10);
+       // logger = Logger.getLogger("ActionsWithOurElements");
     }
 
     /**
@@ -20,14 +26,13 @@ public class ActionsWithOurElements {
      * @param input
      * @param text
      */
-    public void enterTextInToInput(WebElement input, String text){
+    public static void enterTextInToInput(WebElement input, String text){
         try{
             input.clear();
             input.sendKeys(text);
             logger.info(text + " was inputed into input " + input);
         }catch(Exception e){
-
-            logErrorStopAndStopTest(input);
+            logErrorStopAndStopTest();
         }
     }
 
@@ -35,21 +40,29 @@ public class ActionsWithOurElements {
      * Method clicks on the element
      * @param element
      */
-    public void clickOnElement(WebElement element){
+    public static void clickOnElement(WebElement element){
         try{
             element.click();
             logger.info(element + " was clcicked");
         }catch (Exception e){
-            logErrorStopAndStopTest(element);
+            logErrorStopAndStopTest();
         }
     }
 
     /**
-     * Method cheks present and enable of element
+     * Method clickes ENTER key on keyboard
+     * @param element
+     */
+    public static void clickEnter(WebElement element){
+        element.sendKeys(Keys.ENTER);
+    }
+
+    /**
+     * Method checks present and enable of element
      * @param element
      * @return
      */
-    public boolean isElementPresent(WebElement element){
+    public static boolean isElementPresent(WebElement element){
         try{
             boolean tempState = element.isDisplayed()&&element.isEnabled();
             logger.info("Is element present? - " + tempState);
@@ -61,11 +74,68 @@ public class ActionsWithOurElements {
     }
 
     /**
-     * Method calls error when element didn't found
+     * sets checkbox in selected state
      * @param element
+     * @param neededState can be "checked" and "unchecked";
      */
-    private void logErrorStopAndStopTest(WebElement element){
-        logger.error("Cannot work with element " + element);
-        Assert.fail("Cannot work with element " + element);
+    public static void setStateToCheckBox(WebElement element, String neededState){
+
+        isElementPresent(element);
+
+        try{
+
+            if(neededState.equals("checked")){
+                if(!element.isSelected()){
+                    element.click();
+                }
+            }
+
+            if(neededState.equals("unchecked")){
+                if(element.isSelected()){
+                    element.click();
+                }
+            }
+
+            logger.info("placed checkbox " + element + " into state " + neededState);
+
+        }catch (Exception e){
+            logErrorStopAndStopTest();
+        }
     }
+
+    /**
+     * Method selects option by visible text
+     * @param element
+     * @param option is a name of select option (not value!)
+     */
+    public static void selectOptionsInDropDown(WebElement element, String option){
+        try{
+            Select select = new Select(element);
+            //wait.until(ExpectedConditions.textToBePresentInElement(element, option));
+            select.selectByVisibleText(option);
+            logger.info("Selected element " + element + " with option " + option);
+        }catch (Exception e){
+                logErrorStopAndStopTest();
+        }
+    }
+
+
+
+    /**
+     * Method calls error when element didn't found
+     */
+    private static void logErrorStopAndStopTest(){
+        logger.error("Cannot work with element ");
+        Assert.fail("Cannot work with element ");
+    }
+
 }
+
+// ДЗ  :
+//         1.   Написать метод по работе с чекбоксами
+// neededState can be only Checked or Unchecked
+//         setStateToCheckBox(WebElement element, String neededState)
+//         2.  selectOptionsInDropDown(WebElement element, WebElement option)
+//         3.  В LoginPage реализовать метод, который бы с помощью вызова уже реализованых выпослнял следующее: открывал логин Пейдж, вводил логин, вводил пароль и сликал кнопку
+//public void loginUser(String login, String pass)
+//        4.  Написать тест по проверке функционала логина с невалидными данными (используя степ с пункта 3)(использовать один набор данных , например notValidLogin  и notValidPass)
