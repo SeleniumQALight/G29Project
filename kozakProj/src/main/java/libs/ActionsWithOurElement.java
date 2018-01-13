@@ -8,11 +8,11 @@ import org.openqa.selenium.WebElement;
 
 public class ActionsWithOurElement {
     WebDriver webDriver;
-    Logger logger;
+    static Logger logger;
 
     public ActionsWithOurElement(WebDriver webDriver) {
         this.webDriver = webDriver;
-        logger = Logger.getLogger(getClass());   // створює лог файл з іменем цього класу;
+        logger = Logger.getLogger("ActionsWithOurElement");   // створює лог файл з іменем цього класу;
     }
 
     /**
@@ -20,13 +20,13 @@ public class ActionsWithOurElement {
      * @param input
      * @param text
      */
-    public void enterTextInToInput(WebElement input, String text) {
+    public static void enterTextInToInput(WebElement input, String text) {
         try {
             input.clear();
             input.sendKeys(text);
             logger.info(text + " was inputed in to input " + input);
         } catch (Exception e) {
-            logErrorAndStopTest(input);
+            logErrorAndStopTest();
         }
     }
 
@@ -34,12 +34,12 @@ public class ActionsWithOurElement {
      * Method click on WebElement
      * @param element
      */
-    public void clickOnElement(WebElement element) {
+    public static void clickOnElement(WebElement element) {
         try {
             element.click();
             logger.info(element + " was clicked" + element);
         } catch (Exception e) {
-            logErrorAndStopTest(element);
+            logErrorAndStopTest();
         }
     }
 
@@ -48,7 +48,7 @@ public class ActionsWithOurElement {
      * @param element
      * @return
      */
-    public boolean isElementPresent(WebElement element) {
+    public static boolean isElementPresent(WebElement element) {
         try {
             boolean tempState = element.isDisplayed() && element.isEnabled();
             logger.info("Is element Present? - " + tempState);
@@ -60,9 +60,9 @@ public class ActionsWithOurElement {
     }
 
 
-    private void logErrorAndStopTest(WebElement element) {
-        logger.error("Can not work with element " + element);
-        Assert.fail("Can not work with element " + element);
+    private static void logErrorAndStopTest() {
+        logger.error("Can not work with element " );
+        Assert.fail("Can not work with element " );
     }
 
 
