@@ -7,11 +7,11 @@ import org.openqa.selenium.WebElement;
 
 public class ActionsWIthOurElements {
     WebDriver webDriver;
-    Logger logger;
+    static Logger logger;
 
     public ActionsWIthOurElements(WebDriver webDriver) {
         this.webDriver = webDriver;
-        logger = Logger.getLogger(getClass()); //эта строка нужна для того, чтобы создать объект - то есть создать файл с именем этого класса
+        logger = Logger.getLogger("ActionsWithOurElements"); //эта строка нужна для того, чтобы создать объект - то есть создать файл с именем этого класса
     }
 
     //создаем метод, который будет вводить текст в инпуты, а еще в textarea:
@@ -21,13 +21,13 @@ public class ActionsWIthOurElements {
      * @param input
      * @param text
      */
-    public void enterTextInToInput (WebElement input, String text) {  //- куда - инпут (тип - вебэлемент), что - текст (тип - стринга)
+    public static void enterTextInToInput (WebElement input, String text) {  //- куда - инпут (тип - вебэлемент), что - текст (тип - стринга)
         try{
             input.clear();
             input.sendKeys(text);
             logger.info(text + " was inputed in to input " + input);
         }catch (Exception e) {
-            logErrorAndStopTest (input);
+            logErrorAndStopTest ();
         }
     }
 
@@ -37,12 +37,12 @@ public class ActionsWIthOurElements {
      *  Method click on the Elements: button, link, radiobutton, checkbox etc.
      * @param element
      */
-    public void clickOnElement (WebElement element) {
+    public static void clickOnElement (WebElement element) {
         try{
             element.click();
             logger.info("Element was clicked " + element);
         }catch (Exception e) {
-            logErrorAndStopTest(element);
+            logErrorAndStopTest();
         }
     }
 
@@ -52,7 +52,7 @@ public class ActionsWIthOurElements {
      * @return
      */
     //пишем метод, который будет проверять наличчие элемента на странице. он уже будет не войд, потому что будет возвращать состояние тру/фолс:
-    public boolean isElementPresent (WebElement element) {
+    public static boolean isElementPresent (WebElement element) {
         try{
             boolean tempState = element.isDisplayed()&&element.isEnabled(); //спрашиваем у аватара: ты есть - да, ты доступен - нет. значит
             //темпстейт - фолс, возвращаем - фолс. если этого элемента вообще нет, тогда вывалится эксепшен и мы попадем в блок кэтч
@@ -68,13 +68,12 @@ public class ActionsWIthOurElements {
 
     /**
      * Method informs on exception of working with elements and records to log
-     * @param element
      */
     //делаем метод для обработки эксепшена, который потом будем вызывать в методе трай/кетч для ввода текста в инпут или метод клика по элементам (выше описаны):
     // в него передаем сам элемент (WebElement element), чтобы потом понять, с каким элементом не можем работать logger.error("Can not work with element " + element )
-    private void logErrorAndStopTest (WebElement element) {
-        logger.error("Can not work with element " + element ); // пишет в консоль и в лог
-        Assert.fail ("Can not work with element " + element ); //пишет в отчет и останавливает тест
+    private static void logErrorAndStopTest () {
+        logger.error("Can not work with element "); // пишет в консоль и в лог
+        Assert.fail ("Can not work with element "); //пишет в отчет и останавливает тест
     }
 
 }
