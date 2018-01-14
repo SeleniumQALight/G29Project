@@ -21,8 +21,6 @@ public class MainPage extends ParentPage {
     @FindBy (id = "spare")
     private WebElement subMenuSpare;
 
-    //@FindBy ()
-
     public boolean isAvatarPresent() {
        return isElementPresent(avatar);
     }

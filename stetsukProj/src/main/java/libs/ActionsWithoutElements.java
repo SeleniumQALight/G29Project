@@ -4,6 +4,8 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
 
 public class ActionsWithoutElements {
     WebDriver webDriver;
@@ -66,6 +68,11 @@ public class ActionsWithoutElements {
         }
     }
 
+    /**
+     * change checkbox status that need
+     * @param element
+     * @param neededState
+     */
     public static void setStateToCheckBox(WebElement element, String neededState) {
         try {
             if ((element.isSelected() != true || neededState == "check") && (element.isSelected() == true || neededState == "uncheck")) {
@@ -74,6 +81,22 @@ public class ActionsWithoutElements {
 //                (element.isSelected()==true && neededState == "check") || (element.isSelected()!==true && neededState == "uncheck")
                 logger.info("CheckBox have needed state");
             }
+        } catch (Exception e) {
+            logErrorAndStopTest();
+        }
+    }
+
+    /**
+     *
+     * @param element
+     * @param option
+     */
+    public static void selectOptionsInDropDown(WebElement element, WebElement option){
+        try{
+            //WebElement mySelectElement = driver.findElement(By.id("mySelect"));
+//            option.;
+            clickOnElement(element);
+
         } catch (Exception e) {
             logErrorAndStopTest();
         }
