@@ -87,15 +87,14 @@ public class ActionsWithoutElements {
     }
 
     /**
-     *
+     * open dropdown and whose needed
      * @param element
      * @param option
      */
     public static void selectOptionsInDropDown(WebElement element, WebElement option){
         try{
-            //WebElement mySelectElement = driver.findElement(By.id("mySelect"));
-//            option.;
             clickOnElement(element);
+            clickOnElement(option);
 
         } catch (Exception e) {
             logErrorAndStopTest();
