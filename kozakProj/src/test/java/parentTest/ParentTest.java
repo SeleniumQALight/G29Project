@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
 import pages.MainPage;
-
-
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
@@ -31,9 +29,9 @@ public class ParentTest {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  // чекай поки відкриється браузер (макс 10 с.)
     }
 
-    @After
-    public void tearDown() {
-        webDriver.quit();                          // Закриє браузер
-    }
-
+//    @After
+//    public void tearDown() {
+//        webDriver.quit();                          // Закриє браузер
+//    }
+//
 }

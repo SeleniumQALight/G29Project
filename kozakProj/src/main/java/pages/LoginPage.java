@@ -3,7 +3,6 @@ package pages;
 import static libs.ActionsWithOurElement.*;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +17,9 @@ public class LoginPage extends ParentPage {
 
     @FindBy(tagName = "button")
     private WebElement buttonSubmit;
+
+    @FindBy(xpath = ".//*[@class='login-box-body']")
+    private WebElement formAutorization;
 
 
     public LoginPage(WebDriver webDriver) {
@@ -36,14 +38,6 @@ public class LoginPage extends ParentPage {
     }
 
     public void enterTextIntoInputLogin(String login) {      //створили змінну
-//        try{
-//            inputLogin.clear();                                  //чистимо логін
-//            inputLogin.sendKeys(login);                          //водимо логін
-//            logger.info(login + " was inputed in to input ");    // пише в лог
-//        } catch  (Exception e){                                  // відловлює  ексепшени
-//            logger.error("Can not work with element");           // пише в лог
-//            Assert.fail("Can not work with element");            //  пише в отчет про запуск теста
-//        }   Замінили попередній метод на новий метод з лібс
         enterTextInToInput(inputLogin, login);
     }
 
@@ -54,5 +48,17 @@ public class LoginPage extends ParentPage {
     public void clickOnSubmitButton() {
         clickOnElement(buttonSubmit);
     }
+
+    public void loginUser(String login, String pass) {
+        openLoginPage();
+        enterTextIntoInputLogin(login);
+        enterTextIntoInputPass(pass);
+        clickOnSubmitButton();
+    }
+
+    public boolean authorizationFormIsPresent() {
+        return isElementPresent(formAutorization);  // return - повертає результат метода у boolean
+    }
+
 
 }

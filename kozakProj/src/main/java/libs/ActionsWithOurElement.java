@@ -37,7 +37,7 @@ public class ActionsWithOurElement {
     public static void clickOnElement(WebElement element) {
         try {
             element.click();
-            logger.info(element + " was clicked" + element);
+       //     logger.info(element + " was clicked" + element);
         } catch (Exception e) {
             logErrorAndStopTest();
         }
