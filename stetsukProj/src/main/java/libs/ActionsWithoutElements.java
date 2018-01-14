@@ -75,7 +75,7 @@ public class ActionsWithoutElements {
      */
     public static void setStateToCheckBox(WebElement element, String neededState) {
         try {
-            if ((element.isSelected() != true || neededState == "check") && (element.isSelected() == true || neededState == "uncheck")) {
+            if ((element.isSelected() != true && neededState == "check") || (element.isSelected() == true && neededState == "uncheck")) {
                 clickOnElement(element);
             } else {
 //                (element.isSelected()==true && neededState == "check") || (element.isSelected()!==true && neededState == "uncheck")

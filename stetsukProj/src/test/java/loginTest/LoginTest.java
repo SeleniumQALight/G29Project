@@ -11,15 +11,17 @@ public class LoginTest extends ParentTest {
 
     @Test //этот тест может быть запущен (JUnit с аннотацией)
     public void validLogin() {
-/*
-        loginPage.openLoginPage();
-        loginPage.enterTextInToInputLogin("Student");
-        loginPage.enterTextInToInputPass("909090");
-        loginPage.clickOnSubmitElement();
-*/
+
         loginPage.loginUser("Student","909090");
 
+        mainPage.clickOnMenuinstallation();
+        mainPage.clickOnInstallationFirstElementItem();
+        mainPage.clickOnInstallationAddAdd();
+        mainPage.clickOnInstallationSpares();
+
         Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
+
+
     }
 
     @Test

@@ -30,19 +30,6 @@ public class LoginPage extends ParentPage {
             Assert.fail("Cannn`t open URL");
         }
     }
-/*
-    public void enterTextInToInputLogin(String login) {
-        enterTextInToInput(inputLogin, login);
-    }
-
-    public void enterTextInToInputPass(String pass){
-        enterTextInToInput(inputPassword, pass);
-    }
-
-    public void clickOnSubmitElement(){
-        clickOnElement(buttonSubmit);
-    }
-*/
 
     /**
      *
