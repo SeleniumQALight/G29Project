@@ -60,7 +60,7 @@ public class ActionsWithOurElements {
      */
     public static void setStateToCheckBox(WebElement element, String neededState) {
         try {
-            if (neededState == "Checked") {
+            if (neededState.equals("Checked")) {
                 if (element.isSelected() == false) {
                     element.click();
                     logger.info("CheckBox was clicked by system");
@@ -68,7 +68,7 @@ public class ActionsWithOurElements {
                     logger.info("CheckBox was previously selected");
                 }
 
-            } else if (neededState == "Unchecked") {
+            } else if (neededState.equals("Unchecked")) {
                 if (element.isSelected() == true) {
                     element.click();
                     logger.info("CheckBox was unchecked by system");
@@ -82,10 +82,15 @@ public class ActionsWithOurElements {
         }
     }
 
+    /**
+     * Method for selection option in the Drop Down list
+     * @param element
+     * @param option
+     */
     public static void selectOptionsInDropDown(WebElement element, WebElement option) {
         try {
-            element.click();
-            option.click();
+            clickOnElement(element);
+            clickOnElement(option);
         }
         catch (Exception e) {
             logErrorAndStopTest();
