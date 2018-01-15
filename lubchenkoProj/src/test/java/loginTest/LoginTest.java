@@ -10,17 +10,18 @@ import java.util.concurrent.TimeUnit;
 public class LoginTest extends ParentTest{
 
     @Test
-    public void validLogin() {
+    public void validLogin(){
+        loginPage.openLoginPage();
+        loginPage.loginUser("Student","909090");
+       /* loginPage.enterTextIntoInputLogin("Student");
+        loginPage.enterTextIntoInputPass("909090");
+        loginPage.clickOnSubmitButton();*/
 
-        //webDriver.get("http://v3.test.itpmgroup.com");
-        webDriver.findElement(By.name("_username")).sendKeys("Student");
-        webDriver.findElement(By.id("password")).sendKeys("909090");
-        webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
         Assert.assertTrue("Avatar is not present",
-                mainPage.isAvatarPresent());
+                mainPage.isAvatarPresent() );
 
     }
 
+}
 
-    }
 
