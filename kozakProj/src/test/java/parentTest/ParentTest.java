@@ -29,9 +29,9 @@ public class ParentTest {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  // чекай поки відкриється браузер (макс 10 с.)
     }
 
-//    @After
-//    public void tearDown() {
-//        webDriver.quit();                          // Закриє браузер
-//    }
-//
+    @After
+    public void tearDown() {
+        webDriver.quit();                                             // Закриє браузер
+    }
+
 }
