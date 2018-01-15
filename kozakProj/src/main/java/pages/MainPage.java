@@ -14,8 +14,6 @@ public class MainPage extends ParentPage {
     private WebElement menuDictionary;
     @FindBy(id = "spares")
     private WebElement subMenuSpares;
-    @FindBy(xpath = "//ul[@class='treeview-menu']")
-    private WebElement listOfDictionary;
 
 
     public MainPage(WebDriver webDriver) {
