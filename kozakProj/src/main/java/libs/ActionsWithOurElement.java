@@ -17,6 +17,7 @@ public class ActionsWithOurElement {
 
     /**
      * Method enter text in to input
+     *
      * @param input
      * @param text
      */
@@ -32,12 +33,13 @@ public class ActionsWithOurElement {
 
     /**
      * Method click on WebElement
+     *
      * @param element
      */
     public static void clickOnElement(WebElement element) {
         try {
             element.click();
-       //     logger.info(element + " was clicked" + element);
+            //     logger.info(element + " was clicked" + element);
         } catch (Exception e) {
             logErrorAndStopTest();
         }
@@ -45,6 +47,7 @@ public class ActionsWithOurElement {
 
     /**
      * Method verify that WebElement is displayed and is enabled
+     *
      * @param element
      * @return
      */
@@ -60,10 +63,55 @@ public class ActionsWithOurElement {
     }
 
 
-    private static void logErrorAndStopTest() {
-        logger.error("Can not work with element " );
-        Assert.fail("Can not work with element " );
+    /** Method for to set element of Checkbox ("Checked" or "Unchecked")
+     *
+     * @param element
+     * @param neededState
+     */
+    public static void setStateToCheckBox(WebElement element, String neededState) {
+        try {
+            if (neededState.equals("Checked")) {
+                if (element.isSelected() == false) {
+                    clickOnElement(element);
+                    logger.info("CheckBox status was changed to 'Checked' status");
+                } else {
+                    logger.info("CheckBox status is already 'Checked'");
+                }
+            } else if (neededState.equals("Unchecked")) {
+                if (element.isSelected() == true) {
+                    clickOnElement(element);
+                    logger.info("CheckBox status was changed to 'Unchecked' status");
+                } else {
+                    logger.info("CheckBox status is already 'Unchecked'");
+                }
+            }
+        } catch (Exception e) {
+            logErrorAndStopTest();
+        }
     }
+
+    /**Method for to select option in Drop Down
+     *
+     * Method select
+     * @param element
+     * @param option
+     */
+    public void selectOptionsInDropDown(WebElement element, WebElement option){
+        try {
+            clickOnElement(element);
+            clickOnElement(option);
+        }catch (Exception e){
+            logErrorAndStopTest();
+        }
+    }
+
+
+
+    private static void logErrorAndStopTest() {
+        logger.error("Can not work with element ");
+        Assert.fail("Can not work with element ");
+    }
+
 
 
 }
