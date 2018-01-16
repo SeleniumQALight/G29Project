@@ -17,11 +17,11 @@ public class MainPage extends ParentPage {
 
 
     public MainPage(WebDriver webDriver) {
-        super(webDriver);                            //Супер потрібен для того, щоб він перейшов у парент пейдж
+        super(webDriver, "/");                            //Супер потрібен для того, щоб він перейшов у парент пейдж
     }
 
     public boolean isAvatarPresent() {
-        return isElementPresent(avatar);  // return - повертає результат метода у boolean
+        return isElementPresent(avatar);                   // return - повертає результат метода у boolean
     }
 
     public void clickOnMenuDictionary() {

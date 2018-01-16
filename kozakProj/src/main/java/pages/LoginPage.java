@@ -23,17 +23,17 @@ public class LoginPage extends ParentPage {
 
 
     public LoginPage(WebDriver webDriver) {
-        super(webDriver);
-    }
+        super(webDriver, "/login");
+    }                                                           // "super" передає значення у батькивський клас
 
 
-    public void openLoginPage() {  //метод що відкриває урл логін пейджи
+    public void openLoginPage() {                               //метод що відкриває урл логін пейджи
         try {
             webDriver.get("http://v3.test.itpmgroup.com");
-            logger.info("Login page was opened");              // пише в лог
+            logger.info("Login page was opened");               // пише в лог
         } catch (Exception e) {                                 // відловлює  ексепшени
-            logger.error("Can not open url");                    // пише в лог
-            Assert.fail("Can not open url ");                    //  пише в отчет про запуск теста
+            logger.error("Can not open url");                   // пише в лог
+            Assert.fail("Can not open url ");                   //  пише в отчет про запуск теста
         }
     }
 

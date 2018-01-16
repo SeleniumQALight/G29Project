@@ -39,7 +39,7 @@ public class ActionsWithOurElement {
     public static void clickOnElement(WebElement element) {
         try {
             element.click();
-            //     logger.info(element + " was clicked" + element);
+            logger.info(element + " was clicked" + element);
         } catch (Exception e) {
             logErrorAndStopTest();
         }
@@ -62,46 +62,41 @@ public class ActionsWithOurElement {
         }
     }
 
-
     /** Method for to set element of Checkbox ("Checked" or "Unchecked")
      *
      * @param element
      * @param neededState
      */
-    public static void setStateToCheckBox(WebElement element, String neededState) {
-        try {
-            if (neededState.equals("Checked")) {
-                if (element.isSelected() == false) {
+    public void setStateToCheckBox(WebElement element, String neededState){
+        final String CHECK_STATUS = "Checked";
+        final String UNCHECK_STATUS = "Unchecked";
+        if (!neededState.equals(CHECK_STATUS) && !neededState.equals(UNCHECK_STATUS)){
+            logger.error(neededState + " - Value of neededState is not expected ");
+            Assert.fail(neededState + " - Value of neededState is not expected ");
+        }else {
+            try {
+                if (neededState.equals(CHECK_STATUS) && !element.isSelected() ||
+                        neededState.equals(UNCHECK_STATUS) && element.isSelected()){
                     clickOnElement(element);
-                    logger.info("CheckBox status was changed to 'Checked' status");
                 } else {
-                    logger.info("CheckBox status is already 'Checked'");
+                    logger.info("CheckBox has " + neededState + " state already ");
                 }
-            } else if (neededState.equals("Unchecked")) {
-                if (element.isSelected() == true) {
-                    clickOnElement(element);
-                    logger.info("CheckBox status was changed to 'Unchecked' status");
-                } else {
-                    logger.info("CheckBox status is already 'Unchecked'");
-                }
+            }catch (Exception e){
+                logErrorAndStopTest();
             }
-        } catch (Exception e) {
-            logErrorAndStopTest();
         }
     }
 
     /**Method for to select option in Drop Down
      *
      * Method select
-     * @param element
+     * @param select
      * @param option
      */
-    public void selectOptionsInDropDown(WebElement element, WebElement option){
-            clickOnElement(element);
+    public void selectOptionsInDropDown(WebElement select, WebElement option){
+            clickOnElement(select);
             clickOnElement(option);
            }
-
-
 
     private static void logErrorAndStopTest() {
         logger.error("Can not work with element ");
