@@ -1,8 +1,8 @@
 package pages;
 
-import libs.ActionsWithoutElements;
+import static libs.ActionsWithoutElements.*;
+
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +12,7 @@ public class LoginPage extends ParentPage {
     private WebElement inputLogin;
 
     @FindBy(id = "password")
-    private WebElement inputePassword;
+    private WebElement inputPassword;
 
     @FindBy(tagName = "button")
     private WebElement buttonSubmit;
@@ -31,24 +31,24 @@ public class LoginPage extends ParentPage {
         }
     }
 
-    public void enterTextIntuInputLogin(String login) {
-//        try {
-//            inputLogin.clear();
-//            inputLogin.sendKeys(login);
-//            logger.info(login + " was inputed into input");
-//        } catch (Exception e) {
-//            logger.error("Cannn`t work with element");
-//            Assert.fail("Cannn`t work with element");
-//        }
-        ActionsWithoutElements.enterTextInToInput(inputLogin, login);
+    /**
+     *
+     * @param login
+     * @param pass
+     */
+    public void loginUser(String login, String pass) {
+        this.openLoginPage();
+        enterTextInToInput(inputLogin, login);
+        enterTextInToInput(inputPassword, pass);
+        clickOnElement(buttonSubmit);
     }
 
-    public void entetTextInToInputePass(String pass){
-        ActionsWithoutElements.enterTextInToInput(inputePassword, pass);
-    }
-
-    public void clickOnSubmitElement(){
-        ActionsWithoutElements.clickOnElement(buttonSubmit);
+    /**
+     *
+     * @return
+     */
+    public boolean isLoginPresent() {
+        return isElementPresent(inputLogin);
     }
 
 }

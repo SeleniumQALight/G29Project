@@ -35,23 +35,21 @@ public class LoginPage extends ParentPage {
 
     public void enterTextInputLogin(String login) {
         enterTextIntoInput(inputLogin, login);
-
-//        try {
-//            inputLogin.clear();
-//            inputLogin.sendKeys(login);
-//            logger.info(login + " was inputed to the input");
-//        }
-//        catch (Exception e) {
-//            logger.error("Cannot input with the " + login);
-//            Assert.fail("Cannot input with the " + login);
-//        }
-
     }
 
     public void enterTextInputPassword(String password) {
         enterTextIntoInput(inputPassWord, password);
     }
-    public void clickOnSubmitButton () {
+
+    public void clickOnSubmitButton() {
         clickOnElement(buttonSubmit);
+    }
+
+    public void loginUser(String login, String pass) {
+
+        openLoginPage();
+        enterTextInputLogin(login);
+        enterTextInputPassword(pass);
+        clickOnSubmitButton();
     }
 }

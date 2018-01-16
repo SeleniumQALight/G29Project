@@ -15,21 +15,50 @@ public class MainPage extends ParentPage {
     @FindBy(xpath = ".//div[@class='pull-left image']//img[@class='img-circle']")
     private WebElement avatar;
 
-    @FindBy (id = "dictionary")
+    @FindBy(id = "dictionary")
     private WebElement menuDictionary;
 
-    @FindBy (id = "spare")
+    @FindBy(id = "installation")
+    private WebElement installationItem;
+
+    @FindBy(xpath = ".//*[@id='device_list']/tbody/tr[1]")
+    private WebElement installationFirstElementItem;
+
+    @FindBy(id = "spare")
     private WebElement subMenuSpare;
 
+    @FindBy(xpath = "html/body/div[1]/div/section[2]/div[2]/div/div/div[1]/div/a/i")
+    private WebElement installationAddAdd;
+
+    @FindBy(id = "installed_spares_lastSpareIsGood")
+    private WebElement installationSpares;
+
     public boolean isAvatarPresent() {
-       return isElementPresent(avatar);
+        return isElementPresent(avatar);
     }
 
-    public void clicOnMenuDictionary(){
+    public void clicOnMenuDictionary() {
         clickOnElement(menuDictionary);
     }
 
-    public void clickOnSubMenuSpare(){
+    public void clickOnSubMenuSpare() {
         clickOnElement(subMenuSpare);
     }
+
+    public void clickOnMenuinstallation() {
+        clickOnElement(installationItem);
+    }
+
+    public void clickOnInstallationFirstElementItem() {
+        clickOnElement(installationFirstElementItem);
+    }
+
+    public void clickOnInstallationAddAdd() {
+        clickOnElement(installationAddAdd);
+    }
+
+    public void clickOnInstallationSpares() {
+        setStateToCheckBox(installationSpares, "check");
+    }
+
 }
