@@ -17,9 +17,10 @@ public class LoginTest extends ParentTest {
 
         loginPage.openLoginPage();
         loginPage.enterTextIntoInputLogin("Student");
-        webDriver.findElement(By.id("password")).sendKeys("909090");
-        webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
-
+//        webDriver.findElement(By.id("password")).sendKeys("909090");
+//        webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
+        loginPage.enterTextIntoInputPass("909090");
+        loginPage.clickOnSubmitButton();
 
         Assert.assertTrue("Avatar is not present",                              //Асерт - частина Junit, використовується для провірки.
                 mainPage.isAvatarPresent());
