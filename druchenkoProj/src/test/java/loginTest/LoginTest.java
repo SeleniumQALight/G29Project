@@ -19,16 +19,12 @@ public class LoginTest extends ParentTest{
 
     }
 
-//    @Test
-//    public void inValidLogin(){
-//        loginPage.openLoginPage();
-//        loginPage.enterTextIntoInputLogin("Student1");
-//        loginPage.enterPassIntoInputPassword("9090");
-//        loginPage.clickOnSubmitButton();
-//
-//        Assert.assertFalse(" ", mainPage.isAvatarPresent());
-//
-//    }
+    @Test
+    public void inValidLogin(){
+        loginPage.loginUser("Student", "404040");
+        Assert.assertFalse("Avatar is nor present", mainPage.isAvatarPresent());
+
+    }
 
 
 

@@ -43,4 +43,11 @@ public class LoginPage extends ParentPage {
     public void clickOnSubmitButton() {
         clickOnElement(buttonSubmit);
     }
+
+    public void loginUser(String login, String pass) {
+        openLoginPage();
+        enterTextIntoInputLogin(login);
+        enterPassIntoInputPassword(pass);
+        clickOnSubmitButton();
+    }
 }
