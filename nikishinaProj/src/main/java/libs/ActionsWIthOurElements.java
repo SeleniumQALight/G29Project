@@ -46,12 +46,12 @@ public class ActionsWIthOurElements {
         }
     }
 
+    //пишем метод, который будет проверять наличчие элемента на странице. он уже будет не войд, потому что будет возвращать состояние тру/фолс:
     /**
      * Method to check whether any element is present in DOM, present on the page and enabled or disabled
      * @param element
      * @return
      */
-    //пишем метод, который будет проверять наличчие элемента на странице. он уже будет не войд, потому что будет возвращать состояние тру/фолс:
     public static boolean isElementPresent (WebElement element) {
         try{
             boolean tempState = element.isDisplayed()&&element.isEnabled(); //спрашиваем у аватара: ты есть - да, ты доступен - нет. значит
@@ -66,15 +66,48 @@ public class ActionsWIthOurElements {
         }
     }
 
+//    1.   Написать метод по работе с чекбоксами
+//    neededState can be only Checked or Unchecked
+//    setStateToCheckBox(WebElement element, String neededState)
+    /**
+     * Method to set checkbox in needed state
+     * @param element
+     * @param neededState
+     */
+    public static void setStateToCheckBox (WebElement element, String neededState) {
+        isElementPresent(element);
+        try{
+            if ((!element.isSelected() && neededState.equals("Checked")) || (element.isSelected() && neededState.equals("Unchecked"))) {
+                clickOnElement(element);
+            } else {
+                logger.info ("Element is already in needed state");
+            }
+        }catch (Exception e) {
+            logErrorAndStopTest();
+        }
+    }
+
+//    2.  selectOptionsInDropDown(WebElement element, WebElement option)
+    /**
+     * Method to open dropdown and select one option from it
+     * @param element
+     * @param option
+     */
+    public static void selectOptionsInDropDown (WebElement element, WebElement option) {
+        Assert.assertTrue("Dropdown is not present", isElementPresent(element));
+        clickOnElement(element);
+        Assert.assertTrue("Dropdown option is not present", isElementPresent(option));
+        clickOnElement(option);
+        }
+
+    //делаем метод для обработки эксепшена, который потом будем вызывать в методе трай/кетч для ввода текста в инпут или метод клика по элементам (выше описаны):
+    // в него передаем сам элемент (WebElement element), чтобы потом понять, с каким элементом не можем работать logger.error("Can not work with element " + element )
     /**
      * Method informs on exception of working with elements and records to log
      */
-    //делаем метод для обработки эксепшена, который потом будем вызывать в методе трай/кетч для ввода текста в инпут или метод клика по элементам (выше описаны):
-    // в него передаем сам элемент (WebElement element), чтобы потом понять, с каким элементом не можем работать logger.error("Can not work with element " + element )
     private static void logErrorAndStopTest () {
         logger.error("Can not work with element "); // пишет в консоль и в лог
         Assert.fail ("Can not work with element "); //пишет в отчет и останавливает тест
     }
 
 }
-
