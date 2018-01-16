@@ -15,7 +15,7 @@ public class ActionsWithOurElements {
     }
 
     /**
-     * Method Enter Text in to input and textArea
+     * Method Enter text in to input and textArea
      * @param input
      * @param text
      */
@@ -24,20 +24,19 @@ public class ActionsWithOurElements {
         try{
             input.clear();
             input.sendKeys(text);
-            logger.info(text + " was inputed in to input" + input);
+            logger.info(text + " was entered in to input" + input);
         }catch (Exception e){
             logErrorAndStopTest(input);
         }
     }
 
     /**
-     * Method Click on Element
+     * Method click on element
      * @param element
      */
-
     public void clickOnElement(WebElement element){
         try{
-            element.click();;
+            element.click();
             logger.info("Element clicked " + element);
         }catch (Exception e){
             logErrorAndStopTest(element);
@@ -45,28 +44,23 @@ public class ActionsWithOurElements {
     }
 
     /**
-     * Method Find Present Element
+     * Method return status of webElement, true or false
      * @param element
      * @return
      */
     public boolean isElementPresent(WebElement element){
         try {
-            boolean tempState = element.isDisplayed()&&element.isEnabled();
-            logger.info("Is element present ? - " + tempState);
+            boolean tempState = element.isDisplayed() && element.isEnabled();
+            logger.info("Is element present? - " + tempState);
             return tempState;
         }catch (Exception e){
-            logger.info("Is element present ? - false");
+            logger.info("Is element present? - false");
             return false;
         }
     }
 
-    /**
-     * Method Writes log and Stops test
-     * @param element
-     */
-
     private void logErrorAndStopTest(WebElement element){
-        logger.error("Can not work with element" + element);
-        Assert.fail("Can not work with element");
+        logger.error("Can't work with element " + element);
+        Assert.fail("Can't work with element " + element);
     }
 }

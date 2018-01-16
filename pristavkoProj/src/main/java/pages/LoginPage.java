@@ -33,7 +33,7 @@ public class LoginPage extends ParentPage {
         try {
             webDriver.findElement(By.name("_username")).clear();
             webDriver.findElement(By.name("_username")).sendKeys(login);
-            logger.info(login + " was inputed into input ");
+            logger.info(login + " was inputed into login input ");
         } catch (Exception e) {
             logger.error("Can't work with element ");
             Assert.fail("Can't work with element");
@@ -44,7 +44,7 @@ public class LoginPage extends ParentPage {
         try {
             webDriver.findElement(By.id("password")).clear();
             webDriver.findElement(By.id("password")).sendKeys(password);
-            logger.info(password + " was inputed into input ");
+            logger.info(password + " was inputed into password input ");
         } catch (Exception e) {
             logger.error("Can't work with element ");
             Assert.fail("Can't work with element");

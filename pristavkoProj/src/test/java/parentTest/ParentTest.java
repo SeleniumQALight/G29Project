@@ -25,14 +25,13 @@ public class ParentTest {
         webDriver = new ChromeDriver();
 
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        webDriver.manage().deleteAllCookies();
+        webDriver.manage().window().maximize();
         String winHandleBefore = webDriver.getWindowHandle();
         webDriver.switchTo().window(winHandleBefore);
 
-
+        loginPage = new LoginPage(webDriver);
         mainPage = new MainPage(webDriver);
         userProfile = new UserProfile(webDriver);
-        loginPage = new LoginPage(webDriver);
     }
 
     @After
