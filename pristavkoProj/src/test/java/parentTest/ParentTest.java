@@ -4,17 +4,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.AuthenticationPage;
+import pages.LoginPage;
 import pages.MainPage;
 import pages.UserProfile;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 public class ParentTest {
 
     public WebDriver webDriver;
     protected MainPage mainPage;
-    protected AuthenticationPage authenticationPage;
+    protected LoginPage loginPage;
     protected UserProfile userProfile;
 
     @Before
@@ -22,9 +23,16 @@ public class ParentTest {
         File fileFireFox = new File("./driver/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", fileFireFox.getAbsolutePath());
         webDriver = new ChromeDriver();
+
+        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        webDriver.manage().deleteAllCookies();
+        String winHandleBefore = webDriver.getWindowHandle();
+        webDriver.switchTo().window(winHandleBefore);
+
+
         mainPage = new MainPage(webDriver);
         userProfile = new UserProfile(webDriver);
-        authenticationPage = new AuthenticationPage(webDriver);
+        loginPage = new LoginPage(webDriver);
     }
 
     @After

@@ -7,33 +7,47 @@ import org.openqa.selenium.WebElement;
 
 public class ActionsWithOurElements {
     WebDriver webdriver;
-    Logger logger;
+    static Logger logger;
 
     public ActionsWithOurElements(WebDriver webdriver) {
         this.webdriver = webdriver;
-        logger = Logger.getLogger(getClass());
+        logger = Logger.getLogger("ActionsWithOurElements");
     }
 
-    public void enterTextInToInput(WebElement input,String text){
+    /**
+     * Method Enter text in to input and textArea
+     * @param input
+     * @param text
+     */
+    public static void enterTextInToInput(WebElement input,String text){
         try {
             input.clear();
             input.sendKeys(text);
             logger.info(text + "was inputed in to input " + input);
         }catch (Exception e){
-            logErrorAndStopTest(input);
+            logErrorAndStopTest();
         }
     }
 
-    public void clickOnElement(WebElement element) {
+    /**
+     * Method Click on elements on page
+     * @param element
+     */
+    public static void clickOnElement(WebElement element) {
         try {
             element.click();
             logger.info("Elemet was clicked " + element);
         } catch (Exception e) {
-            logErrorAndStopTest(element);
+            logErrorAndStopTest();
         }
     }
 
-    public boolean isElemetPresent(WebElement element){
+    /**
+     * Method Find elements on page for present them
+     * @param element
+     * @return
+     */
+    public static boolean isElemetPresent(WebElement element){
         try {
             boolean tempState = element.isDisplayed()&&element.isEnabled(); //&& - "и" - и отображается и активен (одно & - Если первый фолс,
                                                                             // то второй не проверяется, а возвращает фолс.
@@ -45,8 +59,53 @@ public class ActionsWithOurElements {
         }
     }
 
-    private void logErrorAndStopTest(WebElement element){
-        logger.error("Can not work with element " + element);
-        Assert.fail("Can not work with element"+ element);
+    /**
+     * Method make checkbox selected
+     * @param element
+     */
+    public static void makeCheckboxSelected (WebElement element){
+        if(!element.isSelected()){
+            element.click();
+        }
+    }
+
+    /**
+     * Method make checkbox unselected
+     * @param element
+     */
+    public static void makeCheckboxUnSelected (WebElement element){
+        if(element.isSelected()){
+            element.click();
+        }
+    }
+
+    /**
+     * Method make checkbox selected or unselected from dependency of selectionState
+     * @param checkBox
+     */
+    public static void setStateToCheckBox (WebElement checkBox, boolean selectionState){
+        if(selectionState){
+            makeCheckboxSelected(checkBox);
+        }else {
+            makeCheckboxUnSelected(checkBox);
+        }
+    }
+
+    /**
+     * Method open dropdown and some option
+     * @param element, option
+     */
+    public static void selectOptionsInDropDown (WebElement element, WebElement option){
+        element.click();
+        option.click();
+    }
+
+    /**
+     * Method Stop test if some element was not found
+     * @param
+     */
+    private static void logErrorAndStopTest(){
+        logger.error("Can not work with element");
+        Assert.fail("Can not work with element");
     }
 }
