@@ -11,7 +11,7 @@ public class LoginTest extends ParentTest{
 
     @Test
     public void validLogin(){
-        loginPage.openLoginPage();
+        //loginPage.openLoginPage();
         loginPage.loginUser("Student","909090");
        /* loginPage.enterTextIntoInputLogin("Student");
         loginPage.enterTextIntoInputPass("909090");

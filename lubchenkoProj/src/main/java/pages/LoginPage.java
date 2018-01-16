@@ -23,7 +23,7 @@ public class LoginPage extends ParentPage {
         super(webDriver);
     }
 
-    public void openLoginPage() {
+    /*public void openLoginPage() {
         try {
             webDriver.get("http://v3.test.itpmgroup.com");
             logger.info("Login page was opened");
@@ -32,8 +32,7 @@ public class LoginPage extends ParentPage {
             Assert.fail("Can not open url");
         }
     }
-
-    /*public void enterTextIntoInputLogin(String login) {
+    public void enterTextIntoInputLogin(String login) {
         enterTextInToInput(inputLogin, login);
     }
 
@@ -46,8 +45,14 @@ public class LoginPage extends ParentPage {
     }*/
 
     public void loginUser(String login, String pass) {
-
-       enterTextInToInput(inputLogin, login);
+        try {
+            webDriver.get("http://v3.test.itpmgroup.com");
+            logger.info("Login page was opened");
+        } catch (Exception e) {
+            logger.error("Can not open url");
+            Assert.fail("Can not open url");
+        }
+        enterTextInToInput(inputLogin, login);
         enterTextInToInput(inputPassWord, pass);
         clickOnElement(buttonSubmit);
     }

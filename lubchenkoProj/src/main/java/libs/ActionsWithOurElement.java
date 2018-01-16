@@ -21,12 +21,12 @@ public class ActionsWithOurElement {
      * @param text
      */
 
-    public static void enterTextInToInput(WebElement input, String text){
-        try{
+    public static void enterTextInToInput(WebElement input, String text) {
+        try {
             input.clear();
             input.sendKeys(text);
             logger.info(text + " was inputed in to input " + input);
-        }catch (Exception e){
+        } catch (Exception e) {
             logErrorAndStopTest();
         }
     }
@@ -49,15 +49,16 @@ public class ActionsWithOurElement {
     public static void setStateToCheckBox(WebElement element, String neededState) {
         if (element.isSelected() == true) {
         } else {
-            return false;
+            element.click();
         }
     }
 
     public static void selectOptionsInDropDown(WebElement element, WebElement option) {
         try {
-            element.isSelected();
+           element.click();
+           option.click();
         } catch (Exception e) {
-            logErrorAndStopTest(element);
+            logErrorAndStopTest();
         }
     }
 
@@ -85,7 +86,7 @@ public class ActionsWithOurElement {
      */
 
     private static void logErrorAndStopTest() {
-        logger.error("Can not work with element " );
-        Assert.fail("Can not work with element " );
+        logger.error("Can not work with element ");
+        Assert.fail("Can not work with element ");
     }
 }
