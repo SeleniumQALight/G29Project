@@ -56,4 +56,13 @@ public class LoginPage extends ParentPage {
     public void clickOnSubmitButton () {
         clickOnElement(buttonSubmit);
     }
+
+//    В LoginPage реализовать метод, который бы с помощью вызова уже реализованых выпослнял следующее: открывал логин Пейдж, вводил логин, вводил пароль и сликал кнопку
+//    public void loginUser(String login, String pass)
+    public void loginUser (String login, String pass) {
+        openLoginPage();
+        enterTextIntoInputLogin(login);
+        enterTextIntoInputPass(pass);
+        clickOnSubmitButton();
+    }
 }
