@@ -19,7 +19,7 @@ public class LoginPage extends ParentPage {
     private WebElement buttonSubmit;
 
     public LoginPage(WebDriver webDriver) {
-        super(webDriver);
+        super(webDriver, "/login");
     }
 
     public void openLoginPage() {
@@ -33,26 +33,10 @@ public class LoginPage extends ParentPage {
     }
 
     public void enterTextIntoInputLogin(String login) {
-//        try{
-//            inputLogin.clear();
-//            inputLogin.sendKeys(login);
-//            logger.info(login + " was inputed in to input ");
-//        }catch (Exception e){
-//            logger.error("Can not work with element");
-//            Assert.fail("Can not work with element");
-//        }
         enterTextIntoInput(inputLogin, login);
     }
 
     public void enterPassIntoInputPassword(String password) {
-//        try{
-//            inputPassword.clear();
-//            inputPassword.sendKeys(password);
-//            logger.info(password + " was inputed in to input ");
-//        } catch (Exception e){
-//            logger.error("Can not work with element");
-//            Assert.fail("Can not work with element");
-//        }
         enterTextIntoInput(inputPassword, password);
     }
 

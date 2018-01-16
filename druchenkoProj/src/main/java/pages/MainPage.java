@@ -17,14 +17,14 @@ public class MainPage extends ParentPage{
     private WebElement subMenuSpares;
 
     public MainPage(WebDriver webDriver) { //конструктор не возвращает значения и называется как класс (создается с помощью Alt + insert)
-        super(webDriver);
+        super(webDriver, "/");
     }
 
     public boolean isAvatarPresent(){
         return isElementPresent(avatar);
     }
 
-    public void clickOnMenuDictiomary(){
+    public void clickOnMenuDictionary(){
         clickOnElement(menuDictionary);
     }
 

@@ -69,4 +69,31 @@ public class ActionsWithOurElements {
         logger.error("Can not work with element");
         Assert.fail("Can not work with element");
     }
+
+    public static void setStateToCheckBox(WebElement element, String neededState){
+        final String CHECK_STATUS = "Checked";
+        final String UNCHECK_STATUS = "Unchecked";
+        if (!neededState.equals(CHECK_STATUS) && !neededState.equals(UNCHECK_STATUS)){
+            logger.error(neededState + " - Value of neededState is not expected ");
+            Assert.fail(neededState + " - Value of neededState is not expected ");
+        }else {
+            try {
+                if (neededState.equals(CHECK_STATUS) && !element.isSelected() ||
+                        neededState.equals(UNCHECK_STATUS) && element.isSelected()){
+                    clickOnElement(element);
+                } else {
+                    logger.info("CheckBox has " + neededState + " state already ");
+                }
+            }catch (Exception e){
+                logErrorAndStopTest();
+            }
+        }
+    }
+
+    public static void selectOptionsInDropDown(WebElement select, WebElement option){
+        clickOnElement(select);
+        clickOnElement(option);
+
+    }
+
 }
