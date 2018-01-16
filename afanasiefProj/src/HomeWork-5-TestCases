@@ -1,0 +1,86 @@
+Test case 1. Delete an entry in the list of services for machines
+
+Pre-conditions:
+1) Go to URL: http://v1.qalight.com.ua
+2) Log in (login-student,password-909090)
+
+Steps to reproduce:
+1) In left sidebar click the "Обслуживание" link
+2) Сlick the "Удалить" link
+
+Expected result:
+1) The page is opened with full list of servicing of automatic devices by employees
+2) The selected row is deleted successful
+_______________________________________________________________________________________________________________________
+
+Test case 2. Saving manually entered data on the edit page by clicking "Обновить" button
+
+Pre-conditions:
+1) Go to URL: http://v1.qalight.com.ua;
+2) Log in (login-student,password-909090)
+3) Make a record Фамилия:Иванов, Имя:Иван, Отчество:Иванович, Телефон: (495)1111-11-12
+
+Steps to reproduce:
+1) Click "Справочная система">"Сотрудники" links
+2) Click record made and follow to the edit page
+3) Edit Фамилия column, enter "Пузанов"and click"Обновить" button
+
+Expected result:
+1) A list of employees is opened
+2) User is redirected to the edit page and may edit all manually entering data
+3) Edited data is saved
+_______________________________________________________________________________________________________________________
+
+Test case 3. Enter the menu <Удалить>
+
+Pre-conditions:
+1) Go to URL: http://v1.qalight.com.ua
+2) Authorize on the site (login:  student; password: 909090)
+
+Steps to reproduce:
+1) Click the link <Справочники>
+2) Click the link <Типы автоматов>
+3) Сlick the link <Удалить>
+
+Expected result:
+1) A list with the names of the entries opens.
+2) Page of the list of types of machines opens
+3) Menu  <Удалить> opened
+__________________________________________________________________________________________________________________
+
+Test case 4. Checking for the presence "ИД покупателя" attribute
+
+Pre-conditions:
+1) Go to URL: http://v1.qalight.com.ua
+2) Authorize on the site (login:  student; password: 909090)
+
+Steps to reproduce:
+1) Click "Сделки" link
+2) Click "Редактировать" button of any record
+
+Expected result:
+1) A list of deals is opened.
+2) The user is redirected to the edit page. "ИД покупателя" attribute is present.
+_______________________________________________________________________________________________________________________
+
+Test case 5. Main menu "Отчет" checking
+
+Pre-condition:
+1) Go to the web http://v3.qalight.com.ua/
+2) Log in (login-student,password-909090)
+
+Steps to reproduce:
+1) Open link http://v3.qalight.com.ua/
+2) Click on {color:red} "Отчет" {color} in the main menu
+
+Expected result:
+The menu "Отчет" includes such box-titles as:
+1) ID
+2) Service date
+3) List of changes
+4) Operations
+5) Co-worker
+
+
+
+
