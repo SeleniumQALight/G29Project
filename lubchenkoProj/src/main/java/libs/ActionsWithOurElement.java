@@ -48,19 +48,25 @@ public class ActionsWithOurElement {
 
     public static void setStateToCheckBox(WebElement element, String neededState) {
         if (element.isSelected() == true) {
+            if (neededState.equals("Check")){
+             logger.info( element + " Element in checked state " );
+            } else {
+                clickOnElement(element);
+            }
         } else {
-            element.click();
+            if (neededState.equals("Check")) {
+                clickOnElement(element);
+            } else {
+                logger.info( element + " Element in checked state " );
+            }
         }
     }
 
     public static void selectOptionsInDropDown(WebElement element, WebElement option) {
-        try {
-           element.click();
-           option.click();
-        } catch (Exception e) {
-            logErrorAndStopTest();
+       clickOnElement(element);
+       clickOnElement(option);
         }
-    }
+
 
     /**
      * Method check if element is present
