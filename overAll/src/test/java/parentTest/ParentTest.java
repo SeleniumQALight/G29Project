@@ -6,14 +6,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
 import pages.MainPage;
+import pages.SparesPage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-public class ParenTest {
+public class ParentTest {
     public WebDriver webDriver;
     protected MainPage mainPage;
     protected LoginPage loginPage;
+    protected SparesPage sparesPage;
 
     @Before
     public void setUp(){
@@ -25,6 +27,7 @@ public class ParenTest {
 
         mainPage = new MainPage(webDriver);
         loginPage = new LoginPage(webDriver);
+        sparesPage = new SparesPage(webDriver);
     }
     @After
     public void tearDown(){
