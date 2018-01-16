@@ -97,13 +97,9 @@ public class ActionsWithOurElement {
      * @param option
      */
     public void selectOptionsInDropDown(WebElement element, WebElement option){
-        try {
             clickOnElement(element);
             clickOnElement(option);
-        }catch (Exception e){
-            logErrorAndStopTest();
-        }
-    }
+           }
 
 
 
