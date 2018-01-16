@@ -67,6 +67,44 @@ public class ActionsWIthOurElements {
     }
 
     /**
+     * Method to set checkbox in needed state
+     * @param element
+     * @param neededState
+     */
+//    1.   Написать метод по работе с чекбоксами
+//    neededState can be only Checked or Unchecked
+//    setStateToCheckBox(WebElement element, String neededState)
+    public static void setStateToCheckBox (WebElement element, String neededState) {
+        isElementPresent(element);
+        try{
+            if ((!element.isSelected() && neededState.equals("Checked")) || (element.isSelected() && neededState.equals("Unchecked"))) {
+                clickOnElement(element);
+            } else {
+                logger.info ("Element is already in needed state");
+            }
+        }catch (Exception e) {
+            logErrorAndStopTest();
+        }
+    }
+
+    /**
+     * Method to open dropdown and select one option from it
+     * @param element
+     * @param option
+     */
+//    2.  selectOptionsInDropDown(WebElement element, WebElement option)
+    public static void selectOptionsInDropDown (WebElement element, WebElement option) {
+        isElementPresent(element);
+        try{
+            clickOnElement(element);
+            isElementPresent(option);
+            clickOnElement(option);
+        }catch (Exception e) {
+            logErrorAndStopTest();
+        }
+    }
+
+    /**
      * Method informs on exception of working with elements and records to log
      */
     //делаем метод для обработки эксепшена, который потом будем вызывать в методе трай/кетч для ввода текста в инпут или метод клика по элементам (выше описаны):
@@ -77,4 +115,3 @@ public class ActionsWIthOurElements {
     }
 
 }
-

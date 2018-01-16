@@ -34,4 +34,13 @@ public class LoginTest extends ParentTest{
                 mainPage.isAvatarPresent());
     }
 
+// 4.  Написать тест по проверке функционала логина с невалидными данными (используя степ с пункта 3)
+// (использовать один набор данных , например notValidLogin  и notValidPass)
+    @Test
+    public void inValidLogin (){
+        loginPage.loginUser("909090", "Student");
+        Assert.assertFalse("Avatar is present",
+                mainPage.isAvatarPresent());
+    }
+
 }
