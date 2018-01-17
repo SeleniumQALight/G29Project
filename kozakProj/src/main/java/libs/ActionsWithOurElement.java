@@ -17,6 +17,7 @@ public class ActionsWithOurElement {
 
     /**
      * Method enter text in to input
+     *
      * @param input
      * @param text
      */
@@ -32,6 +33,7 @@ public class ActionsWithOurElement {
 
     /**
      * Method click on WebElement
+     *
      * @param element
      */
     public static void clickOnElement(WebElement element) {
@@ -45,6 +47,7 @@ public class ActionsWithOurElement {
 
     /**
      * Method verify that WebElement is displayed and is enabled
+     *
      * @param element
      * @return
      */
@@ -59,11 +62,47 @@ public class ActionsWithOurElement {
         }
     }
 
+    /** Method for to set element of Checkbox ("Checked" or "Unchecked")
+     *
+     * @param element
+     * @param neededState
+     */
+    public void setStateToCheckBox(WebElement element, String neededState){
+        final String CHECK_STATUS = "Checked";
+        final String UNCHECK_STATUS = "Unchecked";
+        if (!neededState.equals(CHECK_STATUS) && !neededState.equals(UNCHECK_STATUS)){
+            logger.error(neededState + " - Value of neededState is not expected ");
+            Assert.fail(neededState + " - Value of neededState is not expected ");
+        }else {
+            try {
+                if (neededState.equals(CHECK_STATUS) && !element.isSelected() ||
+                        neededState.equals(UNCHECK_STATUS) && element.isSelected()){
+                    clickOnElement(element);
+                } else {
+                    logger.info("CheckBox has " + neededState + " state already ");
+                }
+            }catch (Exception e){
+                logErrorAndStopTest();
+            }
+        }
+    }
+
+    /**Method for to select option in Drop Down
+     *
+     * Method select
+     * @param select
+     * @param option
+     */
+    public void selectOptionsInDropDown(WebElement select, WebElement option){
+            clickOnElement(select);
+            clickOnElement(option);
+           }
 
     private static void logErrorAndStopTest() {
-        logger.error("Can not work with element " );
-        Assert.fail("Can not work with element " );
+        logger.error("Can not work with element ");
+        Assert.fail("Can not work with element ");
     }
+
 
 
 }
