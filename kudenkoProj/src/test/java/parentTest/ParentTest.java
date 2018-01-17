@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
 import pages.MainPage;
+import pages.SparePage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -16,6 +17,8 @@ public class ParentTest {
     public WebDriver webDriver;
     protected MainPage mainPage;
     protected LoginPage loginPage;
+    protected SparePage sparePage;
+
     @Before
 
     public void setup(){
@@ -24,8 +27,10 @@ public class ParentTest {
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
         mainPage = new MainPage(webDriver);
         loginPage = new LoginPage(webDriver);
+        sparePage = new SparePage(webDriver);
     }
 
 
