@@ -11,6 +11,8 @@ import pages.SparesPage;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import static pages.ParentPage.configProperties;
+
 public class ParentTest {
     public WebDriver webDriver;
     protected MainPage mainPage;
@@ -23,7 +25,7 @@ public class ParentTest {
         System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().implicitlyWait(configProperties.TIME_FOR_DFFAULT_WAIT(), TimeUnit.SECONDS);
 
         mainPage = new MainPage(webDriver);
         loginPage = new LoginPage(webDriver);
