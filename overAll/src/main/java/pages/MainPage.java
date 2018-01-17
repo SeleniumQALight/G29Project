@@ -18,7 +18,7 @@ public class MainPage extends ParentPage{
     private WebElement subMenuSpares;
 
     public MainPage(WebDriver webDriver) {
-        super(webDriver);
+        super(webDriver,"/");
     }
 
     public boolean isAvatarPresent(){

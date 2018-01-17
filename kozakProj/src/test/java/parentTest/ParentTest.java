@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
 import pages.MainPage;
-
+import pages.SparesPage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -16,6 +16,7 @@ public class ParentTest {
    public WebDriver webDriver;
    protected MainPage mainPage;                                       //доступний тільки у наслідника у всіх папках
    protected LoginPage loginPage;                                     //обявили зміну у якій буде обєкт
+   protected SparesPage sparesPage;
 
 
     @Before                                                           // це Пре кондішн, відкриває браузер ..Анотація дж-юніта. Виконується перед кожним тесткейсом
@@ -26,6 +27,7 @@ public class ParentTest {
         webDriver = new ChromeDriver();                               //
         mainPage = new MainPage(webDriver);                           // ініціалізуємо клас MainPage + Дали браузер
         loginPage = new LoginPage(webDriver);                           // ініціалізуємо клас MainPage + Дали браузер
+        sparesPage = new SparesPage(webDriver);
 
         webDriver.manage().window().maximize();                       // відкрили вікно браузера.розгорнули
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  // чекай поки відкриється браузер (макс 10 с.)
@@ -33,7 +35,7 @@ public class ParentTest {
 
     @After
     public void tearDown() {
-        webDriver.quit();                          // Закриє браузер
+        webDriver.quit();                                             // Закриє браузер
     }
 
 }

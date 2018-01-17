@@ -1,29 +1,45 @@
 package loginTest;
 
+
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import parentTest.ParentTest;
 
 
 public class LoginTest extends ParentTest {
 
 
-    @Test                                                                     // main  тепер не потрібен, джЮнфт все сам зробив (Він створює структуру)
+    @Test
+    /**
+     * / test to verify the login functionality with valid credentials
+     */
     public void validLogin() {
-
-  //     webDriver.get("http://v3.test.itpmgroup.com");                         // загрузить силку
-  //     webDriver.findElement(By.name("_username")).sendKeys("Student");
-
         loginPage.openLoginPage();
         loginPage.enterTextIntoInputLogin("Student");
-//        webDriver.findElement(By.id("password")).sendKeys("909090");
-//        webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
         loginPage.enterTextIntoInputPass("909090");
         loginPage.clickOnSubmitButton();
-
         Assert.assertTrue("Avatar is not present",                              //Асерт - частина Junit, використовується для провірки.
                 mainPage.isAvatarPresent());
+    }
+
+    @Test
+    /**
+     * / test to verify the login functionality with invalid login
+     */
+    public void notValidLogin() {
+        loginPage.loginUser("invalidLogin", "909090");
+        Assert.assertTrue("Login form is present, user was not login",
+                loginPage.authorizationFormIsPresent());
+    }
+
+    @Test
+    /**
+     * / test to verify the login functionality with invalid password
+     */
+    public void notValidPassword() {
+        loginPage.loginUser("Student", "909www090");
+        Assert.assertTrue("Login form is present, user was not login",
+                loginPage.authorizationFormIsPresent());
     }
 
 
