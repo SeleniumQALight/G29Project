@@ -11,7 +11,7 @@ import pages.SparesPage;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-//import static pages.ParentPage.configProperties;
+import static pages.ParentPage.configProperties;
 
 public class ParentTest {
     public WebDriver webDriver;

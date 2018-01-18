@@ -5,14 +5,19 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ActionsWithOurElements {
     WebDriver webDriver;
     static Logger logger;
+    static WebDriverWait webDriverWait20;
 
     public ActionsWithOurElements(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger("ActionsWithOurElements");
+        webDriverWait20 = new WebDriverWait(webDriver, 20);
     }
 
     public static void enterTextInToInput(WebElement input, String text){
@@ -27,6 +32,8 @@ public class ActionsWithOurElements {
 
     public static void clickOnElement(WebElement element){
         try{
+          //  webDriverWait20.until(ExpectedConditions.elementToBeClickable (element));
+         //   webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
             element.click();
             logger.info("Element was clicked " + element);
         }catch (Exception e){
@@ -55,19 +62,30 @@ public class ActionsWithOurElements {
         clickOnElement(select);
         clickOnElement(option);
     }
+    public void selectOptionsInDropDown(WebElement selectDropDown, String textInDropDown){
+        try{
+            Select options = new Select(selectDropDown);
+            options.selectByVisibleText(textInDropDown);
+            logger.info(textInDropDown + " was selected in DD");
+        }catch (Exception e){
+            logErrorAndStopTest();
+        }
+            {
+        }
+    }
 
     /**
      * Method select line in DropDown by xPathLocator
      * @param select
      * @param xPathLocator
      */
-    public void selectOptionsInDropDown(WebElement select, String xPathLocator){
-        try {
-            selectOptionsInDropDown(select, webDriver.findElement(By.xpath(xPathLocator)));
-        }catch (Exception e){
-            logErrorAndStopTest();
-        }
-    }
+   // public void selectOptionsInDropDown(WebElement select, String xPathLocator){
+     //   try {
+       //     selectOptionsInDropDown(select, webDriver.findElement(By.xpath(xPathLocator)));
+        //}catch (Exception e){
+          //  logErrorAndStopTest();
+      //  }
+    //}
 
     /**
      * Method set needed state in CheckBox
