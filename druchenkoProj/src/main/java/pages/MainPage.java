@@ -1,23 +1,35 @@
 package pages;
 
-import org.openqa.selenium.By;
+import static libs.ActionsWithOurElements.*;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class MainPage extends ParentPage{
 
-    public MainPage(WebDriver webDriver) { //конструктор не возвращает значения и называется как класс (создается с помощью Alt + insert)
+    @FindBy(xpath = ".//div[@class='pull-left image']//img[@class='img-circle']")
+    private WebElement avatar;
 
-        super(webDriver);
+    @FindBy(id = "dictionary")
+    private WebElement menuDictionary;
+
+    @FindBy(id = "spares")
+    private WebElement subMenuSpares;
+
+    public MainPage(WebDriver webDriver) { //конструктор не возвращает значения и называется как класс (создается с помощью Alt + insert)
+        super(webDriver, "/");
     }
 
     public boolean isAvatarPresent(){
-        logger.info("Test");
-        logger.error("Error");
-        logger.debug("Debug");
-        try {
-           return webDriver.findElement(By.xpath(".//div[@class='pull-left image']//img[@class='img-circle']")).isDisplayed();
-        } catch (Exception e){
-            return false;
-        }
+        return isElementPresent(avatar);
     }
+
+    public void clickOnMenuDictionary(){
+        clickOnElement(menuDictionary);
+    }
+
+    public void clickOnSubMenuSpare(){
+        clickOnElement(subMenuSpares);
+    }
+
 }
