@@ -1,11 +1,13 @@
 package parentTest;
 
+import libs.ActionsWithOurElements;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
 import pages.MainPage;
+import pages.SparesPage;
 import pages.UserProfile;
 
 import java.io.File;
@@ -17,6 +19,8 @@ public class ParentTest {
     protected MainPage mainPage;
     protected LoginPage loginPage;
     protected UserProfile userProfile;
+    protected SparesPage sparesPage;
+    protected ActionsWithOurElements actionsWithOurElements;
 
     @Before
     public void setUp() {
@@ -32,6 +36,11 @@ public class ParentTest {
         loginPage = new LoginPage(webDriver);
         mainPage = new MainPage(webDriver);
         userProfile = new UserProfile(webDriver);
+
+        // Разобраться, почему тут юзается конструктор
+        //sparesPage = new SparesPage(webDriver, "/dictionary/spares");
+        sparesPage = new SparesPage(webDriver);
+        actionsWithOurElements = new ActionsWithOurElements(webDriver);
     }
 
     @After
