@@ -1,17 +1,22 @@
 package libs;
 
+import org.openqa.selenium.support.ui.Select;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ActionsWithOurElements {
     WebDriver webDriver;
     static Logger logger;
+    static WebDriverWait webDriverWait20;
 
     public ActionsWithOurElements(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger("ActionsWithOurElements");
+        webDriverWait20 = new WebDriverWait(webDriver, 20);
     }
 
     /**
@@ -37,6 +42,8 @@ public class ActionsWithOurElements {
 
     public static void clickOnElement(WebElement element){
         try{
+            webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));
+            webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
             element.click();
             logger.info("Element clicked " + element);
         }catch (Exception e){
@@ -90,10 +97,20 @@ public class ActionsWithOurElements {
         }
     }
 
-    public static void selectOptionsInDropDown(WebElement select, WebElement option){
-        clickOnElement(select);
-        clickOnElement(option);
+//    public static void selectOptionsInDropDown(WebElement select, WebElement option){
+//        clickOnElement(select);
+//        clickOnElement(option);
+//
+//    }
 
+    public void selectOptionsInDropDown(WebElement selectDropDown, String textInDropdown){
+        try {
+            Select options = new Select(selectDropDown);
+            options.selectByVisibleText(textInDropdown);
+            logger.info(textInDropdown + " was selected in DD");
+        }catch (Exception e){
+            logErrorAndStopTest();
+        }
     }
 
 }
