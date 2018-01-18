@@ -4,14 +4,19 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ActionsWithOurElement {
     WebDriver webDriver;
     static Logger logger;
+    static WebDriverWait webDriverWait20;
 
     public ActionsWithOurElement(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger("ActionsWithOurElements");
+        webDriverWait20 = new WebDriverWait(webDriver, 20);
     }
 
     /**
@@ -39,6 +44,8 @@ public class ActionsWithOurElement {
 
     public static void clickOnElement(WebElement element) {
         try {
+            webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));
+            webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
             element.click();
             logger.info("Element was clicked " + element);
         } catch (Exception e) {
@@ -48,25 +55,35 @@ public class ActionsWithOurElement {
 
     public static void setStateToCheckBox(WebElement element, String neededState) {
         if (element.isSelected() == true) {
-            if (neededState.equals("Check")){
-             logger.info( element + " Element in checked state " );
+            if (neededState.equals("Checked")) {
+                logger.info(element + " Element in checked state ");
             } else {
                 clickOnElement(element);
             }
         } else {
-            if (neededState.equals("Check")) {
+            if (neededState.equals("Checked")) {
                 clickOnElement(element);
             } else {
-                logger.info( element + " Element in checked state " );
+                logger.info(element + " Element in checked state ");
             }
         }
     }
 
     public static void selectOptionsInDropDown(WebElement element, WebElement option) {
-       clickOnElement(element);
-       clickOnElement(option);
-        }
+        clickOnElement(element);
+        clickOnElement(option);
+    }
 
+    public void selectOptionsInDropDown (WebElement selectDropDown, String textInDropDown) {
+         try {
+             Select options = new Select (selectDropDown);
+            // options.selectByVisibleText(textInDropDown);
+             logger.info(textInDropDown + " was selected in DD");
+         } catch (Exception e){
+             logErrorAndStopTest();
+         }
+
+    }
 
     /**
      * Method check if element is present
