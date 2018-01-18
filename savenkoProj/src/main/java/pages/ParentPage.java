@@ -1,15 +1,24 @@
 package pages;
 
+import libs.ActionsWithOurElements;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 public class ParentPage {
     WebDriver webDriver;
+    ActionsWithOurElements actionsWithOurElements;
     protected Logger logger;
 
 
     public ParentPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger(getClass());
+        PageFactory.initElements(webDriver, this);
+        actionsWithOurElements = new ActionsWithOurElements(webDriver);
+
+
+        //initelement create a elements (physical writes objrcts, method ehich create objects)
+        //PageFactory - physical initialization of the realization
     }
 }
