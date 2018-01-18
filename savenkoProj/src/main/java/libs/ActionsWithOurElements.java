@@ -54,33 +54,55 @@ public class ActionsWithOurElements {
     }
 
     /**
-     * Method for set correct state to the Checkboxx
+     * Method for the check CheckBox state and select/unselect it
      * @param element
      * @param neededState
      */
-    public static void setStateToCheckBox(WebElement element, String neededState) {
-        try {
-            if (neededState.equals("Checked")) {
-                if (element.isSelected() == false) {
-                    element.click();
-                    logger.info("CheckBox was clicked by system");
-                } else {
-                    logger.info("CheckBox was previously selected");
-                }
+    public void setStateToCheckBox(WebElement element, String neededState){
 
-            } else if (neededState.equals("Unchecked")) {
-                if (element.isSelected() == true) {
-                    element.click();
-                    logger.info("CheckBox was unchecked by system");
+        final String CHECK_STATUS = "Checked";
+        final String UNCHECK_STATUS = "Unchecked";
+
+        if (!neededState.equals(CHECK_STATUS) && !neededState.equals(UNCHECK_STATUS)){
+            logger.error(neededState + " - Value of neededState is not expected ");
+            Assert.fail(neededState + " - Value of neededState is not expected ");
+        }else {
+            try {
+                if (neededState.equals(CHECK_STATUS) && !element.isSelected() ||
+                        neededState.equals(UNCHECK_STATUS) && element.isSelected()){
+                    clickOnElement(element);
                 } else {
-                    logger.info("CheckBox was previously unchecked");
+                    logger.info("CheckBox has " + neededState + " state already ");
                 }
+            }catch (Exception e){
+                logErrorAndStopTest();
             }
-
-        } catch (Exception e) {
-            logErrorAndStopTest();
         }
     }
+
+
+//    public static void setStateToCheckBox(WebElement element, String neededState) {
+//        try {
+//            if (neededState.equals("Checked")) {
+//                if (element.isSelected() == false) {
+//                    element.click();
+//                    logger.info("CheckBox was clicked by system");
+//                } else {
+//                    logger.info("CheckBox was previously selected");
+//                }
+//
+//            } else if (neededState.equals("Unchecked")) {
+//                if (element.isSelected() == true) {
+//                    element.click();
+//                    logger.info("CheckBox was unchecked by system");
+//                } else {
+//                    logger.info("CheckBox was previously unchecked");
+//                }
+//            }
+//        } catch (Exception e) {
+//            logErrorAndStopTest();
+//        }
+//    }
 
     /**
      * Method for selection option in the Drop Down list
