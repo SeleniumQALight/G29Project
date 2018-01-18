@@ -16,6 +16,20 @@ public class MainPage extends ParentPage {
     @FindBy(id = "spared")
     private WebElement subMenuSpares;
 
+    @FindBy(id = "remember_me")
+    private WebElement checkBox;
+
+   // @FindBy(xpath = ".//*[@id='dictionary']/a")
+  //  private WebElement dropDown;
+
+  //  @FindBy(className = "fa fa-circle-")
+  //  private WebElement dropDownDictionary;
+
+
+public void clickOnCheckBox(WebElement checkBox){
+    clickOnElement(checkBox);
+}
+
     public MainPage(WebDriver webDriver) {
         super(webDriver,"/");// / znachit chto my na  main page
     }
