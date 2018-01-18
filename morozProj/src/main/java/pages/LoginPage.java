@@ -2,7 +2,6 @@ package pages;
 
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -53,6 +52,18 @@ public class LoginPage extends ParentPage {
     }
     public void clickOnSubmitButton(){
         clickOnElement(buttonSubmit);
+    }
+
+    public void loginUser(String login, String pass){
+        openLoginPage();
+        enterTextIntoInputLogin(login);
+        enterTextIntoInputPass(pass);
+        clickOnSubmitButton();
+
+    }
+
+    public boolean isLoginInputDisplay(){
+        return isElementPresent(inputLogin);
     }
 
 
