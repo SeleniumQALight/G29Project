@@ -10,6 +10,7 @@ import pages.SparesPage;
 
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 public class ParentTest {
     public WebDriver webDriver;
@@ -21,6 +22,8 @@ protected SparesPage sparesPage;
         File fileFF = new File("./drivers/chromedriver_1.exe");
         System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
         webDriver = new ChromeDriver();
+        webDriver.manage().window().maximize();
+        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         mainPage = new MainPage(webDriver);
         loginPage = new LoginPage(webDriver);
