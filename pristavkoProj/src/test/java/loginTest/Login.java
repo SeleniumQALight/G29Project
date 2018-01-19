@@ -10,9 +10,6 @@ import org.openqa.selenium.By;
 import pages.LoginPage;
 import parentTest.ParentTest;
 
-import java.io.File;
-import java.util.concurrent.TimeUnit;
-
 public class Login extends ParentTest{
 
     final String url = "http://v3.test.itpmgroup.com/login";

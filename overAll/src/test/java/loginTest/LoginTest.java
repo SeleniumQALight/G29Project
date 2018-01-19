@@ -3,9 +3,9 @@ package loginTest;
 import org.junit.Assert;
 import org.junit.Test;
 
-import parentTest.ParenTest;
+import parentTest.ParentTest;
 
-public class LoginTest extends ParenTest{
+public class LoginTest extends ParentTest {
 
     @Test
     public void validLogin(){
@@ -16,13 +16,13 @@ public class LoginTest extends ParenTest{
 
         Assert.assertTrue("Avatar is not present",
                 mainPage.isAvatarPresent() );
-
     }
 
     @Test
     public void unValidLogin(){
-        loginPage.liginUser("Student","906090");
-        Assert.assertTrue("Login Input does not dispalay", loginPage.isLoginInputDisplay());
+        loginPage.loginUser("Student","906090");
+        Assert.assertTrue("Login Input does not dispalay"
+                , loginPage.isLoginInputDisplay());
     }
 
 }
