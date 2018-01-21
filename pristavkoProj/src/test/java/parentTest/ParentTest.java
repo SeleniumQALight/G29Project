@@ -1,6 +1,7 @@
 package parentTest;
 
 import libs.ActionsWithOurElements;
+import libs.WaitTimeWhenLoadingPage;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +22,7 @@ public class ParentTest {
     protected UserProfile userProfile;
     protected SparesPage sparesPage;
     protected ActionsWithOurElements actionsWithOurElements;
+    protected WaitTimeWhenLoadingPage waitTimeWhenLoadingPage;
 
     @Before
     public void setUp() {
@@ -36,6 +38,7 @@ public class ParentTest {
         loginPage = new LoginPage(webDriver);
         mainPage = new MainPage(webDriver);
         userProfile = new UserProfile(webDriver);
+        waitTimeWhenLoadingPage = new WaitTimeWhenLoadingPage();
 
         // Разобраться, почему тут юзается конструктор
         //sparesPage = new SparesPage(webDriver, "/dictionary/spares");
