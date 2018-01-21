@@ -1,34 +1,33 @@
 package loginTest;
 
 /**
- * Test Case 1
+ * Test Case 1 - Авторизация в системе
+ * Steps to reproduce:
+ * 1) Открыть ссылку http://v3.test.itpmgroup.com/
+ * 2) В форме авторизации в поле пароль ввести Student
+ * 3) В поле пароль ввести 909090
+ * 4) Кликнуть на кнопку "Вход"
+ * <p>
+ * Expected result:
+ * 1) Доступна аватарка пользователя
+ * 2) Доступно главное меню с пунктом "Главная"
+ * 3) Доступно главное меню с пунктом "Cловари"
+ * 4) Доступно главное меню с пунктом "Обслуживание"
+ * 5) Доступно главное меню с пунктом "Установка"
+ * 6) Доступно главное меню с пунктом "Сделки"
+ * 7) Доступно главное меню с пунктом: "Отчёт"
  */
 
-import libs.ActionsWithOurElements;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import pages.LoginPage;
 import parentTest.ParentTest;
 
 public class Login extends ParentTest {
 
     @Test
-    public void vallidLogin() {
-        loginPage.loginUser(loginPage.getLogin(), loginPage.getPassword());
-
-/*      Упрощение теста, используя метод loginUser из loginPage. Если без него, то код следующий:
-
-        loginPage.openLoginPage();
-        loginPage.enterTextIntoInputLogin(loginPage.getLogin());
-        loginPage.enterTextIntoInputPassword(loginPage.getPassword());
-        loginPage.clickOnSubmitButton();*/
-
-/*      Оптимизация, с использованием  loginPage.clickOnSubmitButton()
-        webDriver.findElement(By.xpath(".//button[@type='submit']")).click();*/
-
+    public void validLogin() {
+        loginPage.loginUser();
         Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
-        Assert.assertTrue("Menu is not present", mainPage.isMenuPresent());
+        Assert.assertTrue("Menu is not present", mainPage.isMenuItemsPresent());
     }
-
 }

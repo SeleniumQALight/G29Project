@@ -1,40 +1,21 @@
 package pages;
 
-import static libs.ActionsWithOurElements.*;
-
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends ParentPage {
+import static libs.ActionsWithOurElements.*;
 
+public class LoginPage extends ParentPage {
     public LoginPage(WebDriver webDriver) {
         super(webDriver, "/login");
     }
 
-    final String url = "http://v3.test.itpmgroup.com/login";
-    final String login = "Student";
-    final String password = "909090";
-    final String unvalidPassword = "906090";
-
-    public String getUnvalidPassword() {
-        return unvalidPassword;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
+    final String url = configProperties.base_url();
+    final String login = configProperties.user_login();
+    final String password = configProperties.user_password();
+    final String unvalidPassword = configProperties.wrong_user_password();
 
     @FindBy(name = "_username")
     private WebElement inputLogin;
@@ -44,6 +25,9 @@ public class LoginPage extends ParentPage {
 
     @FindBy(tagName = "button")
     private WebElement buttonSubmit;
+
+    @FindBy(xpath = ".//*[text()='Авторизация']")
+    private WebElement authFormTitle;
 
     public void openLoginPage() {
         try {
@@ -55,39 +39,11 @@ public class LoginPage extends ParentPage {
         }
     }
 
-    public boolean isMenuItemMainPresent() {
-        try {
-            return webDriver.findElement(By.xpath(".//a[@href='/dashboard']")).isDisplayed();
-
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
     public void enterTextIntoInputLogin(String login) {
-/*   Так было раньше до использования ActionsWithOurElements
-        try {
-            inputLogin.clear();
-            inputLogin.sendKeys(login);
-            logger.info(login + " was inputed into login input ");
-        } catch (Exception e) {
-            logger.error("Can't work with element ");
-            Assert.fail("Can't work with element");
-        }*/
-
         enterTextIntoInput(inputLogin, login);
     }
 
     public void enterTextIntoInputPassword(String password) {
-/*   Так было раньше до использования ActionsWithOurElements
-        try {
-            webDriver.findElement(By.id("password")).clear();
-            webDriver.findElement(By.id("password")).sendKeys(password);
-            logger.info(password + " was inputed into password input ");
-        } catch (Exception e) {
-            logger.error("Can't work with element ");
-            Assert.fail("Can't work with element");
-        }*/
         enterTextIntoInput(inputPassWord, password);
     }
 
@@ -95,34 +51,23 @@ public class LoginPage extends ParentPage {
         clickOnElement(buttonSubmit);
     }
 
-    public boolean isTitleAuthenticationPageIsPresent() {
-        try {
-            return webDriver.findElement(By.xpath(".//a[@href='http://v3.test.itpmgroup.com/']")).isDisplayed();
-
-        } catch (Exception e) {
-            return false;
-        }
+    public boolean isTitleAuthenticationFormIsPresent() {
+        return isElementPresent(authFormTitle);
     }
 
-    public boolean isButtonLoginInAuthenticationPageIsPresent() {
-        try {
-            return webDriver.findElement(By.xpath(".//button[@type='submit']")).isDisplayed();
-
-        } catch (Exception e) {
-            return false;
-        }
+    public boolean isLoginButtonPresent() {
+        return isElementPresent(buttonSubmit);
     }
 
-    public boolean isLoginInputDisplay() {
+    public boolean isLoginInputPresent() {
         return isElementPresent(inputLogin);
     }
 
-    public void loginUser(String login, String password) {
+    public void loginUser() {
         openLoginPage();
-        enterTextIntoInputLogin(getLogin());
-        enterTextIntoInputPassword(getPassword());
+        enterTextIntoInputLogin(login);
+        enterTextIntoInputPassword(password);
         clickOnSubmitButton();
     }
-
 }
 

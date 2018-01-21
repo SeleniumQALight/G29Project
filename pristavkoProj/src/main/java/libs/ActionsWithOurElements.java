@@ -60,7 +60,7 @@ public class ActionsWithOurElements {
     public static boolean isElementPresent(WebElement element) {
         try {
             boolean tempState = element.isDisplayed() && element.isEnabled();
-            logger.info("Is element present? - " + tempState);
+            logger.info("Is element present? - " + tempState + " " + element);
             return tempState;
         } catch (Exception e) {
             logger.info("Is element present? - false");

@@ -1,7 +1,5 @@
 package pages;
 
-import libs.ActionsWithOurElements.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,49 +7,69 @@ import org.openqa.selenium.support.FindBy;
 import static libs.ActionsWithOurElements.clickOnElement;
 import static libs.ActionsWithOurElements.isElementPresent;
 
-public class MainPage extends ParentPage{
+public class MainPage extends ParentPage {
 
-    public MainPage (WebDriver webDriver) {
+    public MainPage(WebDriver webDriver) {
         super(webDriver, "/");
     }
 
     @FindBy(xpath = ".//img[@alt='Student']")
     private WebElement avatar;
 
+    @FindBy(id = "dashboard")
+    private WebElement menuDashboard;
+
     @FindBy(id = "dictionary")
     private WebElement menuDictionary;
+
+    @FindBy(id = "service_apparat")
+    private WebElement menuServiceApparat;
+
+    @FindBy(id = "installation")
+    private WebElement menuInstallation;
+
+    @FindBy(id = "deal")
+    private WebElement menuDeal;
+
+    @FindBy(id = "report")
+    private WebElement menuReport;
 
     @FindBy(id = "spares")
     private WebElement subMenuSpares;
 
-    public boolean isAvatarPresent() {
-/*        try {
-            return webDriver.findElement(By.xpath(".//img[@alt='Student']")).isDisplayed();
+    @FindBy(xpath = ".//span[@class='hidden-xs']")
+    private WebElement userProfile;
 
-        } catch (Exception e) {
-            return false;
-        }*/
+    @FindBy(xpath = ".//a[@href='/logout']")
+    private WebElement userLogOutButton;
+
+    public boolean isAvatarPresent() {
         return isElementPresent(avatar);
     }
 
-    public void clickOnMenuDictionary(){
+    public void clickOnMenuDictionary() {
         clickOnElement(menuDictionary);
     }
 
-    public void clickOnSubMenuSpare(){
+    public void clickOnSubMenuSpare() {
         clickOnElement(subMenuSpares);
     }
 
-    public boolean isMenuPresent() {
-        try {
-            boolean mainMenuItemPresent = webDriver.findElement(By.xpath(".//a[@href='/dashboard']")).isDisplayed();
-            boolean dictionaryMenuItemPresent = webDriver.findElement(By.xpath(".//a[@href='/dictionary/service']")).isDisplayed();
-            boolean serviceMenuItemPresent = webDriver.findElement(By.xpath(".//a[@href='/dictionary/service']")).isDisplayed();
-            boolean installationMenuItemPresent = webDriver.findElement(By.xpath(".//a[@href='/dictionary/installation']")).isDisplayed();
-            boolean dealMenuItemPresent = webDriver.findElement(By.xpath(".//a[@href='/deal']")).isDisplayed();
-            boolean reportMenuItemPresent = webDriver.findElement(By.xpath(".//a[@href='/statistic']")).isDisplayed();
-            boolean isAllMenuPresent = mainMenuItemPresent & dictionaryMenuItemPresent & serviceMenuItemPresent & installationMenuItemPresent & dealMenuItemPresent & reportMenuItemPresent;
+    public void userLogOut(){
+        clickOnElement(userProfile);
+        clickOnElement(userLogOutButton);
+    }
 
+    public boolean isMenuItemsPresent() {
+        try {
+            boolean mainMenuItemPresent = isElementPresent(menuDashboard);
+            boolean dictionaryMenuItemPresent = isElementPresent(menuDictionary);
+            boolean serviceMenuItemPresent = isElementPresent(menuServiceApparat);
+            boolean installationMenuItemPresent = isElementPresent(menuInstallation);
+            boolean dealMenuItemPresent = isElementPresent(menuDeal);
+            boolean reportMenuItemPresent = isElementPresent(menuReport);
+            boolean isAllMenuPresent = mainMenuItemPresent & dictionaryMenuItemPresent & serviceMenuItemPresent
+                    & installationMenuItemPresent & dealMenuItemPresent & reportMenuItemPresent;
             return isAllMenuPresent;
         } catch (Exception e) {
             return false;

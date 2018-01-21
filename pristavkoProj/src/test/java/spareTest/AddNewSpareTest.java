@@ -8,14 +8,8 @@ public class AddNewSpareTest extends ParentTest {
 
     @Test
     public void addNewSpare() {
-        loginPage.loginUser("Student", "909090");
-       // loginPage.openLoginPage();
 
-        mainPage.checkCurrentUrl();
-
-        loginPage.enterTextIntoInputLogin(loginPage.getLogin());
-        loginPage.enterTextIntoInputPassword(loginPage.getPassword());
-        loginPage.clickOnSubmitButton();
+        loginPage.loginUser();
 
 /*        try {
             Thread.sleep(1000);
@@ -24,6 +18,7 @@ public class AddNewSpareTest extends ParentTest {
         }*/
 
         // impelemt this methods
+
 
         webDriver.findElement(By.id("dictionary")).click();
         webDriver.findElement(By.id("spares")).click();
