@@ -10,10 +10,7 @@ public class LoginTest extends ParentTest{
     public void validLogin(){
 
 
-        loginPage.openLoginPage();
-        loginPage.enterTextIntoInputLogin("Student");
-        loginPage.enterPassIntoInputPassword("909090");
-        loginPage.clickOnSubmitButton();
+        loginPage.loginUser("Student", "909090");
 
         Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
 

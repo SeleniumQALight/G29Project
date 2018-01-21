@@ -103,7 +103,7 @@ public class ActionsWithOurElements {
 //
 //    }
 
-    public void selectOptionsInDropDown(WebElement selectDropDown, String textInDropdown){
+    public static void selectOptionsInDropDown(WebElement selectDropDown, String textInDropdown){
         try {
             Select options = new Select(selectDropDown);
             options.selectByVisibleText(textInDropdown);

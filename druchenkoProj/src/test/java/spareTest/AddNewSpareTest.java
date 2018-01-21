@@ -20,6 +20,13 @@ public class AddNewSpareTest extends ParentTest{
         mainPage.clickOnSubMenuSpare();
         sparesPage.checkCurrentUrl();
 
+        sparesPage.clickOnPlusButton();
+        sparesPage.enterTextIntoSpareName();
+        sparesPage.chooseSpareType();
+        sparesPage.clickOnSubmitSpareButton();
+
+
+
 
     }
 }
