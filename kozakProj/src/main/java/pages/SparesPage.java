@@ -11,13 +11,19 @@ public class SparesPage extends ParentPage {
     @FindBy(xpath =".//*[@href='http://v3.test.itpmgroup.com/dictionary/spares/edit']" )
     private WebElement plusButton;
 
+    @FindBy (xpath = "//*[contains(text(), 'Kozak test')] |//*[contains(text(), 'самолет')]")
+    private WebElement nameAddedSpare;
+
     public SparesPage (WebDriver webDriver) {
         super(webDriver, "/dictionary/spares");
     }
 
     public void clickOnPlusButton(){
         clickOnElement(plusButton);
+    }
 
+    public void clickOnNameOfAddedSpare(){
+        clickOnElement(nameAddedSpare);
     }
 
 }
