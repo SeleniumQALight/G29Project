@@ -18,9 +18,20 @@ public class AddNewSpareTest extends ParentTest {
         mainPage.clickOnMenuSpares();
         sparesPage.checkCurrentUrl();
         sparesPage.clickOnPlusButton();
-
-
-
+        spareEditPage.enterInputSpareName("Kozak test");
+        spareEditPage.selectSpareType("самолет");
+        spareEditPage.clickOnAddButton();
+//    }
+//
+//    @Test
+//    public void deleteNewSpare(){
+//        loginPage.loginUser("Student","909090");
+//        mainPage.checkCurrentUrl();
+//        mainPage.clickOnMenuDictionary();
+//        mainPage.clickOnMenuSpares();
+//        sparesPage.checkCurrentUrl();
+        sparesPage.clickOnNameOfAddedSpare();
+        spareEditPage.clickOnDeleteButton();
     }
 
 }
