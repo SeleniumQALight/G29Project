@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import static libs.ActionsWithOurElement.*;  //заімпортили вручну лібс і її методи
 
 public class ParentPage {
     WebDriver webDriver;
