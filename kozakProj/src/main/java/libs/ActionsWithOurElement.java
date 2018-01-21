@@ -4,15 +4,21 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 
 public class ActionsWithOurElement {
     WebDriver webDriver;
     static Logger logger;
+    static   WebDriverWait webDriverWait20;  // вебдрайвер - почекай 20c. - любу команду він буде виконувати кожні 0,5 сек. протягом 20с.
 
-    public ActionsWithOurElement(WebDriver webDriver) {
+    public ActionsWithOurElement(WebDriver webDriver) {       // конструктор
         this.webDriver = webDriver;
         logger = Logger.getLogger("ActionsWithOurElement");   // створює лог файл з іменем цього класу;
+        webDriverWait20 = new WebDriverWait(webDriver,20);    // вебдрайвер - почекай 20c.
     }
 
     /**
@@ -38,12 +44,15 @@ public class ActionsWithOurElement {
      */
     public static void clickOnElement(WebElement element) {
         try {
+            webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));    // почекай до 20 с. доки елемен стане клікабельний;
+            ExpectedConditions.not(ExpectedConditions.invisibilityOf(element));         // почекай поки елемент стане видимим
             element.click();
             logger.info(element + " was clicked" + element);
         } catch (Exception e) {
             logErrorAndStopTest();
         }
     }
+
 
     /**
      * Method verify that WebElement is displayed and is enabled
@@ -67,7 +76,7 @@ public class ActionsWithOurElement {
      * @param element
      * @param neededState
      */
-    public void setStateToCheckBox(WebElement element, String neededState){
+    public static void setStateToCheckBox(WebElement element, String neededState){
         final String CHECK_STATUS = "Checked";
         final String UNCHECK_STATUS = "Unchecked";
         if (!neededState.equals(CHECK_STATUS) && !neededState.equals(UNCHECK_STATUS)){
@@ -93,10 +102,21 @@ public class ActionsWithOurElement {
      * @param select
      * @param option
      */
-    public void selectOptionsInDropDown(WebElement select, WebElement option){
+    public static void selectOptionsInDropDown(WebElement select, WebElement option){
             clickOnElement(select);
             clickOnElement(option);
            }
+
+    public static void selectOptionsInDropDown(WebElement selectDropDown,String textInDropDown){   // вибере елемент програмно
+        try {
+            Select options =new Select(selectDropDown);    // відкрили селект і отримали всю вибірку з селекту
+            options.selectByVisibleText(textInDropDown);   // шукає едемент по тексту, що ми бачим
+     //     options.selectByValue(textInDropDown);         // шукає едемент по Value, що ми бачим
+            logger.info(textInDropDown + " was selectedd in DropDown");
+        }catch (Exception e){
+            logErrorAndStopTest();
+        }
+    }
 
     private static void logErrorAndStopTest() {
         logger.error("Can not work with element ");
