@@ -1,7 +1,6 @@
 package pages;
 
 import static libs.ActionsWithOurElement.*;
-
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
