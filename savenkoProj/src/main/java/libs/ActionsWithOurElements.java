@@ -4,14 +4,19 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ActionsWithOurElements {
     WebDriver webDriver;
     static Logger logger;
+    static WebDriverWait webDriverWait20;
 
     public ActionsWithOurElements(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger("ActionsWithOurElements");
+        webDriverWait20 = new WebDriverWait(webDriver, 20); //wait for 20 seconds
     }
 
     /**
@@ -33,6 +38,8 @@ public class ActionsWithOurElements {
     //CLICK METHOD
     public static void clickOnElement(WebElement button) {
         try {
+            webDriverWait20.until(ExpectedConditions.elementToBeClickable(button));
+            webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(button)));
             button.click();
             logger.info("Element was clicked on" + button);
         } catch (Exception e) {
@@ -54,36 +61,60 @@ public class ActionsWithOurElements {
     }
 
     /**
-     * Method for set correct state to the Checkboxx
+     * Method for the check CheckBox state and select/unselect it
+     *
      * @param element
      * @param neededState
      */
-    public static void setStateToCheckBox(WebElement element, String neededState) {
-        try {
-            if (neededState.equals("Checked")) {
-                if (element.isSelected() == false) {
-                    element.click();
-                    logger.info("CheckBox was clicked by system");
-                } else {
-                    logger.info("CheckBox was previously selected");
-                }
+    public void setStateToCheckBox(WebElement element, String neededState) {
 
-            } else if (neededState.equals("Unchecked")) {
-                if (element.isSelected() == true) {
-                    element.click();
-                    logger.info("CheckBox was unchecked by system");
+        final String CHECK_STATUS = "Checked";
+        final String UNCHECK_STATUS = "Unchecked";
+
+        if (!neededState.equals(CHECK_STATUS) && !neededState.equals(UNCHECK_STATUS)) {
+            logger.error(neededState + " - Value of neededState is not expected ");
+            Assert.fail(neededState + " - Value of neededState is not expected ");
+        } else {
+            try {
+                if (neededState.equals(CHECK_STATUS) && !element.isSelected() ||
+                        neededState.equals(UNCHECK_STATUS) && element.isSelected()) {
+                    clickOnElement(element);
                 } else {
-                    logger.info("CheckBox was previously unchecked");
+                    logger.info("CheckBox has " + neededState + " state already ");
                 }
+            } catch (Exception e) {
+                logErrorAndStopTest();
             }
-
-        } catch (Exception e) {
-            logErrorAndStopTest();
         }
     }
 
+
+//    public static void setStateToCheckBox(WebElement element, String neededState) {
+//        try {
+//            if (neededState.equals("Checked")) {
+//                if (element.isSelected() == false) {
+//                    element.click();
+//                    logger.info("CheckBox was clicked by system");
+//                } else {
+//                    logger.info("CheckBox was previously selected");
+//                }
+//
+//            } else if (neededState.equals("Unchecked")) {
+//                if (element.isSelected() == true) {
+//                    element.click();
+//                    logger.info("CheckBox was unchecked by system");
+//                } else {
+//                    logger.info("CheckBox was previously unchecked");
+//                }
+//            }
+//        } catch (Exception e) {
+//            logErrorAndStopTest();
+//        }
+//    }
+
     /**
      * Method for selection option in the Drop Down list
+     *
      * @param element
      * @param option
      */
@@ -91,12 +122,21 @@ public class ActionsWithOurElements {
         try {
             clickOnElement(element);
             clickOnElement(option);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             logErrorAndStopTest();
         }
     }
 
+    public void selectOptionInDropDown(WebElement selectDropDown, String textInDropdown) {
+        try {
+            Select options = new Select(selectDropDown);  //select element - list
+            options.selectByVisibleText(textInDropdown);
+            //options.selectByValue(Value);
+            logger.info(textInDropdown + " was selected in DropDown");
+        } catch (Exception e) {
+            logErrorAndStopTest();
+        }
+    }
 
     private static void logErrorAndStopTest() {
         logger.error("Cannot work with Element "); // log and concole
