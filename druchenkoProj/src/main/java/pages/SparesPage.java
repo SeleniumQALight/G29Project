@@ -22,6 +22,12 @@ public class SparesPage extends ParentPage{
     @FindBy(name = "add")
     private WebElement submitSpareButton;
 
+    @FindBy(xpath = ".//*/td[text()='New Spare']")
+    private WebElement addedSpare;
+
+    @FindBy(name = "delete")
+    private WebElement deleteSpareButton;
+
 
     public SparesPage(WebDriver webDriver) {
         super(webDriver, "/dictionary/spares");
@@ -31,16 +37,24 @@ public class SparesPage extends ParentPage{
         clickOnElement(plusButton);
     }
 
-    public void enterTextIntoSpareName(){
-        enterTextIntoInput(spareName, "New Spare");
+    public void enterTextIntoSpareName(String name){
+        enterTextIntoInput(spareName, name);
     }
 
-    public void chooseSpareType(){
-        selectOptionsInDropDown(spareType, "Механика");
+    public void chooseSpareType(String type){
+        selectOptionsInDropDown(spareType, type);
     }
 
     public void clickOnSubmitSpareButton(){
         clickOnElement(submitSpareButton);
+    }
+
+    public void clickOnAddedSpare(){
+        clickOnElement(addedSpare);
+    }
+
+    public void clickOnDeleteSpareButton(){
+        clickOnElement(deleteSpareButton);
     }
 
 }
