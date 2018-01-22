@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import static libs.ActionsWithOurElements.clickOnElement;
 import static libs.ActionsWithOurElements.isElementPresent;
 
-public class SparesPage extends ParentPage{
+public class SparesPage extends ParentPage {
     final String spareName = "Каляка Маляка";
 
     @FindBy(xpath = ".//*[@href='http://v3.test.itpmgroup.com/dictionary/spares/edit']")
@@ -28,18 +28,30 @@ public class SparesPage extends ParentPage{
     @FindBy(xpath = ".//*[text()='Каляка Маляка']")
     private WebElement createdSpareName;
 
+    @FindBy(xpath = ".//button[@name='delete']")
+    private WebElement deleteSpareButton;
+
     public SparesPage(WebDriver webDriver) {
         super(webDriver, "/dictionary/spares");
     }
 
-    public void createNewSpare(){
+    public void createNewSpare() {
         clickOnElement(addNewSpare);
         actionsWithOurElements.enterTextIntoInput(spareNameInput, spareName);
         actionsWithOurElements.selectOptionsInDropDown(spareSelectType, spareSelectValue4);
         clickOnElement(createSpareButon);
     }
 
-    public boolean isCreatedSpareIsPresent(){
+    public void deleteSpare() {
+        clickOnElement(createdSpareName);
+        clickOnElement(deleteSpareButton);
+    }
+
+    public boolean isCreatedSpareIsPresent() {
+        return isElementPresent(createdSpareName);
+    }
+
+    public boolean isCreatedSparePresetn() {
         return isElementPresent(createdSpareName);
     }
 

@@ -11,8 +11,12 @@ public class AddNewSpareTest extends ParentTest {
         loginPage.loginUser();
         mainPage.clickOnMenuDictionary();
         mainPage.clickOnSubMenuSpare();
+        while (sparesPage.isCreatedSparePresetn() == true) {
+            sparesPage.deleteSpare();
+            continue;
+        }
         sparesPage.createNewSpare();
-        waitTimeWhenLoadingPage.WaitTimeWhenLoadingPage();
         Assert.assertTrue("Created spare isn't present", sparesPage.isCreatedSpareIsPresent());
+        sparesPage.deleteSpare();
     }
 }
