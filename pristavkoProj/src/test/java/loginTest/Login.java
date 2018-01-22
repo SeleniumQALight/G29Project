@@ -27,7 +27,7 @@ public class Login extends ParentTest {
     @Test
     public void validLogin() {
         loginPage.loginUser();
-        Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
-        Assert.assertTrue("Menu is not present", mainPage.isMenuItemsPresent());
+        Assert.assertTrue("Avatar isn't present", mainPage.isAvatarPresent());
+        Assert.assertTrue("Menu isn't present", mainPage.isMenuItemsPresent());
     }
 }

@@ -26,7 +26,7 @@ public class Logout extends ParentTest {
     public void userLogOut() {
         loginPage.loginUser();
         Assert.assertTrue("Avatar isn't present", mainPage.isAvatarPresent());
-        Assert.assertTrue("Menu is not present", mainPage.isMenuItemsPresent());
+        Assert.assertTrue("Menu isn't present", mainPage.isMenuItemsPresent());
         mainPage.userLogOut();
         Assert.assertTrue("Title in authentication form isn't present", loginPage.isTitleAuthenticationFormIsPresent());
         Assert.assertTrue("Login input in authentication form isn't present", loginPage.isLoginInputPresent());

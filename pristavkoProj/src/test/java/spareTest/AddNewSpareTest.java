@@ -14,11 +14,11 @@ public class AddNewSpareTest extends ParentTest {
         loginPage.loginUser();
         mainPage.clickOnMenuDictionary();
         mainPage.clickOnSubMenuSpare();
-        while (sparesPage.isCreatedSpareIsPresent() == true) {
+        while (sparesPage.isCreatedSpareIsPresent(spareTypeText) == true) {
             sparesPage.deleteSpare(spareName);
         }
         sparesPage.createNewSpare(spareName, spareTypeText);
-        Assert.assertTrue("Created spare isn't present", sparesPage.isCreatedSpareIsPresent());
+        Assert.assertTrue("Created spare isn't present", sparesPage.isCreatedSpareIsPresent(spareTypeText));
         sparesPage.deleteSpare(spareName);
     }
 }
