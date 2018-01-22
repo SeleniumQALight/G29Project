@@ -6,17 +6,19 @@ import parentTest.ParentTest;
 
 public class AddNewSpareTest extends ParentTest {
 
+    final String spareName = "Каляка Маляка";
+    final String spareTypeText = "Датчики";
+
     @Test
     public void addNewSpare() {
         loginPage.loginUser();
         mainPage.clickOnMenuDictionary();
         mainPage.clickOnSubMenuSpare();
-        while (sparesPage.isCreatedSparePresetn() == true) {
-            sparesPage.deleteSpare();
-            continue;
+        while (sparesPage.isCreatedSpareIsPresent() == true) {
+            sparesPage.deleteSpare(spareName);
         }
-        sparesPage.createNewSpare();
+        sparesPage.createNewSpare(spareName, spareTypeText);
         Assert.assertTrue("Created spare isn't present", sparesPage.isCreatedSpareIsPresent());
-        sparesPage.deleteSpare();
+        sparesPage.deleteSpare(spareName);
     }
 }

@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +9,6 @@ import static libs.ActionsWithOurElements.clickOnElement;
 import static libs.ActionsWithOurElements.isElementPresent;
 
 public class SparesPage extends ParentPage {
-    final String spareName = "Каляка Маляка";
 
     @FindBy(xpath = ".//*[@href='http://v3.test.itpmgroup.com/dictionary/spares/edit']")
     private WebElement addNewSpare;
@@ -19,41 +19,33 @@ public class SparesPage extends ParentPage {
     @FindBy(id = "spares_spareType")
     private WebElement spareSelectType;
 
-    @FindBy(xpath = ".//*[@value='4']")
-    private WebElement spareSelectValue4;
-
     @FindBy(xpath = ".//button[@type='submit']")
     private WebElement createSpareButon;
 
-    @FindBy(xpath = ".//*[text()='Каляка Маляка']")
-    private WebElement createdSpareName;
-
     @FindBy(xpath = ".//button[@name='delete']")
     private WebElement deleteSpareButton;
+
+    @FindBy(xpath = ".//*[@text()='Каляка Маляка']")
+    private WebElement spareName;
 
     public SparesPage(WebDriver webDriver) {
         super(webDriver, "/dictionary/spares");
     }
 
-    public void createNewSpare() {
+    public void createNewSpare(String spareName, String spareType) {
         clickOnElement(addNewSpare);
         actionsWithOurElements.enterTextIntoInput(spareNameInput, spareName);
-        actionsWithOurElements.selectOptionsInDropDown(spareSelectType, spareSelectValue4);
+        WebElement optionValueType = webDriver.findElement(By.xpath(".//option[text()='" + spareType + "'][1]"));
+        actionsWithOurElements.selectOptionsInDropDown(spareSelectType, optionValueType);
         clickOnElement(createSpareButon);
     }
 
-    public void deleteSpare() {
-        clickOnElement(createdSpareName);
+    public void deleteSpare(String spareName) {
+        clickOnElement(webDriver.findElement(By.xpath(".//*[text()='" + spareName + "']")));
         clickOnElement(deleteSpareButton);
     }
 
     public boolean isCreatedSpareIsPresent() {
-        return isElementPresent(createdSpareName);
+        return isElementPresent(spareName);
     }
-
-    public boolean isCreatedSparePresetn() {
-        return isElementPresent(createdSpareName);
-    }
-
-
 }
