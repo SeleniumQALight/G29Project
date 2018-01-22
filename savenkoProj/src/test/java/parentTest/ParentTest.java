@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
 import pages.MainPages;
-
+import pages.SparePage;
 
 
 import java.io.File;
@@ -16,6 +16,7 @@ public class ParentTest {
     public WebDriver webDriver;
     protected MainPages mainPage;                                       //доступний тільки у наслідника у всіх папках
     protected LoginPage loginPage;
+    protected SparePage sparePage;
 
     @Before                                                           // це Пре кондішн, відкриває браузер ..Анотація дж-юніта. Виконується перед кожним тесткейсом
 
@@ -25,6 +26,7 @@ public class ParentTest {
         webDriver = new ChromeDriver();                               //
         mainPage = new MainPages(webDriver);                           // ініціалізуємо клас MainPage + Дали браузер
         loginPage = new LoginPage(webDriver);
+        sparePage = new SparePage(webDriver);
 
 
         webDriver.manage().window().maximize(); //open window full screen
