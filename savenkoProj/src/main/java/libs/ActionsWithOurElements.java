@@ -7,6 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import static org.apache.commons.lang3.RandomStringUtils.*;
+
+
 
 public class ActionsWithOurElements {
     WebDriver webDriver;
@@ -142,4 +145,18 @@ public class ActionsWithOurElements {
         logger.error("Cannot work with Element "); // log and concole
         Assert.fail("Cannot work with Element "); // get in the report
     }
+
+    public static String generateRandomNumeric(int length) {
+        try {
+            String tempRandom = randomNumeric(length);
+            return tempRandom;
+        }
+        catch (Exception e) {
+            logErrorAndStopTest();
+            logger.info("Cannot generate random");
+            return "Cannot generate random";
+        }
+    }
+
+
 }
