@@ -19,7 +19,7 @@ public class MainPage extends ParentPage {
     private WebElement subMenuSpares;
 
     public MainPage(WebDriver webDriver) {      //sozdaem konstruktor dlya nastroiki klassa
-        super(webDriver);
+        super(webDriver,"/");
     }
 
     public boolean isAvatarPresent() {
