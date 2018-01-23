@@ -13,12 +13,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ActionsWithOurElements {
 
    WebDriver webDriver;
-   // static WebDriverWait wait;
+   static WebDriverWait webDriverWait20;
+
     static Logger logger =  Logger.getLogger("ActionsWithOurElements");
 
     public ActionsWithOurElements(WebDriver webDriver) {
        this.webDriver = webDriver;
-     //   wait = new WebDriverWait(webDriver, 10);
+       webDriverWait20 = new WebDriverWait(webDriver, 20);
        // logger = Logger.getLogger("ActionsWithOurElements");
     }
 
@@ -43,6 +44,8 @@ public class ActionsWithOurElements {
      */
     public static void clickOnElement(WebElement element){
         try{
+            webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));
+            //webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
             element.click();
             logger.info(element + " was clcicked");
         }catch (Exception e){
