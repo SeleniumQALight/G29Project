@@ -58,10 +58,12 @@ public class ActionsWithOurElements {
      * @param select
      * @param option
      */
+
     public void selectOptionsInDropDown(WebElement select, WebElement option){
         clickOnElement(select);
         clickOnElement(option);
     }
+
     public void selectOptionsInDropDown(WebElement selectDropDown, String textInDropDown){
         try{
             Select options = new Select(selectDropDown);
@@ -70,22 +72,8 @@ public class ActionsWithOurElements {
         }catch (Exception e){
             logErrorAndStopTest();
         }
-            {
-        }
-    }
 
-    /**
-     * Method select line in DropDown by xPathLocator
-     * @param select
-     * @param xPathLocator
-     */
-   // public void selectOptionsInDropDown(WebElement select, String xPathLocator){
-     //   try {
-       //     selectOptionsInDropDown(select, webDriver.findElement(By.xpath(xPathLocator)));
-        //}catch (Exception e){
-          //  logErrorAndStopTest();
-      //  }
-    //}
+    }
 
     /**
      * Method set needed state in CheckBox
