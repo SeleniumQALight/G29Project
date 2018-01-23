@@ -17,7 +17,7 @@ public class MainPages extends ParentPage {
     private WebElement subMenuSpares;
 
         public MainPages(WebDriver webDriver) {
-        super(webDriver); // take and redirect it to the ParentPage
+        super(webDriver, "/"); // take and redirect it to the ParentPage
     }
 
     public boolean isAvatarPresent () {
