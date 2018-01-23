@@ -23,6 +23,15 @@ public class LoginPage extends ParentPage {
     @FindBy(tagName = "button")
     private WebElement buttonSubmit;
 
+    @FindBy(xpath = ".//input[@name='_username']")
+    private WebElement inputLoginIE;
+
+    @FindBy(xpath = ".//input[@name='_username']")
+    private WebElement inputPassWordIE;
+
+    @FindBy(xpath = ".//button[@type='submit']")
+    private WebElement buttonSubmitIE;
+
     @FindBy(xpath = ".//*[text()='Авторизация']")
     private WebElement authFormTitle;
 
@@ -47,6 +56,13 @@ public class LoginPage extends ParentPage {
         enterTextIntoInput(inputLogin, login);
         enterTextIntoInput(inputPassWord, password);
         clickOnElement(buttonSubmit);
+    }
+
+    public void userLoginIE(String login, String password) {
+        openLoginPage();
+        enterTextIntoInput(inputLoginIE, login);
+        enterTextIntoInput(inputPassWordIE, password);
+        clickOnElement(buttonSubmitIE);
     }
 
     public void checkLoginFormPresentOnPage() {

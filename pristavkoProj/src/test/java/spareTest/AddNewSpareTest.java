@@ -47,7 +47,6 @@ public class AddNewSpareTest extends ParentTest {
     public void addNewSpare() {
         sparesPage.createNewSpare(spareName, spareTypeText);
         Assert.assertTrue("Created spare isn't present", sparesPage.isCreatedSpareIsPresent());
-
     }
 
     @After

@@ -22,14 +22,17 @@ public class InvalidLogInWithParams extends ParentTest {
     @Parameterized.Parameters(name = "login = {0} pass = {1}")
     public static Collection testData(){
         return Arrays.asList(new Object[][]{
+                {"Student", ""},
+                {"", "1111"},
                 {"Student", "1111"},
-                {"Student", "906090"},
+                {"Student", "906090"}
         });
     }
 
     @Test
     public void InvalidLogInWithParams() {
-        loginPage.userLogin(login, password);
+        waitTimeWhenLoadingPage.WaitTimeWhenLoadingPage();
+        loginPage.userLoginIE(login, password);
         Assert.assertTrue("Login input doesn't displayed", loginPage.isLoginInputDisplay());
         Assert.assertFalse("User should not be logged", mainPage.isAvatarPresent());
     }
