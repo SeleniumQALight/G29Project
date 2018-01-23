@@ -29,21 +29,23 @@ import org.junit.Assert;
 import org.junit.Test;
 import parentTest.ParentTest;
 
+import static pages.ParentPage.configProperties;
+
 public class UpdateUserProfile extends ParentTest {
+
+    final String userEmail = "alex@bigmir.net";
+    final String userName = "StudentAlex";
 
     @Test
     public void updateUserProfile() {
 
-        final String userEmail = "alex@bigmir.net";
-        final String userName = "StudentAlex";
-
-        loginPage.loginUser();
+        loginPage.loginUser(configProperties.user_login(), configProperties.user_password());
         Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
         Assert.assertTrue("Menu is not present", mainPage.isMenuItemsPresent());
         userProfile.openUserProfile();
         userProfile.updateUserProfile(userEmail, userName);
         mainPage.userLogOut();
-        loginPage.loginUser();
+        loginPage.loginUser(configProperties.user_login(), configProperties.user_password());
         userProfile.openUserProfile();
         waitTimeWhenLoadingPage.WaitTimeWhenLoadingPage();
         userProfile.checkUpdateUserInfo(userEmail, userName);

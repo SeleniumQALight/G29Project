@@ -20,16 +20,16 @@ import org.junit.Assert;
 import org.junit.Test;
 import parentTest.ParentTest;
 
+import static pages.ParentPage.configProperties;
+
 public class Logout extends ParentTest {
 
     @Test
     public void userLogOut() {
-        loginPage.loginUser();
+        loginPage.loginUser(configProperties.user_login(), configProperties.user_password());
         Assert.assertTrue("Avatar isn't present", mainPage.isAvatarPresent());
         Assert.assertTrue("Menu isn't present", mainPage.isMenuItemsPresent());
         mainPage.userLogOut();
-        Assert.assertTrue("Title in authentication form isn't present", loginPage.isTitleAuthenticationFormIsPresent());
-        Assert.assertTrue("Login input in authentication form isn't present", loginPage.isLoginInputPresent());
-        Assert.assertTrue("Button login in authentication form isn't present", loginPage.isLoginButtonPresent());
+        loginPage.checkLoginForm();
     }
 }

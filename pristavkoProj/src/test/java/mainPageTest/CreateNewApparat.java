@@ -3,6 +3,8 @@ package mainPageTest;
 import org.junit.Test;
 import parentTest.ParentTest;
 
+import static pages.ParentPage.configProperties;
+
 /**
  * Test Case 4 - Создание Аппарата
  * Preoconditions:
@@ -42,7 +44,7 @@ public class CreateNewApparat extends ParentTest {
 
     @Test
     public void createNewApparat() {
-        loginPage.loginUser();
+        loginPage.loginUser(configProperties.user_login(), configProperties.user_password());
         mainPage.clickOnMenuDictionary();
         mainPage.clickOnsubMenuApparat();
         while (mainPage.isApparatPresent() == true) {

@@ -14,6 +14,8 @@ import pages.UserProfile;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import static pages.ParentPage.configProperties;
+
 public class ParentTest {
 
     public WebDriver webDriver;
@@ -29,8 +31,7 @@ public class ParentTest {
         File fileFireFox = new File("./driver/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", fileFireFox.getAbsolutePath());
         webDriver = new ChromeDriver();
-
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().implicitlyWait(configProperties.TIME_FOR_DFFAULT_WAIT(), TimeUnit.SECONDS);
         webDriver.manage().window().maximize();
         String winHandleBefore = webDriver.getWindowHandle();
         webDriver.switchTo().window(winHandleBefore);

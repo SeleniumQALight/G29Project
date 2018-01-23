@@ -22,12 +22,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import parentTest.ParentTest;
 
+import static pages.ParentPage.configProperties;
+
 public class Login extends ParentTest {
 
     @Test
     public void validLogin() {
-        loginPage.loginUser();
+        loginPage.loginUser(configProperties.user_login(), configProperties.user_password());
         Assert.assertTrue("Avatar isn't present", mainPage.isAvatarPresent());
-        Assert.assertTrue("Menu isn't present", mainPage.isMenuItemsPresent());
+        Assert.assertTrue("Menu items aren't present", mainPage.isMenuItemsPresent());
     }
 }

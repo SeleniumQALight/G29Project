@@ -13,9 +13,6 @@ public class LoginPage extends ParentPage {
     }
 
     final String url = configProperties.base_url();
-    final String login = configProperties.user_login();
-    final String password = configProperties.user_password();
-    final String unvalidPassword = configProperties.wrong_user_password();
 
     @FindBy(name = "_username")
     private WebElement inputLogin;
@@ -39,35 +36,17 @@ public class LoginPage extends ParentPage {
         }
     }
 
-    public void enterTextIntoInputLogin(String login) {
+    public void loginUser(String login, String password) {
+        openLoginPage();
         enterTextIntoInput(inputLogin, login);
-    }
-
-    public void enterTextIntoInputPassword(String password) {
         enterTextIntoInput(inputPassWord, password);
-    }
-
-    public void clickOnSubmitButton() {
         clickOnElement(buttonSubmit);
     }
 
-    public boolean isTitleAuthenticationFormIsPresent() {
-        return isElementPresent(authFormTitle);
-    }
-
-    public boolean isLoginButtonPresent() {
-        return isElementPresent(buttonSubmit);
-    }
-
-    public boolean isLoginInputPresent() {
-        return isElementPresent(inputLogin);
-    }
-
-    public void loginUser() {
-        openLoginPage();
-        enterTextIntoInputLogin(login);
-        enterTextIntoInputPassword(password);
-        clickOnSubmitButton();
+    public void checkLoginForm() {
+        Assert.assertTrue("Title in authentication form isn't present", isElementPresent(authFormTitle));
+        Assert.assertTrue("Login input in authentication form isn't present", isElementPresent(buttonSubmit));
+        Assert.assertTrue("Button login in authentication form isn't present", isElementPresent(inputLogin));
     }
 }
 

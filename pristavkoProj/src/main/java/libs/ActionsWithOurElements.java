@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static pages.ParentPage.configProperties;
+
 public class ActionsWithOurElements {
     WebDriver webDriver;
     static Logger logger;
@@ -16,10 +18,9 @@ public class ActionsWithOurElements {
     public ActionsWithOurElements(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger(getClass());
-        webDriverWait20 = new WebDriverWait(webDriver, 3);
+        webDriverWait20 = new WebDriverWait(webDriver, configProperties.TIME_FOR_EXPLICIT_WAIT_LOW());
     }
-
-    /**
+      /**
      * Method Enter text in to input and textArea
      *
      * @param input
@@ -32,7 +33,7 @@ public class ActionsWithOurElements {
             input.sendKeys(text);
             logger.info(text + " was entered in to input" + input);
         } catch (Exception e) {
-            logErrorAndStopTest(input);
+            logErrorAndStopTest();
         }
     }
 
@@ -47,7 +48,7 @@ public class ActionsWithOurElements {
             element.click();
             logger.info("Element clicked " + element);
         } catch (Exception e) {
-            logErrorAndStopTest(element);
+            logErrorAndStopTest();
         }
     }
 
@@ -89,7 +90,7 @@ public class ActionsWithOurElements {
         try {
             selectOptionsInDropDown(select, webDriver.findElement(By.xpath(xPathLocator)));
         } catch (Exception e) {
-            logErrorAndStopTest(select);
+            logErrorAndStopTest();
         }
     }
 
@@ -114,13 +115,13 @@ public class ActionsWithOurElements {
                     logger.info("CheckBox has " + neededState + " state already ");
                 }
             } catch (Exception e) {
-                logErrorAndStopTest(element);
+                logErrorAndStopTest();
             }
         }
     }
 
-    private static void logErrorAndStopTest(WebElement element) {
-        logger.error("Can't work with element " + element);
-        Assert.fail("Can't work with element " + element);
+    private static void logErrorAndStopTest() {
+        logger.error("Can't work with element");
+        Assert.fail("Can't work with element");
     }
 }
