@@ -13,12 +13,10 @@ public class AddNewSpareTest extends ParentTest {
 
     @Test
     public void addNewSpare() {
-        loginPage.loginUser(configProperties.user_login(), configProperties.user_password());
+        loginPage.validUserLogin(configProperties.user_login(), configProperties.user_password());
         mainPage.clickOnMenuDictionary();
         mainPage.clickOnSubMenuSpare();
-        while ((sparesPage.isCreatedSpareIsPresent()) == true) {
-            sparesPage.deleteSpare(spareName);
-        }
+        mainPage.deleteAllSparesWhenTheyArePresent(spareName);
         sparesPage.createNewSpare(spareName, spareTypeText);
         Assert.assertTrue("Created spare isn't present", sparesPage.isCreatedSpareIsPresent());
         sparesPage.deleteSpare(spareName);

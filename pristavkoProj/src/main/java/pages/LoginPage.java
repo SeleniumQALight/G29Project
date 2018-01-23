@@ -26,6 +26,12 @@ public class LoginPage extends ParentPage {
     @FindBy(xpath = ".//*[text()='Авторизация']")
     private WebElement authFormTitle;
 
+    @FindBy(xpath = ".//span[@class='hidden-xs']")
+    private WebElement userProfile;
+
+    @FindBy(xpath = ".//a[@href='/logout']")
+    private WebElement userLogOutButton;
+
     public void openLoginPage() {
         try {
             webDriver.get(url);
@@ -36,17 +42,23 @@ public class LoginPage extends ParentPage {
         }
     }
 
-    public void loginUser(String login, String password) {
+    public void validUserLogin(String login, String password) {
         openLoginPage();
         enterTextIntoInput(inputLogin, login);
         enterTextIntoInput(inputPassWord, password);
         clickOnElement(buttonSubmit);
     }
 
-    public void checkLoginForm() {
+    public void checkLoginFormPresentOnPage() {
         Assert.assertTrue("Title in authentication form isn't present", isElementPresent(authFormTitle));
         Assert.assertTrue("Login input in authentication form isn't present", isElementPresent(buttonSubmit));
         Assert.assertTrue("Button login in authentication form isn't present", isElementPresent(inputLogin));
     }
+
+    public void userLogOut(){
+        clickOnElement(userProfile);
+        clickOnElement(userLogOutButton);
+    }
+
 }
 

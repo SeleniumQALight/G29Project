@@ -35,19 +35,25 @@ public class UpdateUserProfile extends ParentTest {
 
     final String userEmail = "alex@bigmir.net";
     final String userName = "StudentAlex";
+    final String defaultUserEmal = "info@qalight.com";
+    final String defaulUserName = "Student";
 
     @Test
     public void updateUserProfile() {
 
-        loginPage.loginUser(configProperties.user_login(), configProperties.user_password());
+        loginPage.validUserLogin(configProperties.user_login(), configProperties.user_password());
         Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
         Assert.assertTrue("Menu is not present", mainPage.isMenuItemsPresent());
         userProfile.openUserProfile();
         userProfile.updateUserProfile(userEmail, userName);
-        mainPage.userLogOut();
-        loginPage.loginUser(configProperties.user_login(), configProperties.user_password());
+        loginPage.userLogOut();
+        loginPage.validUserLogin(configProperties.user_login(), configProperties.user_password());
         userProfile.openUserProfile();
         waitTimeWhenLoadingPage.WaitTimeWhenLoadingPage();
         userProfile.checkUpdateUserInfo(userEmail, userName);
+        // Вернуть почту и имя юзера на дефолтные
+        userProfile.openUserProfile();
+        userProfile.updateUserProfile(defaultUserEmal, defaulUserName);
+        loginPage.userLogOut();
     }
 }

@@ -46,9 +46,6 @@ public class MainPage extends ParentPage {
     @FindBy(xpath = ".//span[@class='hidden-xs']")
     private WebElement userProfile;
 
-    @FindBy(xpath = ".//a[@href='/logout']")
-    private WebElement userLogOutButton;
-
     @FindBy(xpath = ".//i[@class='fa fa-plus']")
     private WebElement addNewApparatButton;
 
@@ -83,11 +80,6 @@ public class MainPage extends ParentPage {
         clickOnElement(subMenuApparat);
     }
 
-    public void userLogOut(){
-        clickOnElement(userProfile);
-        clickOnElement(userLogOutButton);
-    }
-
     public boolean isApparatPresent() {
         return isElementPresent(createdApparatName);
     }
@@ -108,7 +100,7 @@ public class MainPage extends ParentPage {
         }
     }
 
-    public void createNewApparat(String apparatNumber, String apparatComment){
+    public void createNewApparat(String apparatNumber, String apparatComment) {
         clickOnMenuDictionary();
         clickOnsubMenuApparat();
         clickOnElement(addNewApparatButton);
@@ -118,7 +110,7 @@ public class MainPage extends ParentPage {
         logger.info("New apparat created: " + apparatNumber + ", " + apparatComment);
     }
 
-    public void checkNewApparatCreation (String apparatComment) {
+    public void checkNewApparatCreation(String apparatComment) {
         clickOnElement(webDriver.findElement(By.xpath(".//*[text()='" + apparatComment + "']")));
         Assert.assertEquals("Apparat created", apparatComment, apparatCommentInput.getAttribute("value"));
     }
@@ -128,5 +120,18 @@ public class MainPage extends ParentPage {
         clickOnElement(apparatDeleteButton);
         logger.info("Apparat deleted: " + apparatComment);
     }
+
+    public void deleteAllApparatWhenTheyArePresent(String apparatComment) {
+        while (isApparatPresent() == true) {
+            deleteApparat(apparatComment);
+        }
+    }
+
+    public void deleteAllSparesWhenTheyArePresent(String spareName) {
+        while (isApparatPresent() == true) {
+            deleteApparat(spareName);
+        }
+    }
+
 }
 

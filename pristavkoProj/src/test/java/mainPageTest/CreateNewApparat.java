@@ -44,12 +44,10 @@ public class CreateNewApparat extends ParentTest {
 
     @Test
     public void createNewApparat() {
-        loginPage.loginUser(configProperties.user_login(), configProperties.user_password());
+        loginPage.validUserLogin(configProperties.user_login(), configProperties.user_password());
         mainPage.clickOnMenuDictionary();
         mainPage.clickOnsubMenuApparat();
-        while (mainPage.isApparatPresent() == true) {
-            mainPage.deleteApparat(apparatComment);
-        }
+        mainPage.deleteAllApparatWhenTheyArePresent(apparatComment);
         mainPage.createNewApparat(apparatNumber, apparatComment);
         mainPage.checkNewApparatCreation(apparatComment);
         mainPage.clickOnMenuDictionary();

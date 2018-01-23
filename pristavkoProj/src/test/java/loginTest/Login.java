@@ -28,7 +28,7 @@ public class Login extends ParentTest {
 
     @Test
     public void validLogin() {
-        loginPage.loginUser(configProperties.user_login(), configProperties.user_password());
+        loginPage.validUserLogin(configProperties.user_login(), configProperties.user_password());
         Assert.assertTrue("Avatar isn't present", mainPage.isAvatarPresent());
         Assert.assertTrue("Menu items aren't present", mainPage.isMenuItemsPresent());
     }
