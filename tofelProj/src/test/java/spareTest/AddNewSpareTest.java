@@ -9,7 +9,7 @@ public class AddNewSpareTest  extends ParentTest{
     public void addNewSpare(){
         loginPage.openLoginPage();
         loginPage.enterTextIntoInputLogin("Student");
-        loginPage.enterTextIntoOnputPass("909090");
+        loginPage.enterTextIntoInputPass("909090");
         loginPage.clickOnSubmitButton();
 
         mainPage.checkCurrentUrl();
@@ -21,8 +21,12 @@ public class AddNewSpareTest  extends ParentTest{
             e.printStackTrace();
         }*/
         sparesPage.checkCurrentUrl();
-
-
+        sparesPage.clickOnPlusButton();
+        sparesPageEdit.checkCurrentUrl();
+        sparesPageEdit.enterTextIntoNewSpareNameInput("testName");
+        sparesPageEdit.enterTextIntoTipDetaliDropDown("Механика");
+        sparesPageEdit.clickOnAddNewSpareButton();
+        sparesPageEdit.checkCurrentUrl();
 
 
     }

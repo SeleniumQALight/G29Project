@@ -3,7 +3,6 @@ package pages;
 import static libs.ActionsWithOurElement.*;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -49,7 +48,7 @@ public class LoginPage extends ParentPage {
 
     }
 
-    public void enterTextIntoOnputPass(String pass) {
+    public void enterTextIntoInputPass(String pass) {
         enterTextInToInput(inputPassWord, pass);
     }
 
