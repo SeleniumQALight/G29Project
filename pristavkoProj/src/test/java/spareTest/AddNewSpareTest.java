@@ -16,7 +16,7 @@ public class AddNewSpareTest extends ParentTest {
         loginPage.validUserLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
         mainPage.clickOnMenuDictionary();
         mainPage.clickOnSubMenuSpare();
-        mainPage.deleteAllSparesWhenTheyArePresent(spareName);
+        sparesPage.deleteAllSparesWhenTheyArePresent(spareName);
         sparesPage.createNewSpare(spareName, spareTypeText);
         Assert.assertTrue("Created spare isn't present", sparesPage.isCreatedSpareIsPresent());
         sparesPage.deleteSpare(spareName);

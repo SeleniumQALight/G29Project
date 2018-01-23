@@ -1,5 +1,6 @@
 package mainPageTest;
 
+import org.junit.After;
 import org.junit.Test;
 import parentTest.ParentTest;
 
@@ -42,16 +43,22 @@ public class CreateNewApparat extends ParentTest {
     final String apparatNumber = "АА6541PI";
     final String apparatComment = "Не трогать этот аппарат";
 
+    @After
+    public void deleteAllApparats() {
+        apparatPage.deleteAllApparatWhenTheyArePresent(apparatComment);
+    }
+
     @Test
     public void createNewApparat() {
         loginPage.validUserLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
         mainPage.clickOnMenuDictionary();
         mainPage.clickOnsubMenuApparat();
-        mainPage.deleteAllApparatWhenTheyArePresent(apparatComment);
-        mainPage.createNewApparat(apparatNumber, apparatComment);
-        mainPage.checkNewApparatCreation(apparatComment);
+        apparatPage.deleteAllApparatWhenTheyArePresent(apparatComment);
+        apparatPage.createNewApparat(apparatNumber, apparatComment);
+        apparatPage.checkNewApparatCreation(apparatComment);
         mainPage.clickOnMenuDictionary();
         mainPage.clickOnsubMenuApparat();
-        mainPage.deleteApparat(apparatComment);
+        apparatPage.deleteApparat(apparatComment);
     }
+
 }
