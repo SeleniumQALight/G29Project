@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +19,10 @@ public class SparePage extends ParentPage {
 
     public void clickOnAddButton () {
         clickOnElement(plusButton);
+    }
+
+    public void clickOnNewSpareElement (String element) {
+        webDriver.findElement(By.xpath("//td[contains(.,'" + element + "')]")).click();
     }
 }
 

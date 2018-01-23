@@ -11,6 +11,15 @@ public class AddNewSpareTest extends ParentTest{
         mainPage.clickOnSubMenuSpares();
         sparePage.checkCurrentUrl();
         sparePage.clickOnAddButton();
+        spareDictionaryPage.checkCurrentUrl();
+        String generatedSpareName = spareDictionaryPage.enterSpareName();
+        spareDictionaryPage.enterSpareDetailType();
+        spareDictionaryPage.clickOnCreateButton();
+        sparePage.checkCurrentUrl();
+        sparePage.clickOnNewSpareElement(generatedSpareName);
+        spareDictionaryPage.clickOnDeleteButton();
+
+
     }
 
 }
