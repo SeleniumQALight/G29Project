@@ -13,7 +13,7 @@ public class AddNewSpareTest extends ParentTest {
 
     @Test
     public void addNewSpare() {
-        loginPage.validUserLogin(configProperties.user_login(), configProperties.user_password());
+        loginPage.validUserLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
         mainPage.clickOnMenuDictionary();
         mainPage.clickOnSubMenuSpare();
         mainPage.deleteAllSparesWhenTheyArePresent(spareName);

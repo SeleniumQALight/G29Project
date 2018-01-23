@@ -41,13 +41,13 @@ public class UpdateUserProfile extends ParentTest {
     @Test
     public void updateUserProfile() {
 
-        loginPage.validUserLogin(configProperties.user_login(), configProperties.user_password());
+        loginPage.validUserLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
         Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
         Assert.assertTrue("Menu is not present", mainPage.isMenuItemsPresent());
         userProfile.openUserProfile();
         userProfile.updateUserProfile(userEmail, userName);
         loginPage.userLogOut();
-        loginPage.validUserLogin(configProperties.user_login(), configProperties.user_password());
+        loginPage.validUserLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
         userProfile.openUserProfile();
         waitTimeWhenLoadingPage.WaitTimeWhenLoadingPage();
         userProfile.checkUpdateUserInfo(userEmail, userName);

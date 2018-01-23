@@ -26,7 +26,7 @@ public class Logout extends ParentTest {
 
     @Test
     public void userLogOut() {
-        loginPage.validUserLogin(configProperties.user_login(), configProperties.user_password());
+        loginPage.validUserLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
         Assert.assertTrue("Avatar isn't present", mainPage.isAvatarPresent());
         Assert.assertTrue("Menu isn't present", mainPage.isMenuItemsPresent());
         loginPage.userLogOut();
