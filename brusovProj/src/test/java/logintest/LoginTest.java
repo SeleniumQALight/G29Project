@@ -3,13 +3,10 @@ package logintest;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import parrentTest.ParrentTest;
-
-import java.util.concurrent.TimeUnit;
+import parentTest.ParentTest;
 
 
-public class LoginTest extends ParrentTest {
+public class LoginTest extends ParentTest {
 
 
     @Test

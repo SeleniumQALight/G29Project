@@ -10,16 +10,18 @@ public class AddNewSpareTest extends ParentTest{
         loginPage.loginUser("student", "909090");
         mainPage.checkCurrentUlr();
         mainPage.clickOnMenuDictionary();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         mainPage.clickOnSubMuneSpare();
         sparePage.checkCurrentUlr();
+        while(sparePage.createdSparePresent()){
+            sparePage.clickOnCreatedSpare();
+            sparePage.deleteCreatedSpareElement();
+        }
         sparePage.clickPlusButton();
         sparePage.enterSpareName("TEST");
         sparePage.setSpareTypeSelect("Датчики");
         sparePage.clickCreateSpareButton();
+        sparePage.clickOnCreatedSpare();
+        sparePage.deleteCreatedSpareElement();
+        sparePage.isAllCreatedElementsDeleted();
     }
 }

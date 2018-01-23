@@ -38,5 +38,6 @@ public class ParentPage {
             Assert.fail("Cannot get url");
         }
     }
+
 }
 

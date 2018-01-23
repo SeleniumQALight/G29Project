@@ -1,73 +1,52 @@
 package pages;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import static libs.ActionsWithOurElements.*;
 
 public class LoginPage extends ParentPage {
-
     public LoginPage(WebDriver webDriver) {
-        super(webDriver);
+        super(webDriver, "/login");
     }
+
+    final String url = configProperties.base_url();
+
+    @FindBy(name = "_username")
+    private WebElement inputLogin;
+
+    @FindBy(id = "password")
+    private WebElement inputPassWord;
+
+    @FindBy(tagName = "button")
+    private WebElement buttonSubmit;
+
+    @FindBy(xpath = ".//*[text()='Авторизация']")
+    private WebElement authFormTitle;
 
     public void openLoginPage() {
         try {
-            webDriver.get("http://v3.test.itpmgroup.com");
-            logger.info("Login page was opened");
+            webDriver.get(url);
+            logger.info("Login page was opened " + url);
         } catch (Exception e) {
-            logger.error("Can't open url");
-            Assert.fail("Can't open url");
+            logger.error("Can't open url " + url);
+            Assert.fail("Can't open url " + url);
         }
     }
 
-    public boolean isMenuItemMainPresent() {
-        try {
-            return webDriver.findElement(By.xpath(".//a[@href='/dashboard']")).isDisplayed();
-
-        } catch (Exception e) {
-            return false;
-        }
+    public void loginUser(String login, String password) {
+        openLoginPage();
+        enterTextIntoInput(inputLogin, login);
+        enterTextIntoInput(inputPassWord, password);
+        clickOnElement(buttonSubmit);
     }
 
-    public void enterTextIntoInputLogin(String login) {
-        try {
-            webDriver.findElement(By.name("_username")).clear();
-            webDriver.findElement(By.name("_username")).sendKeys(login);
-            logger.info(login + " was inputed into login input ");
-        } catch (Exception e) {
-            logger.error("Can't work with element ");
-            Assert.fail("Can't work with element");
-        }
+    public void checkLoginForm() {
+        Assert.assertTrue("Title in authentication form isn't present", isElementPresent(authFormTitle));
+        Assert.assertTrue("Login input in authentication form isn't present", isElementPresent(buttonSubmit));
+        Assert.assertTrue("Button login in authentication form isn't present", isElementPresent(inputLogin));
     }
-
-    public void enterTextIntoInputPassword(String password) {
-        try {
-            webDriver.findElement(By.id("password")).clear();
-            webDriver.findElement(By.id("password")).sendKeys(password);
-            logger.info(password + " was inputed into password input ");
-        } catch (Exception e) {
-            logger.error("Can't work with element ");
-            Assert.fail("Can't work with element");
-        }
-    }
-
-    public boolean isTitleAuthenticationPageIsPresent() {
-        try {
-            return webDriver.findElement(By.xpath(".//a[@href='http://v3.test.itpmgroup.com/']")).isDisplayed();
-
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    public boolean isButtonLoginInAuthenticationPageIsPresent() {
-        try {
-            return webDriver.findElement(By.xpath(".//button[@type='submit']")).isDisplayed();
-
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
 }
 
