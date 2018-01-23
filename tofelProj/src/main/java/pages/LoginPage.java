@@ -21,7 +21,7 @@ public class LoginPage extends ParentPage {
 
 
     public LoginPage(WebDriver webDriver) {
-        super(webDriver,"/login");
+        super(webDriver, "/login");
     }  // / znachit chto my na  login page
 
     public void openLoginPage() {
@@ -56,4 +56,10 @@ public class LoginPage extends ParentPage {
         clickOnElement(buttonSubmit);
     }
 
+    public void loginUser(String login, String pass) {
+        openLoginPage();
+        enterTextIntoInputLogin(login);
+        enterTextIntoInputPass(pass);
+        clickOnSubmitButton();
+    }
 }

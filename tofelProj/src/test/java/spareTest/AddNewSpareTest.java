@@ -5,6 +5,9 @@ import parentTest.ParentTest;
 
 public class AddNewSpareTest  extends ParentTest{
 
+    //imia zapchasti tut obijavit
+    //HW  @Before - tut ischem est li element kotor my sozdali - v cikle proverial est li zapchast - imia zapchasti v teste dolgna byt
+    //@After - udaliatm novyiu
     @Test
     public void addNewSpare(){
         loginPage.openLoginPage();
