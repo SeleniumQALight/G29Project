@@ -8,9 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import static libs.ActionsWithOurElements.clickOnElement;
 
 public class SparesPage extends ParentPage{
-    @FindBy(xpath = ".//*[@href='" +
-            "http://v3.test.itpmgroup.com/dictionary" +
-            "/spares/edit']")
+    @FindBy(xpath = ".//*[@href='" + "http://v3.test.itpmgroup.com/dictionary" + "/spares/edit']")
     private WebElement plusButton;
 
     public SparesPage(WebDriver webDriver) {
