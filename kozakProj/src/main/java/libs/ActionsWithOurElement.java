@@ -76,7 +76,7 @@ public class ActionsWithOurElement {
      * @param element
      * @param neededState
      */
-    public void setStateToCheckBox(WebElement element, String neededState){
+    public static void setStateToCheckBox(WebElement element, String neededState){
         final String CHECK_STATUS = "Checked";
         final String UNCHECK_STATUS = "Unchecked";
         if (!neededState.equals(CHECK_STATUS) && !neededState.equals(UNCHECK_STATUS)){
@@ -102,12 +102,12 @@ public class ActionsWithOurElement {
      * @param select
      * @param option
      */
-    public void selectOptionsInDropDown(WebElement select, WebElement option){
+    public static void selectOptionsInDropDown(WebElement select, WebElement option){
             clickOnElement(select);
             clickOnElement(option);
            }
 
-    public void selectOptionsInDropDown(WebElement selectDropDown,String textInDropDown){   // вибере елемент програмно
+    public static void selectOptionsInDropDown(WebElement selectDropDown,String textInDropDown){   // вибере елемент програмно
         try {
             Select options =new Select(selectDropDown);    // відкрили селект і отримали всю вибірку з селекту
             options.selectByVisibleText(textInDropDown);   // шукає едемент по тексту, що ми бачим
