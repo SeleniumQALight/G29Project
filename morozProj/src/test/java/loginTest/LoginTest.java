@@ -20,6 +20,7 @@ public class LoginTest extends ParentTest {
         //webDriver.findElement(By.id("password")).sendKeys("909090");
         //webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
 
+
         Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
 
     }

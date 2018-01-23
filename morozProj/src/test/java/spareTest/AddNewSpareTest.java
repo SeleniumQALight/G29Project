@@ -7,10 +7,7 @@ import parentTest.ParentTest;
 public class AddNewSpareTest extends ParentTest{
     @Test
     public void addNewSpare(){
-        loginPage.openLoginPage();
-        loginPage.enterTextIntoInputLogin("Student");
-        loginPage.enterTextIntoInputPass("909090");
-        loginPage.clickOnSubmitButton();
+        loginPage.loginUser("Student","909090");
         mainPage.checkCurrentUrl();
         mainPage.clickOnMenuDictionary();
 
