@@ -9,20 +9,14 @@ public class LoginTest extends ParentTest {
 
     @Test
     public void validLogin(){
-        loginPage.openLoginPage();
-        loginPage.enterTextIntoInputLogin("Student");
-        loginPage.enterTextIntoInputPass("909090");
-        loginPage.clickOnSubmitButton();
-
-        Assert.assertTrue("Avatar is not present",
-                mainPage.isAvatarPresent() );
+        loginPage.loginUser("Student", "909090");
+        Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent() );
     }
 
     @Test
     public void unValidLogin(){
         loginPage.loginUser("Student","906090");
-        Assert.assertTrue("Login Input does not dispalay"
-                , loginPage.isLoginInputDisplay());
+        Assert.assertTrue("Login Input does not dispalay", loginPage.isLoginInputDisplay());
     }
 
 }

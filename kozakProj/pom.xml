@@ -21,12 +21,14 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.8.0</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/log4j/log4j -->
         <dependency>
             <groupId>log4j</groupId>
@@ -35,11 +37,22 @@
         </dependency>
 
 
-    </dependencies>
+        <!-- https://mvnrepository.com/artifact/org.aeonbits.owner/owner    заходить у проперті файл і дістає значення -->
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+
+
+        </dependencies>
     <build>   <!-- ПОКАЗУЄ ДЕ ЛЕЖАТЬ НАШІ РЕСУРСИ-->
         <resources>
             <resource>
                 <directory>src</directory>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
             </resource>
         </resources>
     </build>

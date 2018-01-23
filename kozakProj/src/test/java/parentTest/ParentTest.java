@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
 import pages.MainPage;
+import pages.SpareEditPage;
 import pages.SparesPage;
 
 import java.io.File;
@@ -17,6 +18,7 @@ public class ParentTest {
    protected MainPage mainPage;                                       //доступний тільки у наслідника у всіх папках
    protected LoginPage loginPage;                                     //обявили зміну у якій буде обєкт
    protected SparesPage sparesPage;
+   protected SpareEditPage spareEditPage;
 
 
     @Before                                                           // це Пре кондішн, відкриває браузер ..Анотація дж-юніта. Виконується перед кожним тесткейсом
@@ -28,6 +30,8 @@ public class ParentTest {
         mainPage = new MainPage(webDriver);                           // ініціалізуємо клас MainPage + Дали браузер
         loginPage = new LoginPage(webDriver);                           // ініціалізуємо клас MainPage + Дали браузер
         sparesPage = new SparesPage(webDriver);
+        spareEditPage = new SpareEditPage(webDriver,"/dictionary/spares/edit");
+
 
         webDriver.manage().window().maximize();                       // відкрили вікно браузера.розгорнули
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  // чекай поки відкриється браузер (макс 10 с.)

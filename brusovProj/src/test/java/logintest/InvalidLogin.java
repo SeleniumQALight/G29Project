@@ -2,17 +2,17 @@ package logintest;
 
 import org.junit.Assert;
 import org.junit.Test;
-import parrentTest.ParrentTest;
+import parentTest.ParentTest;
 
 
-public class InvalidLogin extends ParrentTest{
+public class InvalidLogin extends ParentTest {
 
 
     @Test
     public void loginUser(){
         loginPage.loginUser("InvalidStudent","InvalidPass");
 
-        Assert.assertFalse("Avatar is not present",
+        Assert.assertFalse("Avatar is present",
                 mainPage.isAvatarPresent());
 
     }
