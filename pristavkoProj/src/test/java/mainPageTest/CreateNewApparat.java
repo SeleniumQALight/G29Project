@@ -50,7 +50,7 @@ public class CreateNewApparat extends ParentTest {
 
     @Test
     public void createNewApparat() {
-        loginPage.validUserLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
+        loginPage.userLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
         mainPage.clickOnMenuDictionary();
         mainPage.clickOnsubMenuApparat();
         apparatPage.deleteAllApparatWhenTheyArePresent(apparatComment);

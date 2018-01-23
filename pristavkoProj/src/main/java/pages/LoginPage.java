@@ -42,7 +42,7 @@ public class LoginPage extends ParentPage {
         }
     }
 
-    public void validUserLogin(String login, String password) {
+    public void userLogin(String login, String password) {
         openLoginPage();
         enterTextIntoInput(inputLogin, login);
         enterTextIntoInput(inputPassWord, password);
@@ -58,6 +58,10 @@ public class LoginPage extends ParentPage {
     public void userLogOut(){
         clickOnElement(userProfile);
         clickOnElement(userLogOutButton);
+    }
+
+    public boolean isLoginInputDisplay(){
+        return isElementPresent(inputLogin);
     }
 
 }

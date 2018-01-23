@@ -37,7 +37,7 @@ public class AddNewSpareTest extends ParentTest {
 
     @Before
     public void beforeAddNewSpare() {
-        loginPage.validUserLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
+        loginPage.userLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
         mainPage.clickOnMenuDictionary();
         mainPage.clickOnSubMenuSpare();
         sparesPage.deleteAllSparesWhenTheyArePresent(spareName);
