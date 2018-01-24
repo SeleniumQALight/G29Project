@@ -3,6 +3,7 @@ package pages;
 import static libs.ActionsWithOurElements.*;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,9 +21,6 @@ public class SparePage extends ParentPage{
 
     @FindBy(tagName = "button")
     private WebElement createSpareButton;
-
-    @FindBy(xpath = ".//*[@id='device_list']/tbody/tr/td[contains(text(), 'TEST')]")
-    private WebElement testSpareName;
 
     @FindBy(name = "delete")
     private WebElement deleteSpareButton;
@@ -47,21 +45,44 @@ public class SparePage extends ParentPage{
         clickOnElement(createSpareButton);
     }
 
-    public boolean createdSparePresent(){
-        return isElementPresent(testSpareName);
+    public boolean createdSparePresent(String spareName){
+        try {
+            return isElementPresent(webDriver.findElement(By.xpath(".//*[@id='device_list']/tbody/tr/td[contains(text(),'" + spareName + "')]")));
+        }catch (Exception e){
+            logger.info(spareName + " spare wasn't founded");
+            return  false;
+        }
     }
 
-    public void clickOnCreatedSpare(){
-        clickOnElement(testSpareName);
-    }
+    public void clickOnCreatedSpare(String spareName){
+        try {
+            clickOnElement(webDriver.findElement(By.xpath(".//*[@id='device_list']/tbody/tr/td[contains(text(),'" + spareName + "')]")));
+            logger.info("Clicked on created spare");
+            }catch (Exception e){
+            logger.error("Cannot click on created spare");
+            Assert.fail("Cannot click on created spare");
+        }
+
+        }
+
 
     public void deleteCreatedSpareElement(){
         clickOnElement(deleteSpareButton);
         logger.info("element was deleted from sparePage");
     }
 
-    public void isAllCreatedElementsDeleted(){
-        if(isElementPresent(testSpareName)){
+    public void checkSpareWasCreated(String spareName){
+        if(createdSparePresent(spareName)){
+            logger.info("spare was present");
+        }else{
+            logger.error("Spare wasn't created");
+            Assert.fail("Spare wasn't created");
+        }
+    }
+
+    public void isAllCreatedElementsDeleted(String spareName){
+
+        if(createdSparePresent(spareName)){
             logger.error("Not all elements was deleted");
             Assert.fail("Not all elements was deleted");
         }else{
