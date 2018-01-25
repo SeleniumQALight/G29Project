@@ -25,6 +25,7 @@ public class ExcelDriver {
 	 * data values in the test.
 	 */
 	public static Map getMultipleData(String dataFileName, String sheetName, int columnNumber) throws IOException {
+		//put', imya lista, nomer kolonki
 		Map<String, String> testData = new HashMap<String, String>();
 		// Create stream for reading from file
 		InputStream input = new FileInputStream(dataFileName);
@@ -52,7 +53,7 @@ public class ExcelDriver {
       * Static method that retrieves testing data from Excel table and returns it
       * as Map collection of key-value pairs. Note, please, that returned values
       * are String. We should take care of value's type by himself when will use
-      * data values in the test.
+      * data values in the test. beret vsegda danniye so ?vtoroy? kolonki. uproshonniy variant
       */
     public static Map getData(String dataFileName, String sheetName) throws IOException {
         Map<String, String> testData = new HashMap<String, String>();

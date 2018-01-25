@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Assert;
 public class ParentTest {
     public WebDriver webDriver;
-    String browser = System.getProperty("browser");
+    String browser = System.getProperty("browser");//получаем параметр со строки запуск
     Logger log;
     protected MainPage mainPage;
     protected LoginPage loginPage;
@@ -35,6 +35,9 @@ public class ParentTest {
     }
 
     private void setBrowser() {
+        if (browser == null){
+            browser="chrome";
+        }
         if ("chrome".equals(browser)) {
 
             File fileFF = new File("./drivers/chromedriver.exe");
