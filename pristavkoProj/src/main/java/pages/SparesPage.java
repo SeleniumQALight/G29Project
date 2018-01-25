@@ -49,4 +49,11 @@ public class SparesPage extends ParentPage {
     public boolean isCreatedSpareIsPresent() {
         return isElementPresent(spareName);
     }
+
+    public void deleteAllSparesWhenTheyArePresent(String spareName) {
+        while (isCreatedSpareIsPresent() == true) {
+            deleteSpare(spareName);
+        }
+    }
+
 }
