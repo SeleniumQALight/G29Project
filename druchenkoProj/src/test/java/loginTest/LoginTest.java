@@ -16,7 +16,7 @@ public class LoginTest extends ParentTest{
     @Test
     public void inValidLogin(){
         loginPage.loginUser("Student", "404040");
-        Assert.assertFalse("Avatar is nor present", mainPage.isAvatarPresent());
+        Assert.assertFalse("User should not be logged", mainPage.isAvatarPresent());
 
     }
 
