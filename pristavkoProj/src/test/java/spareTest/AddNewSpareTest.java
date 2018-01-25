@@ -25,8 +25,8 @@ import static pages.ParentPage.configProperties;
  * 3) В дропдауне выбрать "Датчики"
  * 4) Кликнуть на кнопку "Создать"
  * 5) Проверить, что аппарат с комментарием создался" Каляка Маляка"
- *  Postconditions:
- *  1) Удалить аппарат с комментарием "Каляка Маляка"
+ * Postconditions:
+ * 1) Удалить аппарат с комментарием "Каляка Маляка"
  */
 
 
@@ -51,7 +51,9 @@ public class AddNewSpareTest extends ParentTest {
 
     @After
     public void afterAddNewSpare() {
-        sparesPage.deleteSpare(spareName);
+        if (sparesPage.isCreatedSpareIsPresent(spareName) == true) {
+            sparesPage.deleteSpare(spareName);
+        }
     }
 
 }
