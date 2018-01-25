@@ -1,13 +1,10 @@
 package pages;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static libs.ActionsWithOurElements.clickOnElement;
-import static libs.ActionsWithOurElements.enterTextIntoInput;
 import static libs.ActionsWithOurElements.isElementPresent;
 
 public class MainPage extends ParentPage {
@@ -43,29 +40,11 @@ public class MainPage extends ParentPage {
     @FindBy(id = "apparat")
     private WebElement subMenuApparat;
 
+    @FindBy(id = "workers")
+    private WebElement subMenuWorkers;
+
     @FindBy(xpath = ".//span[@class='hidden-xs']")
     private WebElement userProfile;
-
-    @FindBy(xpath = ".//a[@href='/logout']")
-    private WebElement userLogOutButton;
-
-    @FindBy(xpath = ".//i[@class='fa fa-plus']")
-    private WebElement addNewApparatButton;
-
-    @FindBy(id = "apparat_apparatNumber")
-    private WebElement apparatNumberInput;
-
-    @FindBy(id = "apparat_apparatComment")
-    private WebElement apparatCommentInput;
-
-    @FindBy(xpath = ".//button[@name='add']")
-    private WebElement apparatCreateButton;
-
-    @FindBy(xpath = ".//button[@name='delete']")
-    private WebElement apparatDeleteButton;
-
-    @FindBy(xpath = ".//*[text()='Не трогать этот аппарат']")
-    private WebElement createdApparatName;
 
     public boolean isAvatarPresent() {
         return isElementPresent(avatar);
@@ -79,18 +58,12 @@ public class MainPage extends ParentPage {
         clickOnElement(subMenuSpares);
     }
 
-    public void clickOnsubMenuApparat() {
+    public void clickOnSubMenuApparat() {
         clickOnElement(subMenuApparat);
     }
 
-    public void userLogOut(){
-        clickOnElement(userProfile);
-        clickOnElement(userLogOutButton);
-    }
+    public void clickOnSubMenuWorker() {clickOnElement(subMenuWorkers);}
 
-    public boolean isApparatPresent() {
-        return isElementPresent(createdApparatName);
-    }
 
     public boolean isMenuItemsPresent() {
         try {
@@ -108,25 +81,5 @@ public class MainPage extends ParentPage {
         }
     }
 
-    public void createNewApparat(String apparatNumber, String apparatComment){
-        clickOnMenuDictionary();
-        clickOnsubMenuApparat();
-        clickOnElement(addNewApparatButton);
-        enterTextIntoInput(apparatNumberInput, apparatNumber);
-        enterTextIntoInput(apparatCommentInput, apparatComment);
-        clickOnElement(apparatCreateButton);
-        logger.info("New apparat created: " + apparatNumber + ", " + apparatComment);
-    }
-
-    public void checkNewApparatCreation (String apparatComment) {
-        clickOnElement(webDriver.findElement(By.xpath(".//*[text()='" + apparatComment + "']")));
-        Assert.assertEquals("Apparat created", apparatComment, apparatCommentInput.getAttribute("value"));
-    }
-
-    public void deleteApparat(String apparatComment) {
-        clickOnElement(webDriver.findElement(By.xpath(".//*[text()='" + apparatComment + "']")));
-        clickOnElement(apparatDeleteButton);
-        logger.info("Apparat deleted: " + apparatComment);
-    }
 }
 

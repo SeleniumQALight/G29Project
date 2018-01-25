@@ -7,8 +7,8 @@ public interface ConfigProperties extends Config {
 	long TIME_FOR_EXPLICIT_WAIT_LOW();
 
 	String base_url();
-	String user_login();
-	String user_password();
+	String valid_user_login();
+	String valid_user_password();
 	String wrong_user_password();
 	String DATA_FILE();
 	String DATA_FILE_SUITE();

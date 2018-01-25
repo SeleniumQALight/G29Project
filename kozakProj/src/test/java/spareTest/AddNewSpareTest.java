@@ -4,6 +4,7 @@ import org.junit.Test;
 import parentTest.ParentTest;
 
 public class AddNewSpareTest extends ParentTest {
+    String spare="asdfghj";
 
     @Test
     public void addNewSpare(){
