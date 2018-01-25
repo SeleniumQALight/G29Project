@@ -3,7 +3,6 @@ package pages;
 import static libs.ActionsWithOurElement.*;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,7 +21,7 @@ public class LoginPage extends ParentPage {
 
 
     public LoginPage(WebDriver webDriver) {
-        super(webDriver,"/login");
+        super(webDriver, "/login");
     }  // / znachit chto my na  login page
 
     public void openLoginPage() {
@@ -49,7 +48,7 @@ public class LoginPage extends ParentPage {
 
     }
 
-    public void enterTextIntoOnputPass(String pass) {
+    public void enterTextIntoInputPass(String pass) {
         enterTextInToInput(inputPassWord, pass);
     }
 
@@ -57,4 +56,10 @@ public class LoginPage extends ParentPage {
         clickOnElement(buttonSubmit);
     }
 
+    public void loginUser(String login, String pass) {
+        openLoginPage();
+        enterTextIntoInputLogin(login);
+        enterTextIntoInputPass(pass);
+        clickOnSubmitButton();
+    }
 }
