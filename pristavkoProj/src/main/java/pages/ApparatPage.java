@@ -13,7 +13,7 @@ public class ApparatPage extends ParentPage {
 
 
     public ApparatPage(WebDriver webDriver) {
-        super(webDriver, "/");
+        super(webDriver, "/dictionary/apparat");
         mainPage = new MainPage(webDriver);
     }
 
@@ -37,7 +37,7 @@ public class ApparatPage extends ParentPage {
 
     public void createNewApparat(String apparatNumber, String apparatComment) {
         mainPage.clickOnMenuDictionary();
-        mainPage.clickOnsubMenuApparat();
+        mainPage.clickOnSubMenuApparat();
         clickOnElement(addNewApparatButton);
         enterTextIntoInput(apparatNumberInput, apparatNumber);
         enterTextIntoInput(apparatCommentInput, apparatComment);
