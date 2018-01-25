@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +8,7 @@ import static libs.ActionsWithoutElements.*;
 
 public class MainPage extends ParentPage {
     public MainPage(WebDriver webDriver) {
-        super(webDriver);
+        super(webDriver, "/");
     }
 
     @FindBy(xpath = ".//div[@class='pull-left image']//img[@class='img-circle']")
@@ -24,7 +23,7 @@ public class MainPage extends ParentPage {
     @FindBy(xpath = ".//*[@id='device_list']/tbody/tr[1]")
     private WebElement installationFirstElementItem;
 
-    @FindBy(id = "spare")
+    @FindBy(id = "spares")
     private WebElement subMenuSpare;
 
     @FindBy(xpath = "html/body/div[1]/div/section[2]/div[2]/div/div/div[1]/div/a/i")
