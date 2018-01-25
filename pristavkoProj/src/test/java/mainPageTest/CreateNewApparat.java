@@ -48,23 +48,26 @@ public class CreateNewApparat extends ParentTest {
     public void beforeCreateNewApparat() {
         loginPage.userLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
         mainPage.clickOnMenuDictionary();
-        mainPage.clickOnsubMenuApparat();
+        mainPage.clickOnSubMenuApparat();
         apparatPage.deleteAllApparatWhenTheyArePresent(apparatComment);
     }
 
     @Test
     public void createNewApparat() {
         mainPage.clickOnMenuDictionary();
-        mainPage.clickOnsubMenuApparat();
+        mainPage.clickOnSubMenuApparat();
         apparatPage.createNewApparat(apparatNumber, apparatComment);
         apparatPage.checkNewApparatCreation(apparatComment);
     }
 
+
     @After
     public void afterCreateNewApparat() {
         mainPage.clickOnMenuDictionary();
-        mainPage.clickOnsubMenuApparat();
-        apparatPage.deleteApparat(apparatComment);
+        mainPage.clickOnSubMenuApparat();
+        if (apparatPage.isApparatPresent() == true) {
+            apparatPage.deleteApparat(apparatComment);
+        }
     }
 
 }

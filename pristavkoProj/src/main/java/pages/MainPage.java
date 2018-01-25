@@ -40,6 +40,9 @@ public class MainPage extends ParentPage {
     @FindBy(id = "apparat")
     private WebElement subMenuApparat;
 
+    @FindBy(id = "workers")
+    private WebElement subMenuWorkers;
+
     @FindBy(xpath = ".//span[@class='hidden-xs']")
     private WebElement userProfile;
 
@@ -55,9 +58,12 @@ public class MainPage extends ParentPage {
         clickOnElement(subMenuSpares);
     }
 
-    public void clickOnsubMenuApparat() {
+    public void clickOnSubMenuApparat() {
         clickOnElement(subMenuApparat);
     }
+
+    public void clickOnSubMenuWorker() {clickOnElement(subMenuWorkers);}
+
 
     public boolean isMenuItemsPresent() {
         try {
