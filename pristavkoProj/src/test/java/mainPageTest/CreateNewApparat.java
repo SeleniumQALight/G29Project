@@ -1,55 +1,73 @@
 package mainPageTest;
 
-import org.junit.Assert;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import parentTest.ParentTest;
 
+import static pages.ParentPage.configProperties;
+
 /**
- * Test Case 4
+ * Test Case 4 - Создание Аппарата
+ * Preoconditions:
+ * 1) Открыть ссылку http://v3.test.itpmgroup.com/
+ * 2) В форме авторизации в поле пароль ввести Student
+ * 3) В поле пароль ввести 909090
+ * 4) Кликнуть на кнопку "Вход"
+ * 5) Кликнуть на пункт меню "Словари"
+ * 6) Кликнуть на пункт меню "Аппарат"
+ * 7) Проверить, что в списке аппаратов нету аппарата с такими характеристиками:
+ * Номер: АА6541PI
+ * Комментарий: Не трогать этот аппарат
+ * 8) Если есть, то удалить аппарат
+ * <p>
+ * Steps to reproduce:
+ * 1) Открыть ссылку http://v3.test.itpmgroup.com/
+ * 2) В форме авторизации в поле пароль ввести Student
+ * 3) В поле пароль ввести 909090
+ * 4) Кликнуть на кнопку "Вход"
+ * 5) Кликнуть на пункт меню "Словари"
+ * 6) Кликнуть на пункт меню "Аппарат"
+ * 7) Кликнуть на кнопку добавления +
+ * 8) В поле Apparat number ввести данные - АА6541PI
+ * 9) В поле Apparat comment ввести данные - Не трогать этот аппарат
+ * 10) Кликнуть на кнопку Создать
+ * <p>
+ * Expected result:
+ * 1) В списке аппаратов должен быть аппарат с такими характеристиками:
+ * Номер: АА6541PI
+ * Комментарий: Не трогать этот аппарат
  */
-
-import java.util.concurrent.TimeUnit;
-
-import static org.hamcrest.core.Is.is;
 
 public class CreateNewApparat extends ParentTest {
 
-    final String url = "http://v3.test.itpmgroup.com/login";
-    final String login = "Student";
-    final String password = "909090";
-    final String apparatNumber = "0";
+    final String apparatNumber = "АА6541PI";
     final String apparatComment = "Не трогать этот аппарат";
 
+    @Before
+    public void beforeCreateNewApparat() {
+        loginPage.userLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
+        mainPage.clickOnMenuDictionary();
+        mainPage.clickOnSubMenuApparat();
+        apparatPage.deleteAllApparatWhenTheyArePresent(apparatComment);
+    }
+
     @Test
-    public void successUserProfileUpdate() {
+    public void createNewApparat() {
+        mainPage.clickOnMenuDictionary();
+        mainPage.clickOnSubMenuApparat();
+        apparatPage.createNewApparat(apparatNumber, apparatComment);
+        apparatPage.checkNewApparatCreation(apparatComment);
+    }
 
-        //Создание аппарата
-        webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        webDriver.manage().timeouts().setScriptTimeout(3, TimeUnit.SECONDS);
-        webDriver.get(url);
-        webDriver.findElement(By.name("_username")).sendKeys(login);
-        webDriver.findElement(By.id("password")).sendKeys(password);
-        webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
-        webDriver.findElement(By.id("dictionary")).click();
-        webDriver.findElement(By.xpath(".//a[@href='/dictionary/apparat']")).click();
-        webDriver.findElement(By.xpath(".//a[@href='http://v3.test.itpmgroup.com/dictionary/apparat/edit']")).click();
-        webDriver.findElement(By.id("apparat_apparatNumber")).sendKeys(apparatNumber);
-        webDriver.findElement(By.id("apparat_apparatComment")).sendKeys(apparatComment);
-        webDriver.findElement(By.xpath(".//button[@name='add']")).click();
 
-        // Проверить, что в списке аппаратов есть аппарат с такими характеристиками:
-        // Номер: 0
-        // Комментарий: Не трогать этот аппарат
-
-        webDriver.findElement(By.xpath(".//td[text()='Не трогать этот аппарат']")).click();
-        webDriver.findElement(By.xpath(".//button[@name='delete']")).click();
-
-        //Удаление аппарат
-        webDriver.findElement(By.xpath(".//td[text()='Не трогать этот аппарат']")).click();
-        webDriver.findElement(By.xpath(".//button[@name='delete']")).click();
-
+    @After
+    public void afterCreateNewApparat() {
+        mainPage.clickOnMenuDictionary();
+        mainPage.clickOnSubMenuApparat();
+        if (apparatPage.isApparatPresent() == true) {
+            apparatPage.deleteApparat(apparatComment);
+        }
     }
 
 }

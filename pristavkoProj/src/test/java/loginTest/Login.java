@@ -1,35 +1,35 @@
 package loginTest;
 
 /**
- * Test Case 1
+ * Test Case 1 - Авторизация в системе
+ * Steps to reproduce:
+ * 1) Открыть ссылку http://v3.test.itpmgroup.com/
+ * 2) В форме авторизации в поле пароль ввести Student
+ * 3) В поле пароль ввести 909090
+ * 4) Кликнуть на кнопку "Вход"
+ * <p>
+ * Expected result:
+ * 1) Доступна аватарка пользователя
+ * 2) Доступно главное меню с пунктом "Главная"
+ * 3) Доступно главное меню с пунктом "Cловари"
+ * 4) Доступно главное меню с пунктом "Обслуживание"
+ * 5) Доступно главное меню с пунктом "Установка"
+ * 6) Доступно главное меню с пунктом "Сделки"
+ * 7) Доступно главное меню с пунктом: "Отчёт"
  */
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import parentTest.ParentTest;
 
-import java.io.File;
-import java.util.concurrent.TimeUnit;
+import static pages.ParentPage.configProperties;
 
-public class Login extends ParentTest{
-
-    final String url = "http://v3.test.itpmgroup.com/login";
-    final String login = "Student";
-    final String password = "909090";
+public class Login extends ParentTest {
 
     @Test
-    public void vallidLogin() {
-        webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        webDriver.manage().deleteAllCookies();
-        webDriver.get(url);
-        webDriver.findElement(By.name("_username")).sendKeys(login);
-        webDriver.findElement(By.id("password")).sendKeys(password);
-        webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
-        Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
-        Assert.assertTrue("Menu is not present", mainPage.isMenuPresent());
-
+    public void userLogin() {
+        loginPage.userLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
+        Assert.assertTrue("Avatar isn't present", mainPage.isAvatarPresent());
+        Assert.assertTrue("Menu items aren't present", mainPage.isMenuItemsPresent());
     }
-
 }

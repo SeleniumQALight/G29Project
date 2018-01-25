@@ -1,53 +1,69 @@
 package mainPageTest;
-
-import org.junit.Assert;
-import org.junit.Test;
-import org.openqa.selenium.By;
-import parentTest.ParentTest;
-
 /**
- * Test Case 3
+ * Test Case 3 - Обновление данных в профиле пользователя
+ * <p>
+ * Steps to reproduce:
+ * 1) Открыть ссылку http://v3.test.itpmgroup.com/
+ * 2) В форме авторизации в поле пароль ввести Student
+ * 3) В поле пароль ввести 909090
+ * 4) Кликнуть на кнопку "Вход"
+ * 5) Кликнуть на аватарку пользователя в правом верхнем углу страницы
+ * 6) Кликнуть на кнопку "Профиль"
+ * 7) В поле "Адрес email" ввести значение alex@bigmir.net
+ * в поле "Пользователь" ввести значение StudentAlex
+ * 8) Кликнуть на кнопку "Сохранить"
+ * 9) Кликнуть на аватарку профиля пользователя
+ * 10) Кликнуть на кнопку Выйти
+ * 11) В поле пароль ввести 909090
+ * 12) Кликнуть на кнопку "Вход"
+ * 13) Кликнуть на аватарку пользователя в правом верхнем углу страницы
+ * 14) Кликнуть на кнопку "Профиль"
+ * <p>
+ * Expected result:
+ * 1) В левом верхнем углу страницы обновилось название пользователя на StudentAlex.
+ * 2) В профиле обновилось значения для поля "Адрес email" на alex@bigmir.net
+ * 3) В профиле обновилось значения для поля "Пользователь" на StudentAlex
  */
 
-import java.util.concurrent.TimeUnit;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import parentTest.ParentTest;
 
-import static org.hamcrest.core.Is.is;
+import static pages.ParentPage.configProperties;
 
 public class UpdateUserProfile extends ParentTest {
 
-    final String url = "http://v3.test.itpmgroup.com/login";
-    final String login = "Student";
-    final String password = "909090";
     final String userEmail = "alex@bigmir.net";
     final String userName = "StudentAlex";
+    final String defaultUserEmal = "info@qalight.com";
+    final String defaulUserName = "Student";
+
+
+    @Before
+    public void beforeUpdateUserProfile() {
+        loginPage.userLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
+        Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
+        Assert.assertTrue("Menu is not present", mainPage.isMenuItemsPresent());
+    }
 
     @Test
-    public void successUserProfileUpdate() {
-        webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        webDriver.manage().timeouts().setScriptTimeout(3, TimeUnit.SECONDS);
-        webDriver.get(url);
-        webDriver.findElement(By.name("_username")).sendKeys(login);
-        webDriver.findElement(By.id("password")).sendKeys(password);
-        webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
-        webDriver.findElement(By.xpath(".//span[@class='hidden-xs']")).click();
-        webDriver.findElement(By.xpath(".//a[@href='/users/profile/13']")).click();
-        webDriver.findElement(By.xpath(".//input[@name='userProfileEdit[user][email]']")).clear();
-        webDriver.findElement(By.xpath(".//input[@name='userProfileEdit[user][email]']")).sendKeys(userEmail);
-        webDriver.findElement(By.xpath(".//*[@id='userProfileEdit_user_name']")).clear();
-        webDriver.findElement(By.xpath(".//*[@id='userProfileEdit_user_name']")).sendKeys(userName);
-        webDriver.findElement(By.xpath(".//button[@name='save']")).click();
-        webDriver.findElement(By.xpath(".//span[@class='hidden-xs']")).click();
-        webDriver.findElement(By.xpath(".//a[@href='/logout']")).click();
-        webDriver.findElement(By.name("_username")).sendKeys(login);
-        webDriver.findElement(By.id("password")).sendKeys(password);
-        webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
-        webDriver.findElement(By.xpath(".//span[@class='hidden-xs']")).click();
-        webDriver.findElement(By.xpath(".//a[@href='/users/profile/13']")).click();
-//
-        Assert.assertTrue("User name in left side of the page is not updated", userProfile.isNewUserNameInHeaderPresent());
-        Assert.assertThat("Email in user profile is not updated", userEmail, is(userProfile.getNewUserEmailPresent()));
-        Assert.assertThat("Name in user profile is not updated", userName, is(userProfile.getNewUserName()));
+    public void updateUserProfile() {
+        userProfile.openUserProfile();
+        userProfile.updateUserProfile(userEmail, userName);
+        loginPage.userLogOut();
+        loginPage.userLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
+        userProfile.openUserProfile();
+        waitTimeWhenLoadingPage.WaitTimeWhenLoadingPage();
+        userProfile.checkUpdateUserInfo(userEmail, userName);
+    }
+
+    @After
+    public void backToDefaultUserData() {
+        userProfile.openUserProfile();
+        userProfile.updateUserProfile(defaultUserEmal, defaulUserName);
+        loginPage.userLogOut();
     }
 
 }

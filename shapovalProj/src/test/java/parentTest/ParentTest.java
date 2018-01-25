@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
 import pages.MainPage;
+import pages.SparesPage;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -15,6 +16,7 @@ public class ParentTest {
     public WebDriver webDriver;
     protected MainPage mainPage;
     protected LoginPage loginPage;
+    protected SparesPage sparesPage;
 
     // бифо выполняется перед каждой анотацией тест
     @Before
@@ -26,6 +28,7 @@ public class ParentTest {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  // неявное ожидание 10 секунд на выполнения всех команд
         mainPage = new MainPage(webDriver);
         loginPage = new LoginPage(webDriver);
+        sparesPage = new SparesPage(webDriver);
     }
 
     @After                   // закрытие браузера после прохода тестов
