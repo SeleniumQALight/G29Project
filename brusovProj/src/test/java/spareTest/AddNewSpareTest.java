@@ -2,7 +2,6 @@ package spareTest;
 
 
 import org.junit.Test;
-import pages.ParentPage;
 import parentTest.ParentTest;
 
 public class AddNewSpareTest extends ParentTest {

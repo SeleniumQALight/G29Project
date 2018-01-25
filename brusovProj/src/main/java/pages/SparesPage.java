@@ -34,7 +34,7 @@ public class SparesPage extends ParentPage {
         selectOptionsInDropDown(spareDropDown, nameOfCategory);
         clickOnElement(addNewSpare);
         String elementXPath = String.format(".//*[@id='device_list']/tbody/tr/td[text()='%s'] ", nameOfSpare);
-        WebElement element = webDriver.findElement(By.xpath(elementXPath));
+        WebElement element = webDriver.findElement(By.xpath(elementXPath)); // Вынести в ActionsWithElement
         clickOnElement(element);
         clickOnElement(deleteSpare);
     }
