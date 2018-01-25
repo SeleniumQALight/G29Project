@@ -35,7 +35,9 @@ public class CreateNewWorker extends ParentTest {
     public void afterCreateNewWorker() {
         mainPage.clickOnMenuDictionary();
         mainPage.clickOnSubMenuWorker();
-        workersPage.deleteWorker(workerSurname, workerName, workerMidname);
+        if (workersPage.isCreatedWorkerPresent(workerSurname, workerName, workerMidname) == true) {
+            workersPage.deleteWorker(workerSurname, workerName, workerMidname);
+        }
     }
 
 }
