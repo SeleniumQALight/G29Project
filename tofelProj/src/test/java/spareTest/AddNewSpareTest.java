@@ -22,7 +22,7 @@ public class AddNewSpareTest  extends ParentTest{
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
+        }      deleted*/
         sparesPage.checkCurrentUrl();
         sparesPage.clickOnPlusButton();
         sparesPageEdit.checkCurrentUrl();
