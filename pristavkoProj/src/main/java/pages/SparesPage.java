@@ -25,9 +25,6 @@ public class SparesPage extends ParentPage {
     @FindBy(xpath = ".//button[@name='delete']")
     private WebElement deleteSpareButton;
 
-    @FindBy(xpath = ".//*[text()='Каляка Маляка']")
-    private WebElement spareName;
-
     public SparesPage(WebDriver webDriver) {
         super(webDriver, "/dictionary/spares");
     }
@@ -46,7 +43,19 @@ public class SparesPage extends ParentPage {
         logger.info("Spare deleted " + spareName);
     }
 
-    public boolean isCreatedSpareIsPresent() {
-        return isElementPresent(spareName);
+    public boolean isCreatedSpareIsPresent(String spareName) {
+        try {
+            return isElementPresent(webDriver.findElement(By.xpath(".//*[text()='" + spareName + "']")));
+        }catch (Exception e){
+            logger.info(spareName + " spare wasn't found");
+            return  false;
+        }
     }
+
+    public void deleteAllSparesWhenTheyArePresent(String spareName) {
+        while (isCreatedSpareIsPresent(spareName) == true) {
+            deleteSpare(spareName);
+        }
+    }
+
 }

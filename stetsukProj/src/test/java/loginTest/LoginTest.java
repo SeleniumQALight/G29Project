@@ -14,10 +14,10 @@ public class LoginTest extends ParentTest {
 
         loginPage.loginUser("Student","909090");
 
-        mainPage.clickOnMenuinstallation();
-        mainPage.clickOnInstallationFirstElementItem();
-        mainPage.clickOnInstallationAddAdd();
-        mainPage.clickOnInstallationSpares();
+//        mainPage.clickOnMenuinstallation();
+//        mainPage.clickOnInstallationFirstElementItem();
+//        mainPage.clickOnInstallationAddAdd();
+//        mainPage.clickOnInstallationSpares();
 
         Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
 

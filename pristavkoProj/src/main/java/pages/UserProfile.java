@@ -10,7 +10,7 @@ import static libs.ActionsWithOurElements.enterTextIntoInput;
 
 public class UserProfile extends ParentPage {
     public UserProfile(WebDriver webDriver) {
-        super(webDriver, "/login");
+        super(webDriver, "/users/profile/13");
     }
 
     @FindBy(xpath = ".//span[@class='hidden-xs']")

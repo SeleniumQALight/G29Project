@@ -27,8 +27,8 @@ import static pages.ParentPage.configProperties;
 public class Login extends ParentTest {
 
     @Test
-    public void validLogin() {
-        loginPage.loginUser(configProperties.user_login(), configProperties.user_password());
+    public void userLogin() {
+        loginPage.userLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
         Assert.assertTrue("Avatar isn't present", mainPage.isAvatarPresent());
         Assert.assertTrue("Menu items aren't present", mainPage.isMenuItemsPresent());
     }

@@ -27,7 +27,7 @@ public class SpareDictionaryPage extends ParentPage {
     }
 
     public String enterSpareName () {
-        String generatedSpareName = "Savenko`s spare " + generateRandomNumeric(3);
+        String generatedSpareName = "Savenko`s spare " + generateRandomNumeric(3); //Move to the *AddNewSpareTest* class
         enterTextIntoInput(spareNameField, generatedSpareName);
         return generatedSpareName;
     }

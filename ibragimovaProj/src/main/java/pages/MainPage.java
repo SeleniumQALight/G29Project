@@ -20,7 +20,7 @@ private WebElement subMenuSpares;
 
     public MainPage(WebDriver webDriver ) {
 
-        super(webDriver);
+        super(webDriver,"/");
     }
     public boolean isAvatarPresent (){
 //        logger.info("Test");

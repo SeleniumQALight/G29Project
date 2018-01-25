@@ -25,7 +25,9 @@ package mainPageTest;
  * 3) В профиле обновилось значения для поля "Пользователь" на StudentAlex
  */
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import parentTest.ParentTest;
 
@@ -35,19 +37,33 @@ public class UpdateUserProfile extends ParentTest {
 
     final String userEmail = "alex@bigmir.net";
     final String userName = "StudentAlex";
+    final String defaultUserEmal = "info@qalight.com";
+    final String defaulUserName = "Student";
+
+
+    @Before
+    public void beforeUpdateUserProfile() {
+        loginPage.userLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
+        Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
+        Assert.assertTrue("Menu is not present", mainPage.isMenuItemsPresent());
+    }
 
     @Test
     public void updateUserProfile() {
-
-        loginPage.loginUser(configProperties.user_login(), configProperties.user_password());
-        Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
-        Assert.assertTrue("Menu is not present", mainPage.isMenuItemsPresent());
         userProfile.openUserProfile();
         userProfile.updateUserProfile(userEmail, userName);
-        mainPage.userLogOut();
-        loginPage.loginUser(configProperties.user_login(), configProperties.user_password());
+        loginPage.userLogOut();
+        loginPage.userLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
         userProfile.openUserProfile();
         waitTimeWhenLoadingPage.WaitTimeWhenLoadingPage();
         userProfile.checkUpdateUserInfo(userEmail, userName);
     }
+
+    @After
+    public void backToDefaultUserData() {
+        userProfile.openUserProfile();
+        userProfile.updateUserProfile(defaultUserEmal, defaulUserName);
+        loginPage.userLogOut();
+    }
+
 }
