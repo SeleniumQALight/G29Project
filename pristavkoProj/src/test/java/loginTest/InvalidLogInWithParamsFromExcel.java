@@ -1,4 +1,5 @@
 package loginTest;
+// Вариант для получения много наборов данных из экселя
 
 import libs.SpreadsheetData;
 import org.junit.Assert;
@@ -27,17 +28,12 @@ public class InvalidLogInWithParamsFromExcel extends ParentTest {
 
     @Parameterized.Parameters(name = "login = {0} pass = {1}")
     public static Collection testData() throws IOException {
-//        return Arrays.asList(new Object[][]{
-//                {"Student", ""},
-//                {"", "1111"},
-//                {"Student", "1111"},
-//                {"Student", "906090"}
-//        });re
 
         InputStream spreadSheet = new FileInputStream(
-                configProperties.DATA_FILE_SUITE()+ "testDataSuit.xls"
+                configProperties.DATA_FILE_SUITE() + "testDataSuit.xls"
         );
-        return  new SpreadsheetData(spreadSheet, "InvalidLogOn").getData();
+        // InvalidLogOn - имя листа в экселе в файле testDataSuit.xls
+        return new SpreadsheetData(spreadSheet, "InvalidLogOn").getData();
     }
 
     @Test
