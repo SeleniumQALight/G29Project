@@ -39,6 +39,9 @@ public class ParentTest {
     }
 
     private void setBrowser() {
+        if(browser == null){
+            browser="chrome";
+        }
         if ("chrome".equals(browser)) {
             File fileFF = new File("C:\\Workspace\\G29Project\\polovoiProj\\src\\chromedriver.exe");
             System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());

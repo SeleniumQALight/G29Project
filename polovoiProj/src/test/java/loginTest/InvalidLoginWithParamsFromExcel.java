@@ -32,7 +32,7 @@ public class InvalidLoginWithParamsFromExcel extends ParentTest {
 //        return Arrays.asList(new Object[][]{{"Student", "121"}, {"121", "909090"}});
         InputStream spreadsheet = new FileInputStream(configProperties.DATA_FILE_SUITE() + "testDataSuit.xls" );
 
-        return new SpreadsheetData(spreadsheet,"InvalidLogOn").getData();
+        return new SpreadsheetData(spreadsheet,"InvalidLogOn").getData();// dannie s lista InvalidLogOn!
     }
 
 
