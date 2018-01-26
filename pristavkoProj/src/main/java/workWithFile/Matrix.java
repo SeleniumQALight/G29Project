@@ -1,4 +1,4 @@
-package WorkWithFile;
+package workWithFile;
 
 public class Matrix {
 
