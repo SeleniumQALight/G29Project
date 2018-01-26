@@ -28,7 +28,8 @@ public class LoginPage extends ParentPage {
 
     public void openLoginPage() {                               //метод що відкриває урл логін пейджи
         try {
-            webDriver.get("http://v3.test.itpmgroup.com");
+        //    webDriver.get("http://v3.test.itpmgroup.com");
+            webDriver.get(configProperties.base_url());
             logger.info("Login page was opened");               // пише в лог
         } catch (Exception e) {                                 // відловлює  ексепшени
             logger.error("Can not open url");                   // пише в лог
