@@ -24,12 +24,23 @@
       <artifactId>selenium-java</artifactId>
       <version>3.8.0</version>
     </dependency>
-
     <!-- https://mvnrepository.com/artifact/log4j/log4j -->
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
       <version>1.2.17</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.aeonbits.owner/owner -->
+    <dependency>
+      <groupId>org.aeonbits.owner</groupId>
+      <artifactId>owner</artifactId>
+      <version>1.0.4</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.poi/poi --> //для работы с excel
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>3.14</version>
     </dependency>
   </dependencies>
   <build>
@@ -37,6 +48,50 @@
       <resource>
         <directory>src</directory>
       </resource>
+      <resource>
+        <directory>src/main/java</directory>
+      </resource>
     </resources>
   </build>
 </project>
+
+
+        <!--<dependencies>-->
+    <!--<dependency>-->
+      <!--<groupId>junit</groupId>-->
+      <!--<artifactId>junit</artifactId>-->
+      <!--<version>4.12</version>-->
+    <!--</dependency>-->
+    <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java &ndash;&gt;-->
+    <!--<dependency>-->
+      <!--<groupId>org.seleniumhq.selenium</groupId>-->
+      <!--<artifactId>selenium-java</artifactId>-->
+      <!--<version>3.8.0</version>-->
+    <!--</dependency>-->
+    <!--&lt;!&ndash; https://mvnrepository.com/artifact/log4j/log4j &ndash;&gt;-->
+    <!--<dependency>-->
+      <!--<groupId>log4j</groupId>-->
+      <!--<artifactId>log4j</artifactId>-->
+      <!--<version>1.2.17</version>-->
+    <!--</dependency>-->
+
+    <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.aeonbits.owner/owner &ndash;&gt;-->
+    <!--//библиотека для удобной работы с properties (эта библиотека будет ходить в проперти файл и доставать оттуда нужные нам значения)-->
+    <!--<dependency>-->
+      <!--<groupId>org.aeonbits.owner</groupId>-->
+      <!--<artifactId>owner</artifactId>-->
+      <!--<version>1.0.4</version>-->
+    <!--</dependency>-->
+  <!--</dependencies>-->
+
+  <!--<build>-->
+    <!--<resources>-->
+      <!--<resource>-->
+        <!--<directory>src</directory>-->
+      <!--</resource>-->
+      <!--<resource>-->
+        <!--<directory>src/main/java</directory>-->
+      <!--</resource>-->
+    <!--</resources>-->
+  <!--</build>-->
+<!--</project>-->
