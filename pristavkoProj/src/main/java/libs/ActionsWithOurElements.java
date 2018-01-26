@@ -31,7 +31,7 @@ public class ActionsWithOurElements {
         try {
             input.clear();
             input.sendKeys(text);
-            logger.info(text + " was entered in to input" + input);
+            logger.info(text + " was entered in to input " + input);
         } catch (Exception e) {
             logErrorAndStopTest();
         }

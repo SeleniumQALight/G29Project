@@ -4,12 +4,15 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
-
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ActionsWithoutElements {
     WebDriver webDriver;
     static Logger logger;
+    static WebDriverWait webDriverWait20;
 
     /**
      * Constructor declaration
@@ -19,6 +22,7 @@ public class ActionsWithoutElements {
     public ActionsWithoutElements(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger("ActionsWithoutElements");
+        webDriverWait20 = new WebDriverWait(webDriver, 20);
     }
 
     /**
@@ -44,6 +48,8 @@ public class ActionsWithoutElements {
      */
     public static void clickOnElement(WebElement element) {
         try {
+            webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));
+            webDriverWait20.until(ExpectedConditions.not(ExpectedConditions.invisibilityOf(element)));
             element.click();
             logger.info("Element was clicked " + element);
         } catch (Exception e) {
@@ -70,33 +76,48 @@ public class ActionsWithoutElements {
 
     /**
      * change checkbox status that need
+     *
      * @param element
      * @param neededState
      */
     public static void setStateToCheckBox(WebElement element, String neededState) {
-        try {
-            if ((element.isSelected() != true && neededState == "check") || (element.isSelected() == true && neededState == "uncheck")) {
-                clickOnElement(element);
-            } else {
+        final String CHECK_STATUS = "check";
+        final String UNCHECK_STATUS = "uncheck";
+        if (!neededState.equals(CHECK_STATUS) && !neededState.equals(CHECK_STATUS)) {
+            logger.error(neededState + " - Value of neededState is not expected ");
+            Assert.fail(neededState + " - Value of neededState is not expected ");
+        } else {
+            try {
+                if ((element.isSelected() != true && neededState == CHECK_STATUS) || (element.isSelected() == true && neededState == UNCHECK_STATUS)) {
+                    clickOnElement(element);
+                } else {
 //                (element.isSelected()==true && neededState == "check") || (element.isSelected()!==true && neededState == "uncheck")
-                logger.info("CheckBox have needed state");
+                    logger.info("CheckBox have needed state");
+                }
+            } catch (Exception e) {
+                logErrorAndStopTest();
             }
-        } catch (Exception e) {
-            logErrorAndStopTest();
         }
     }
 
     /**
      * open dropdown and whose needed
+     *
      * @param element
      * @param option
      */
-    public static void selectOptionsInDropDown(WebElement element, WebElement option){
-        try{
-            clickOnElement(element);
-            clickOnElement(option);
+    public static void selectOptionsInDropDown(WebElement element, WebElement option) {
+        clickOnElement(element);
+        clickOnElement(option);
+    }
 
-        } catch (Exception e) {
+
+    public static void selectOptionsInDropDown(WebElement selectDropDown, String textInDropDown) {
+        try {
+            Select options = new Select(selectDropDown);
+            options.selectByVisibleText(textInDropDown);
+            logger.info(textInDropDown + " was selected in DD");
+        }catch (Exception e){
             logErrorAndStopTest();
         }
     }

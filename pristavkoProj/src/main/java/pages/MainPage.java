@@ -46,6 +46,9 @@ public class MainPage extends ParentPage {
     @FindBy(xpath = ".//span[@class='hidden-xs']")
     private WebElement userProfile;
 
+    @FindBy(id = "deal_type")
+    private WebElement subMenuDealType;
+
     public boolean isAvatarPresent() {
         return isElementPresent(avatar);
     }
@@ -64,6 +67,7 @@ public class MainPage extends ParentPage {
 
     public void clickOnSubMenuWorker() {clickOnElement(subMenuWorkers);}
 
+    public void clickOnSubMenuDeal() {clickOnElement(subMenuDealType);}
 
     public boolean isMenuItemsPresent() {
         try {

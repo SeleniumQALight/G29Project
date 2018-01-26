@@ -18,7 +18,7 @@ public class LoginPage extends ParentPage {
     private WebElement buttonSubmit;
 
     public LoginPage(WebDriver webDriver) {
-        super(webDriver);
+        super(webDriver, "/login");
     }
 
     public void openLoginPage() {
@@ -32,7 +32,6 @@ public class LoginPage extends ParentPage {
     }
 
     /**
-     *
      * @param login
      * @param pass
      */
@@ -44,7 +43,6 @@ public class LoginPage extends ParentPage {
     }
 
     /**
-     *
      * @return
      */
     public boolean isLoginPresent() {
