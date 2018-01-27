@@ -44,6 +44,9 @@ public class ParentTest {
     }
 
     private void setBrowser() {
+        if (browser==null){
+            browser="chrome";
+        }
         if ("chrome".equals(browser)) {
 
 

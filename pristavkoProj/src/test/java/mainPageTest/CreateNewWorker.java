@@ -7,7 +7,6 @@ import parentTest.ParentTest;
 
 import static pages.ParentPage.configProperties;
 
-
 public class CreateNewWorker extends ParentTest {
 
     final String workerSurname = "Шапошников";
