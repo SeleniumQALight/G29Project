@@ -42,5 +42,6 @@ public class LoginTest extends ParentTest{
         Assert.assertFalse("Avatar is present",
                 mainPage.isAvatarPresent());
     }
+// можно было сделать проверку ассерт на то, что мы остались на странице авторизации с помощью метода isLoginInputDisplay
 
 }
