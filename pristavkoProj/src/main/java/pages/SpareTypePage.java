@@ -1,18 +1,14 @@
 package pages;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import static libs.ActionsWithOurElements.*;
 
 public class SpareTypePage extends ParentPage {
     protected MainPage mainPage;
 
 
-    public SpareTypePage (WebDriver webDriver) {
+    public SpareTypePage(WebDriver webDriver) {
         super(webDriver, "/dictionary/spare_type");
         mainPage = new MainPage(webDriver);
     }

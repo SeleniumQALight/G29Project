@@ -19,7 +19,7 @@ public class LoginPage extends ParentPage {
     private WebElement buttonSubmit;
 
     public LoginPage(WebDriver webDriver) {
-        super(webDriver);
+        super(webDriver, "/login"); // вставляем относительный путь к логин пейдже - /login
     }
 
     public void openLoginPage() {
