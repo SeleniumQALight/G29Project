@@ -2,6 +2,7 @@ package libs;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -32,11 +33,11 @@ public class ActionsWithOurElement {
         }
     }
 
-public void  selectOptionsInDropDown(WebElement select, WebElement option){
+/*public void  selectOptionsInDropDown(WebElement select, WebElement option){
 clickOnElement(select);
-clickOnElement(option);}
+clickOnElement(option);}*/
 
-public void selectOptionInDropDowd(WebElement selectDropDown,String textInDropDown){
+public static void selectOptionInDropDown(WebElement selectDropDown,String textInDropDown){
     try{
         Select options =new Select(selectDropDown);
         options.selectByVisibleText(textInDropDown);
@@ -60,6 +61,7 @@ public void selectOptionInDropDowd(WebElement selectDropDown,String textInDropDo
         } catch (Exception e) {
             logErrorAndStopTest();
         }
+
 
     }
 
@@ -89,6 +91,20 @@ public void selectOptionInDropDowd(WebElement selectDropDown,String textInDropDo
             return false;
         }
     }
+//!
+
+    public static boolean isElementPresent(String locator, WebDriver webDriver) {
+        try {
+            WebElement element=webDriver.findElement(By.xpath(locator));
+            boolean tempState = element.isDisplayed() && element.isEnabled();
+            logger.info("Is Element Present ? - " + tempState);
+            return tempState;
+        } catch (Exception e) {
+            logger.info("Is Element Present ? -false");
+            return false;
+        }
+    }
+
 
     private static void logErrorAndStopTest() {
         logger.error("Can not work with element ");

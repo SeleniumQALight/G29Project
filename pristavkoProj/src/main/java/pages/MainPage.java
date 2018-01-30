@@ -40,8 +40,14 @@ public class MainPage extends ParentPage {
     @FindBy(id = "apparat")
     private WebElement subMenuApparat;
 
+    @FindBy(id = "workers")
+    private WebElement subMenuWorkers;
+
     @FindBy(xpath = ".//span[@class='hidden-xs']")
     private WebElement userProfile;
+
+    @FindBy(id = "deal_type")
+    private WebElement subMenuDealType;
 
     public boolean isAvatarPresent() {
         return isElementPresent(avatar);
@@ -55,9 +61,13 @@ public class MainPage extends ParentPage {
         clickOnElement(subMenuSpares);
     }
 
-    public void clickOnsubMenuApparat() {
+    public void clickOnSubMenuApparat() {
         clickOnElement(subMenuApparat);
     }
+
+    public void clickOnSubMenuWorker() {clickOnElement(subMenuWorkers);}
+
+    public void clickOnSubMenuDeal() {clickOnElement(subMenuDealType);}
 
     public boolean isMenuItemsPresent() {
         try {

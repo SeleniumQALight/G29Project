@@ -12,8 +12,10 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.*;
+
 import java.io.File;
 import java.util.concurrent.TimeUnit;
+
 import static pages.ParentPage.configProperties;
 
 
@@ -31,6 +33,11 @@ public class ParentTest {
     protected ActionsWithOurElements actionsWithOurElements;
     protected WaitTimeWhenLoadingPage waitTimeWhenLoadingPage;
 
+    protected DealTypePage dealTypePage;
+    protected ProvidersPage providersPage;
+    protected SpareTypePage spareTypePage;
+    protected WorkersPage workersPage;
+
     @Before
     public void setUp() {
         log = Logger.getLogger(getClass());
@@ -47,6 +54,11 @@ public class ParentTest {
         apparatPage = new ApparatPage(webDriver);
         waitTimeWhenLoadingPage = new WaitTimeWhenLoadingPage();
 
+        dealTypePage = new DealTypePage(webDriver);
+        providersPage = new ProvidersPage(webDriver);
+        spareTypePage = new SpareTypePage(webDriver);
+        workersPage = new WorkersPage(webDriver);
+
         // Разобраться, почему тут юзается конструктор
         //sparesPage = new SparesPage(webDriver, "/dictionary/spares");
         sparesPage = new SparesPage(webDriver);
@@ -54,13 +66,15 @@ public class ParentTest {
     }
 
     private void setBrowser() {
+        if (browser == null) {
+            browser = "chrome";
+        }
 
         if ("chrome".equals(browser)) {
             File fileFireFox = new File("./driver/chromedriver.exe");
             System.setProperty("webdriver.chrome.driver", fileFireFox.getAbsolutePath());
             webDriver = new ChromeDriver();
-        }
-        else if ("ie".equals(browser)) {
+        } else if ("ie".equals(browser)) {
             log.info("IE will be started");
             File file1 = new File(".././drivers/IEDriverServer.exe");
             System.setProperty("webdriver.ie.driver", file1.getAbsolutePath());
@@ -70,8 +84,7 @@ public class ParentTest {
             capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             webDriver = new InternetExplorerDriver();
             log.info(" IE is started");
-        }
-        else {
+        } else {
             Assert.fail("Can't open browser" + browser);
         }
     }

@@ -44,5 +44,48 @@ public class WorkersPage extends ParentPage {
     @FindBy(xpath = ".//button[@name='delete']")
     private WebElement workerDeleteeButton;
 
+
+       public void deleteAllWorkersWhenTheyArePresent(String workerSurname, String workerName, String workerMidname) {
+        while (isCreatedWorkerPresent(workerSurname, workerName, workerMidname) == true) {
+              deleteWorker(workerSurname, workerName, workerMidname );
+        }
+    }
+
+    public boolean isCreatedWorkerPresent(String workerSurname, String workerName, String workerMidname) {
+        String fullUserName = workerSurname + " " + workerName + " " + workerMidname;
+        try {
+            return isElementPresent(webDriver.findElement(By.xpath(".//*[text()='" + fullUserName + "']")));
+        }catch (Exception e){
+            logger.info(fullUserName + " worker wasn't found");
+            return  false;
+        }
+    }
+
+    public void createNewWorker(String workerSurname, String workerName, String workerMidname, String workerPhone) {
+        clickOnElement(workerCreateButton);
+        enterTextIntoInput(workerSurnameInput, workerSurname);
+        enterTextIntoInput(workerNameInput, workerName);
+        enterTextIntoInput(workerMidInput, workerMidname);
+        enterTextIntoInput(workerPhoneInput, workerPhone);
+        clickOnElement(workerSaveButton);
+    }
+
+    public void checkNewWorkerCreation(String workerSurname, String workerName, String workerMidname, String workerPhone) {
+        webDriver.navigate().refresh();
+        String fullUserName = workerSurname + " " + workerName + " " + workerMidname;
+        clickOnElement(webDriver.findElement(By.xpath(".//*[text()='" + fullUserName + "']")));
+        Assert.assertEquals("Value in workerSurname hasn't expected", workerSurname, workerSurnameInput.getAttribute("value"));
+        Assert.assertEquals("Value in workerName hasn't expected", workerName, workerNameInput.getAttribute("value"));
+        Assert.assertEquals("Value in workerMidname hasn't expected", workerMidname, workerMidInput.getAttribute("value"));
+        Assert.assertEquals("Value in workerPhone hasn't expected", workerPhone, workerPhoneInput.getAttribute("value"));
+    }
+
+    public void deleteWorker(String workerSurname, String workerName, String workerMidname) {
+        String fullUserName = workerSurname + " " + workerName + " " + workerMidname;
+        clickOnElement(webDriver.findElement(By.xpath(".//*[text()='" + fullUserName + "']")));
+        clickOnElement(workerDeleteeButton);
+        logger.info("Worker deleted: " + fullUserName);
+    }
+
 }
 

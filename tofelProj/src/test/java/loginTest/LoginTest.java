@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import parentTest.ParentTest;
 import java.util.concurrent.TimeUnit;
 
-public class LoginTest extends ParentTest{
+public class LoginTest extends ParentTest {
 
     @Test
     public void validLogin() {
@@ -15,7 +15,7 @@ public class LoginTest extends ParentTest{
 
         loginPage.openLoginPage();
         loginPage.enterTextIntoInputLogin("Student");
-        loginPage.enterTextIntoOnputPass("909090");
+        loginPage.enterTextIntoInputPass("909090");
         loginPage.clickOnSubmitButton();
 
         Assert.assertTrue("Avatar is not present",
@@ -23,5 +23,11 @@ public class LoginTest extends ParentTest{
 
     }
 
+    @Test
+    public void unvalidLogin() {
+        loginPage.loginUser("Studen", "909090");
+        Assert.assertFalse("Avatar is present, but should not be",
+                mainPage.isAvatarPresent());
 
+    }
 }

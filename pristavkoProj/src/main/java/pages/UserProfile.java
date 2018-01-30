@@ -10,7 +10,7 @@ import static libs.ActionsWithOurElements.enterTextIntoInput;
 
 public class UserProfile extends ParentPage {
     public UserProfile(WebDriver webDriver) {
-        super(webDriver, "/login");
+        super(webDriver, "/users/profile/13");
     }
 
     @FindBy(xpath = ".//span[@class='hidden-xs']")
@@ -40,7 +40,7 @@ public class UserProfile extends ParentPage {
         clickOnElement(userProfileSaveButton);
     }
 
-    public void checkUpdateUserInfo(String email, String userName){
+    public void checkUpdateUserInfo(String email, String userName) {
         Assert.assertEquals("Username isn't updated", userName, userProfile.getText());
         Assert.assertEquals("Username isn't updated", userName, inputUserName.getAttribute("value"));
         Assert.assertEquals("User email isn't updated", email, inputEmail.getAttribute("value"));

@@ -13,7 +13,7 @@ public class ApparatPage extends ParentPage {
 
 
     public ApparatPage(WebDriver webDriver) {
-        super(webDriver, "/");
+        super(webDriver, "/dictionary/apparat");
         mainPage = new MainPage(webDriver);
     }
 
@@ -26,9 +26,6 @@ public class ApparatPage extends ParentPage {
     @FindBy(xpath = ".//button[@name='delete']")
     private WebElement apparatDeleteButton;
 
-    @FindBy(xpath = ".//*[text()='Не трогать этот аппарат']")
-    private WebElement createdApparatName;
-
     @FindBy(xpath = ".//i[@class='fa fa-plus']")
     private WebElement addNewApparatButton;
 
@@ -37,7 +34,7 @@ public class ApparatPage extends ParentPage {
 
     public void createNewApparat(String apparatNumber, String apparatComment) {
         mainPage.clickOnMenuDictionary();
-        mainPage.clickOnsubMenuApparat();
+        mainPage.clickOnSubMenuApparat();
         clickOnElement(addNewApparatButton);
         enterTextIntoInput(apparatNumberInput, apparatNumber);
         enterTextIntoInput(apparatCommentInput, apparatComment);
@@ -45,12 +42,17 @@ public class ApparatPage extends ParentPage {
         logger.info("New apparat created: " + apparatNumber + ", " + apparatComment);
     }
 
-    public boolean isApparatPresent() {
-        return isElementPresent(createdApparatName);
+    public boolean isCreatedApparatPresent(String apparatComment) {
+        try {
+            return isElementPresent(webDriver.findElement(By.xpath(".//*[text()='" + apparatComment + "']")));
+        }catch (Exception e){
+            logger.info(apparatComment + " apparat wasn't found");
+            return  false;
+        }
     }
 
     public void deleteAllApparatWhenTheyArePresent(String apparatComment) {
-        while (isApparatPresent() == true) {
+        while (isCreatedApparatPresent(apparatComment) == true) {
             deleteApparat(apparatComment);
         }
     }
