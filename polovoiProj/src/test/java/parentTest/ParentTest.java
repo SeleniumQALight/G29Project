@@ -1,5 +1,6 @@
 package parentTest;
 
+import io.qameta.allure.Step;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -65,4 +66,8 @@ public class ParentTest {
         public void tearDown () {
             webDriver.quit();
         }
+    @Step
+    protected void checkAC(String message, Boolean actual, Boolean expected) {
+        Assert.assertEquals(message + "Browser - " + browser + " ScreenShot " ,  actual, expected);
+    }
     }
