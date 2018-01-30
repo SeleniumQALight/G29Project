@@ -4,6 +4,7 @@ import libs.Database;
 import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -28,7 +29,7 @@ public class TestDB {
     }
 
     @Test
-    public void testDB() throws SQLException {
+        public void testDB() throws SQLException {
         List<Map<String,String>> testData = dbMySQL.selectTable("select * from seleniumTable");
         logger.info(testData);
 //        for (List<Map<String,String>> ourMap: testData

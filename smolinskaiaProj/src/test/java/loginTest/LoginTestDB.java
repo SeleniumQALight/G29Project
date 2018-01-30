@@ -2,6 +2,7 @@ package loginTest;
 
 import libs.UtilsForDB;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import parentTest.ParentTest;
 
@@ -12,7 +13,7 @@ public class LoginTestDB extends ParentTest {
     UtilsForDB utilsForDB = new UtilsForDB();
 
     @Test
-    public void validLogin() throws SQLException, IOException, ClassNotFoundException {
+        public void validLogin() throws SQLException, IOException, ClassNotFoundException {
         loginPage.openLoginPage();
         utilsForDB.getPassForLogin("Student");
                Assert.assertTrue("Avatar is not present",
