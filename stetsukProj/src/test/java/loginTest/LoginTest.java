@@ -19,9 +19,8 @@ public class LoginTest extends ParentTest {
 //        mainPage.clickOnInstallationAddAdd();
 //        mainPage.clickOnInstallationSpares();
 
-        Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
-
-
+//        Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
+        checkAC("Avatar is not present", mainPage.isAvatarPresent(), true);
     }
 
     @Test
