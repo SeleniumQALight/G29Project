@@ -7,14 +7,21 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 public class ActionsWithOurElements {
     WebDriver webDriver;
     static Logger logger;
+    static WebDriverWait webDriverWait20;
 
     public ActionsWithOurElements(WebDriver webDriver) {
         this.webDriver = webDriver;
         logger = Logger.getLogger("ActionsWithOurElements");
+        webDriverWait20 = new WebDriverWait(webDriver,20);
     }
+
 
     /**
      * Method Enter text into input textArea
@@ -31,9 +38,22 @@ public class ActionsWithOurElements {
         }
     }
 
-    public static void clickOnElement(WebElement element){
+    public void selectOptionsInDropDown(WebElement selectDropDown,String textInDropDown){
         try{
+            Select options = new Select(selectDropDown);
+//            options.selectByVisibleText(textInDropDown);
+            options.selectByValue(textInDropDown);
+            logger.info(textInDropDown + " was selected in DD ");
+        }catch (Exception e){
+            logErrorAndStopTest();
+        }
+    }
+
+
+    public static void clickOnElement(WebElement element){
+        try{webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));
             element.click();
+
             logger.info("Element was clicked" + element);
         }catch (Exception e){
             logErrorAndStopTest();

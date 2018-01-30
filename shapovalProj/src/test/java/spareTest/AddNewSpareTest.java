@@ -13,11 +13,11 @@ public class AddNewSpareTest extends ParentTest{
 
         mainPage.checkCurentUrl();
         mainPage.clickOnMenuDictionary();
-        try {
-            Thread.sleep (5000); // indyskii sposob zadergki
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep (5000); // indyskii sposob zadergki
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         mainPage.clickOnSubMenuSpare();
         sparesPage.checkCurentUrl();
         sparesPage.clickOnPlusButton(); //dz dopisat'

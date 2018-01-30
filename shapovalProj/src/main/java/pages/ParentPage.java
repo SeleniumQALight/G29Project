@@ -1,6 +1,8 @@
 package pages;
 
 import Libs.ActionsWithOurElements;
+import Libs.ConfigProperties;
+import org.aeonbits.owner.ConfigFactory;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -15,13 +17,15 @@ public class ParentPage {
    protected Logger logger;                 // vubrat' loger apa4 log 4 j!!!!
    String expectedURL;
 
+    public static ConfigProperties configProperties = ConfigFactory.create(ConfigProperties.class);
+
 
     public ParentPage(WebDriver webDriver, String expectedURL) {// konstryktor nastoiki
         this.webDriver = webDriver;
         logger = Logger.getLogger(getClass());
         PageFactory.initElements(webDriver,this);
         actionsWithOurElements = new ActionsWithOurElements(webDriver);
-        this.expectedURL = "http://v3.test.itpmgroup.com" + expectedURL;
+        this.expectedURL = configProperties.base_url() + expectedURL;
     }
 
     public void checkCurentUrl(){
