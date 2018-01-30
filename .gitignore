@@ -14,6 +14,7 @@ target/site
 *.ipr
 *.iws
 HW5.txt
+.allure
 
 
 

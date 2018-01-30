@@ -66,6 +66,9 @@ public class ParentTest {
     }
 
     private void setBrowser() {
+        if (browser == null) {
+            browser = "chrome";
+        }
 
         if ("chrome".equals(browser)) {
             File fileFireFox = new File("./driver/chromedriver.exe");

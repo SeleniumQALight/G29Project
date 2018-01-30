@@ -60,12 +60,11 @@ public class CreateNewApparat extends ParentTest {
         apparatPage.checkNewApparatCreation(apparatComment);
     }
 
-
     @After
     public void afterCreateNewApparat() {
         mainPage.clickOnMenuDictionary();
         mainPage.clickOnSubMenuApparat();
-        if (apparatPage.isApparatPresent() == true) {
+        if (apparatPage.isCreatedApparatPresent(apparatComment) == true) {
             apparatPage.deleteApparat(apparatComment);
         }
     }
