@@ -21,6 +21,7 @@
     </dependency>
   </dependencies>
   <modules>
+    <module>jBehaveProject</module>
     <module>overAll</module>
     <module>afanasiefProj</module>
     <module>brusovProj</module>
