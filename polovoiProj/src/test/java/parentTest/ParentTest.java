@@ -68,6 +68,6 @@ public class ParentTest {
         }
     @Step
     protected void checkAC(String message, Boolean actual, Boolean expected) {
-        Assert.assertEquals(message + "Browser - " + browser + " ScreenShot " ,  actual, expected);
+        Assert.assertEquals(message + "Browser - " + browser + "  " ,  actual, expected);
     }
     }

@@ -10,7 +10,7 @@ import java.util.Properties;
  *  That class provides static methods for getting values from Config and UI mapping files
  */
 public class ConfigData {
-    private static String cfgFile="src/main/java/config.properties";
+    private static String cfgFile="C:\\Workspace\\G29Project\\polovoiProj\\src\\main\\java\\libs\\ConfigProperties.properties";
     private static String uiMappingFile="src/main/java/UIMapping.properties";
 
     /*
