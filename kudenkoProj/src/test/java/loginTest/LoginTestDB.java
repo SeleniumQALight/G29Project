@@ -19,7 +19,9 @@ public class LoginTestDB extends ParentTest{
         UtilsForDB utilsForDB = new UtilsForDB();
 
         loginPage.loginUser("Student", utilsForDB.getPassForLogin("Student"));
-        Assert.assertTrue(mainPage.isAvatarPresent());
+        //Assert.assertTrue(mainPage.isAvatarPresent());
+        checkAC("Avatar is not present", mainPage.isAvatarPresent(), true);
+
         isTestSuccess = true;
     }
 }
