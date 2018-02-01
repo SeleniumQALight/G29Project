@@ -29,7 +29,6 @@ import static pages.ParentPage.configProperties;
  * 1) Удалить аппарат с комментарием "Каляка Маляка"
  */
 
-
 public class AddNewSpareTest extends ParentTest {
 
     final String spareName = "Каляка Маляка";

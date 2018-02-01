@@ -24,7 +24,7 @@ public class MainPage extends ParentPage {
     private WebElement subMenuSpares;
 
     public MainPage (WebDriver webDriver) {
-        super(webDriver);
+        super(webDriver, "/"); //полн путь к этой странице http://v3.test.itpmgroup.com/, поэтому относительным является просто "/"
     }
 
     //опишем метод, который ищет аватарку, и что делать, если ее не нашел: вебдрайвер найди элемент аватарку
