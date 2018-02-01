@@ -1,5 +1,6 @@
 package parentTest;
 
+import io.qameta.allure.Step;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Assert;
 public class ParentTest {
     public WebDriver webDriver;
-    String browser = System.getProperty("browser");//получаем параметр со строки запуск
+    String browser = System.getProperty("browser");
     Logger log;
     protected MainPage mainPage;
     protected LoginPage loginPage;
@@ -35,7 +36,8 @@ public class ParentTest {
     }
 
     private void setBrowser() {
-        if (browser == null){
+
+        if (browser==null){
             browser="chrome";
         }
         if ("chrome".equals(browser)) {
@@ -61,5 +63,10 @@ public class ParentTest {
     @After
     public void tearDown() {
         webDriver.quit();//закрываем метод
+    }
+
+    @Step
+    protected void checkAC(String message, Boolean actual, Boolean expected) {
+        Assert.assertEquals(message + "Browser - " + browser + "  " ,  actual, expected);
     }
 }
