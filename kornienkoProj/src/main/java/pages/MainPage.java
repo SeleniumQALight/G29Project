@@ -18,8 +18,11 @@ public class MainPage extends ParentPage{
     @FindBy (id = "spares")
     private WebElement subMenuSpares;
 
+    @FindBy (name = "radio_4[]")
+    private WebElement subMenuProviders;
+
     public MainPage(WebDriver webDriver) {
-        super(webDriver);
+        super(webDriver, "/");
     }
 
     public boolean isAvatarPresent(){
@@ -37,7 +40,11 @@ public class MainPage extends ParentPage{
         clickOnElement(menuDictionary);
     }
 
-    public void clickOnSubMenuSpare() {
-        clickOnSubMenuSpare();
+    public void clickOnSubMenuSpare() throws InterruptedException {
+        clickOnElement(subMenuSpares);
+    }
+
+    public void clickOnSubMenuProviders() {
+        clickOnElement(subMenuProviders);
     }
 }
