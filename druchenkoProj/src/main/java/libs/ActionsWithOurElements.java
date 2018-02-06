@@ -97,11 +97,6 @@ public class ActionsWithOurElements {
         }
     }
 
-//    public static void selectOptionsInDropDown(WebElement select, WebElement option){
-//        clickOnElement(select);
-//        clickOnElement(option);
-//
-//    }
 
     public static void selectOptionsInDropDown(WebElement selectDropDown, String textInDropdown){
         try {
