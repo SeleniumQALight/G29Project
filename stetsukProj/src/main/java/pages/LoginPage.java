@@ -2,6 +2,7 @@ package pages;
 
 import static libs.ActionsWithoutElements.*;
 
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,6 +22,7 @@ public class LoginPage extends ParentPage {
         super(webDriver, "/login");
     }
 
+    @Step
     public void openLoginPage() {
         try {
             webDriver.get("http://v3.test.itpmgroup.com");

@@ -1,26 +1,29 @@
 package loginTest;
 
+import libs.UtilsForDB;
 import org.junit.Assert;
 import org.junit.Test;
 import parentTest.ParentTest;
 
-import java.util.concurrent.TimeUnit;
+import java.io.IOException;
+import java.sql.SQLException;
 
-public class LoginTest extends ParentTest {
-
+public class LoginTestDB extends ParentTest {
+    UtilsForDB utilsForDB = new UtilsForDB();
 
     @Test //этот тест может быть запущен (JUnit с аннотацией)
-    public void validLogin() {
+    public void validLoginDB() throws SQLException, IOException, ClassNotFoundException {
 
-        loginPage.loginUser("Student","909090");
+        loginPage.loginUser("Student",utilsForDB.getPassForLogin("Student"));
 
 //        mainPage.clickOnMenuinstallation();
 //        mainPage.clickOnInstallationFirstElementItem();
 //        mainPage.clickOnInstallationAddAdd();
 //        mainPage.clickOnInstallationSpares();
 
-//        Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
-        checkAC("Avatar is not present", mainPage.isAvatarPresent(), true);
+        Assert.assertTrue("Avatar is not present", mainPage.isAvatarPresent());
+
+
     }
 
     @Test
