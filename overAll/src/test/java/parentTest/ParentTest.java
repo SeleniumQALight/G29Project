@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import pages.EditSparePage;
 import pages.LoginPage;
 import pages.MainPage;
 import pages.SparesPage;
@@ -26,6 +27,8 @@ public class ParentTest {
     protected MainPage mainPage;
     protected LoginPage loginPage;
     protected SparesPage sparesPage;
+    protected EditSparePage editSparePage;
+
 
     @Before
     public void setUp(){
@@ -37,6 +40,7 @@ public class ParentTest {
         mainPage = new MainPage(webDriver);
         loginPage = new LoginPage(webDriver);
         sparesPage = new SparesPage(webDriver);
+        editSparePage = new EditSparePage(webDriver);
     }
 
     private void setBrowser() {
@@ -71,5 +75,10 @@ public class ParentTest {
     @Step
     protected void checkAC(String message, Boolean actual, Boolean expected) {
          Assert.assertEquals(message + "Browser - " + browser + " ScreenShot " ,  actual, expected);
+    }
+
+    @Step
+    protected void check(String message, Boolean actual, Boolean expected) {
+        Assert.assertEquals(message + "Browser - " + browser + " ScreenShot " ,  actual, expected);
     }
 }
