@@ -11,15 +11,14 @@ import java.util.concurrent.TimeUnit;
 public class LoginTest extends ParentTest{
 
     @Test //заимпортили аннотация JUnit
-    public void validLogin(){ //этот метод является телом тест-кейса
+    public void validLogin() { //этот метод является телом тест-кейса
 
 //        webDriver.get("http://v3.test.itpmgroup.com"); //переходим по урлу
 //        webDriver.findElement(By.name("_username")).sendKeys("Student");
 
-        loginPage.openLoginPage();
-        loginPage.enterTextIntoInputLogin ("Student");
-        loginPage.enterTextIntoInputPass("909090");
-        loginPage.clickOnSubmitButton();
+        loginPage.loginUser("Student", "909090");
+        checkAC("Avatar is not present", mainPage.isAvatarPresent(), true);
+    }
 
 //        webDriver.findElement(By.id("password")).sendKeys("909090");
 //        webDriver.findElement(By.xpath(".//button[@type='submit']")).click();
@@ -30,9 +29,9 @@ public class LoginTest extends ParentTest{
         //для того, чтобы проверить, выводится ли сообщение об ошибке, в случае отсутствия аватара, делаем инверсию -
         //то есть проверяем ассерт.фолс. Чтобы ее сделать, перед ассерт.тру надо поставить восклицательный знак
 
-        Assert.assertTrue("Avatar is not present",
-                mainPage.isAvatarPresent());
-    }
+//        Assert.assertTrue("Avatar is not present",
+//                mainPage.isAvatarPresent());
+//    }
 
 // 4.  Написать тест по проверке функционала логина с невалидными данными (используя степ с пункта 3)
 // (использовать один набор данных , например notValidLogin  и notValidPass)

@@ -1,5 +1,6 @@
 package parentTest;
 
+import io.qameta.allure.Step;
 import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Assert;
@@ -77,5 +78,11 @@ public class ParentTest {
         webDriver.quit(); // если написать этот мптод после метода гет, то в каждом тесте прийдется это писать. а еще
         //если упадет эксепшен в методе под аннотацией тест, то браузер закроется и мы ен узнаем, какая ошибка возникла
         }
+
+//        метод для проверки вместо ассерт, которій мі в конце тестов писали раньше
+    @Step
+    protected void checkAC(String message, Boolean actual, Boolean expected) {
+        Assert.assertEquals(message + "Browser - " + browser + " " ,  actual, expected);
+    }
 
 }
