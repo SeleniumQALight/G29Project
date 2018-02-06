@@ -18,17 +18,23 @@ package loginTest;
  * 7) Доступно главное меню с пунктом: "Отчёт"
  */
 
+import libs.UtilsForDB;
+import org.junit.Assert;
 import org.junit.Test;
 import parentTest.ParentTest;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
 import static pages.ParentPage.configProperties;
 
-public class Login extends ParentTest {
+public class LoginDB extends ParentTest {
+    UtilsForDB utilsForDB = new UtilsForDB();
 
     @Test
-    public void userLogin() {
-        loginPage.userLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
-        checkAC("Avatar isn't present", mainPage.isAvatarPresent(), true);
-        checkAC("Menu items aren't present", mainPage.isMenuItemsPresent(), true);
+    public void userLogin() throws SQLException, IOException, ClassNotFoundException {
+        loginPage.userLogin(configProperties.valid_user_login(), utilsForDB.getPassForLogin("Student"));
+        Assert.assertTrue("Avatar isn't present", mainPage.isAvatarPresent());
+        Assert.assertTrue("Menu items aren't present", mainPage.isMenuItemsPresent());
     }
 }

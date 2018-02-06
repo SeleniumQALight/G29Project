@@ -1,4 +1,4 @@
-package WorkWithFile;
+package workWithFile;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
