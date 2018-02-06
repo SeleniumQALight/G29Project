@@ -17,7 +17,8 @@ public class LoginPage extends ParentPage{
     @FindBy(tagName = "button")
     private WebElement buttonSubmit;
 
-    public LoginPage(WebDriver webDriver) {
+
+   public LoginPage(WebDriver webDriver) {
         super(webDriver,"/login");
     }
 
