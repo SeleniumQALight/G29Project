@@ -13,19 +13,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collection;
+
 import static pages.ParentPage.configProperties;
 
 @RunWith(value = Parameterized.class)                //вказуємо, що цей потрібно буде запустити з декількома параметрами
 
 public class InvalidLogInWithParamsFromExcel extends ParentTest {
-    String login,password;
+    String login, password;
 
     public InvalidLogInWithParamsFromExcel(String login, String password) {        //конструктор закидує дані
         this.login = login;
         this.password = password;
     }
 
-    @Parameterized.Parameters ( name = "login ={0} pass = {1}")                    //блок, що дає нам параметри
+    @Parameterized.Parameters(name = "login ={0} pass = {1}")                    //блок, що дає нам параметри
     public static Collection testData() throws IOException {
 //    return Arrays.asList(new Object[][]{
 //            {"Student","111111"},
@@ -33,15 +34,15 @@ public class InvalidLogInWithParamsFromExcel extends ParentTest {
 //            {"",""}
 //    });
         InputStream spreadsheet = new FileInputStream(                     // підєднали наш файл
-               configProperties.DATA_FILE_SUITE()+"testDataSuit.xls"       // прописали шлях до нашого файла
+                configProperties.DATA_FILE_SUITE() + "testDataSuit.xls"       // прописали шлях до нашого файла
         );
-        return new SpreadsheetData(spreadsheet,"InvalidLogOn").getData();  //куда піти і що взяти
+        return new SpreadsheetData(spreadsheet, "InvalidLogOn").getData();  //куда піти і що взяти
 
     }
 
     @Test
     public void invalidLogInWithParams() {
-        loginPage.loginUser(login,password);
-        Assert.assertTrue("User should not be logged ",loginPage.authorizationFormIsPresent());
+        loginPage.loginUser(login, password);
+        Assert.assertTrue("User should not be logged ", loginPage.authorizationFormIsPresent());
     }
 }

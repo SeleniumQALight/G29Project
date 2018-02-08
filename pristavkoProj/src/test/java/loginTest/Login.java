@@ -18,7 +18,6 @@ package loginTest;
  * 7) Доступно главное меню с пунктом: "Отчёт"
  */
 
-import org.junit.Assert;
 import org.junit.Test;
 import parentTest.ParentTest;
 
@@ -29,7 +28,7 @@ public class Login extends ParentTest {
     @Test
     public void userLogin() {
         loginPage.userLogin(configProperties.valid_user_login(), configProperties.valid_user_password());
-        Assert.assertTrue("Avatar isn't present", mainPage.isAvatarPresent());
-        Assert.assertTrue("Menu items aren't present", mainPage.isMenuItemsPresent());
+        checkAC("Avatar isn't present", mainPage.isAvatarPresent(), true);
+        checkAC("Menu items aren't present", mainPage.isMenuItemsPresent(), true);
     }
 }

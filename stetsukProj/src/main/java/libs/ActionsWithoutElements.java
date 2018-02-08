@@ -1,5 +1,6 @@
 package libs;
 
+import io.qameta.allure.Step;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -31,6 +32,7 @@ public class ActionsWithoutElements {
      * @param input
      * @param text
      */
+    @Step
     public static void enterTextInToInput(WebElement input, String text) {
         try {
             input.clear();
@@ -46,6 +48,7 @@ public class ActionsWithoutElements {
      *
      * @param element
      */
+    @Step
     public static void clickOnElement(WebElement element) {
         try {
             webDriverWait20.until(ExpectedConditions.elementToBeClickable(element));

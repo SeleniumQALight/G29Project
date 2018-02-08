@@ -25,6 +25,12 @@ public class AddNewSpareTest extends ParentTest{
         sparesPage.chooseSpareType("Механика");
         sparesPage.clickOnSubmitSpareButton();
 
+
+
+        sparesPage.clickOnAddedSpare();
+        sparesPage.clickOnDeleteSpareButton();
+
+
     }
 
 }

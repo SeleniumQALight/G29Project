@@ -1,5 +1,6 @@
 package parentTest;
 
+import io.qameta.allure.Step;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -35,6 +36,10 @@ public class ParentTest {
     }
 
     private void setBrowser() {
+
+        if (browser==null){
+            browser="chrome";
+        }
         if ("chrome".equals(browser)) {
 
             File fileFF = new File("./drivers/chromedriver.exe");
@@ -58,5 +63,10 @@ public class ParentTest {
     @After
     public void tearDown() {
         webDriver.quit();//закрываем метод
+    }
+
+    @Step
+    protected void checkAC(String message, Boolean actual, Boolean expected) {
+        Assert.assertEquals(message + "Browser - " + browser + "  " ,  actual, expected);
     }
 }
