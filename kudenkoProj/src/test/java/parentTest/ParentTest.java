@@ -5,6 +5,10 @@ import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Rule;
+import org.junit.rules.TestRule;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +32,15 @@ public class ParentTest {
     protected SparePage sparePage;
     Logger log;
    protected Boolean isTestSuccess;
+   String errorPath;
+
+
+    @Rule
+    public TestRule testWatcher = new TestWatcher() {
+        @Override
+        public void starting(Description test){
+            errorPath = test.getTestClass().getPackage() + "_" + test.getTestClass() + "_" + test.getMethodName();
+    }};
 
 
     @Before
@@ -81,7 +94,12 @@ public class ParentTest {
         File screenshot = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
         try {
             Date date = new Date();
-            File screenshotLocation = new File("./target/screenshots/screen_" + date.getTime() + ".png");
+            File file = new File("./target/screenshots");
+            if(!file.exists()){
+                file.mkdir();
+            }
+            File screenshotLocation = new File("./target/screenshots/screen_" + date.getTime() + "_" +
+            errorPath + "_" +  browser + ".png");
             FileHandler.copy(screenshot, screenshotLocation);
         } catch (IOException e) {
             e.printStackTrace();
