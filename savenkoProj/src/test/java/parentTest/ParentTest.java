@@ -43,6 +43,9 @@ public class ParentTest {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);    }
 
     private void setBrowser() {
+        if (browser == null) {
+            browser = "chrome";
+        }
         if ("chrome".equals(browser)) {
             File fileFF = new File("./drivers/chromedriver.exe");         // заімпортили веб драйвер для хрома
             System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath()); // установлюємо системну змінну, щоб знала шлях до файлу

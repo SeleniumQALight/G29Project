@@ -5,16 +5,21 @@ import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import pages.EditSparePage;
 import pages.LoginPage;
 import pages.MainPage;
 import pages.SparesPage;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import static pages.ParentPage.configProperties;
@@ -26,6 +31,8 @@ public class ParentTest {
     protected MainPage mainPage;
     protected LoginPage loginPage;
     protected SparesPage sparesPage;
+    protected EditSparePage editSparePage;
+
 
     @Before
     public void setUp(){
@@ -37,6 +44,7 @@ public class ParentTest {
         mainPage = new MainPage(webDriver);
         loginPage = new LoginPage(webDriver);
         sparesPage = new SparesPage(webDriver);
+        editSparePage = new EditSparePage(webDriver);
     }
 
     private void setBrowser() {
@@ -58,6 +66,19 @@ public class ParentTest {
             capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             webDriver = new InternetExplorerDriver();
             log.info(" IE is started");
+        }else if ("remote".equals(browser)){
+            log.info("Remote Driver will be started");
+            try {
+                DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
+                //Use this property if you need special version or platform
+//                desiredCapabilities.setVersion("53");
+//                desiredCapabilities.setPlatform(Platform.ANY);
+                webDriver = new RemoteWebDriver(
+                        new URL("http://localhost:4444/wd/hub"),
+                        desiredCapabilities);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }else {
             Assert.fail("Can not opens browser" + browser);
         }
@@ -71,5 +92,10 @@ public class ParentTest {
     @Step
     protected void checkAC(String message, Boolean actual, Boolean expected) {
          Assert.assertEquals(message + "Browser - " + browser + " ScreenShot " ,  actual, expected);
+    }
+
+    @Step
+    protected void check(String message, Boolean actual, Boolean expected) {
+        Assert.assertEquals(message + "Browser - " + browser + " ScreenShot " ,  actual, expected);
     }
 }

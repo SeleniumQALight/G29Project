@@ -1,5 +1,6 @@
 package parentTest;
 
+import io.qameta.allure.Step;
 import libs.ActionsWithOurElements;
 import libs.WaitTimeWhenLoadingPage;
 import org.apache.log4j.Logger;
@@ -87,6 +88,11 @@ public class ParentTest {
         } else {
             Assert.fail("Can't open browser" + browser);
         }
+    }
+
+    @Step
+    protected void checkAC(String message, Boolean actual, Boolean expected) {
+        Assert.assertEquals(message + "Browser - " + browser,  actual, expected);
     }
 
     @After
