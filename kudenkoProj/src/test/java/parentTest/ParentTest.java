@@ -15,12 +15,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import pages.LoginPage;
 import pages.MainPage;
 import pages.SparePage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -33,6 +37,7 @@ public class ParentTest {
     Logger log;
    protected Boolean isTestSuccess;
    String errorPath;
+   String packPath;
 
 
     @Rule
@@ -40,6 +45,7 @@ public class ParentTest {
         @Override
         public void starting(Description test){
             errorPath = test.getTestClass().getPackage() + "_" + test.getTestClass() + "_" + test.getMethodName();
+            packPath = test.getTestClass().getPackage().toString();
     }};
 
 
@@ -73,6 +79,19 @@ public class ParentTest {
             System.setProperty("webdriver.gecko.driver", fileFF.getAbsolutePath());
             webDriver = new FirefoxDriver();
             log.info("mozilla started ");
+        }else if ("remote".equals(browser)){
+            log.info("Remote Driver will be started");
+            try {
+                DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
+                //Use this property if you need special version or platform
+//                desiredCapabilities.setVersion("53");
+//                desiredCapabilities.setPlatform(Platform.ANY);
+                webDriver = new RemoteWebDriver(
+                        new URL("http://localhost:4444/wd/hub"),
+                        desiredCapabilities);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }else{
             Assert.fail("Cannot opens browser " + browser);
         }
@@ -98,7 +117,11 @@ public class ParentTest {
             if(!file.exists()){
                 file.mkdir();
             }
-            File screenshotLocation = new File("./target/screenshots/screen_" + date.getTime() + "_" +
+            File pack = new File("./target/screenshots/" + packPath);
+            if(!pack.exists()) {
+                pack.mkdir();
+            }
+            File screenshotLocation = new File("./target/screenshots/" + packPath + "/screen_" + date.getTime() + "_" +
             errorPath + "_" +  browser + ".png");
             FileHandler.copy(screenshot, screenshotLocation);
         } catch (IOException e) {
